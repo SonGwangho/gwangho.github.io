@@ -1,8 +1,9 @@
 function click_convert() {
   const fileUpload = document.getElementById("input_excel_upload");
   const file = fileUpload.files[0];
-
+  Modal.start_loading();
   excel_to_csv(file);
+  Modal.stop_loading();
 }
 
 function excel_to_csv(file, sheet = undefined, isDownload = false) {

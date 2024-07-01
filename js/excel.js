@@ -16,9 +16,25 @@ function excel_to_csv(file, sheet_name = undefined, isDownload = false) {
 
       const worksheet = workbook.Sheets[firstSheetName];
       const csv = XLSX.utils.sheet_to_csv(worksheet);
-
+      MyStorage.save_session(XLSX.utils.sheet_to_json(worksheet));
       if (isDownload) download_csv(csv);
     };
+  }
+}
+
+function json_to_csv(json, isDownload = false) {
+  if (json) {
+    try {
+      const jsonData = JSON.parse(json);
+      const worksheet = XLSX.utils.json_to_sheet(jsonData);
+      const csv = XLSX.utils.sheet_to_csv(worksheet);
+
+      if (isDownload) download_csv(csv);
+    } catch (error) {
+      console.error("Error parsing JSON:", error);
+    }
+  } else {
+    alert("Please paste your JSON data first.");
   }
 }
 

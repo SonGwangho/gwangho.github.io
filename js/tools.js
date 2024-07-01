@@ -27,3 +27,59 @@ class MyDate {
     );
   }
 }
+
+class MyStorage {
+  static save_local(key, data) {
+    try {
+      localStorage.setItem(key, data);
+    } catch (err) {
+      console.error(`Can't Save ${key}`, err);
+    }
+  }
+
+  static get_local_data(key) {
+    try {
+      const data = localStorage.getItem(key);
+      if (data) {
+        try {
+          const jsonData = JSON.parse(data);
+          return jsonData;
+        } catch (error) {
+          return data;
+        }
+      } else {
+        console.log(`Cant't find ${key}`);
+        return null;
+      }
+    } catch (err) {
+      console.error(`Can't retrieving ${key}`, err);
+    }
+  }
+
+  static save_session(key, data) {
+    try {
+      sessionStorage.setItem(key, data);
+    } catch (err) {
+      console.error(`Can't Save ${key}`, err);
+    }
+  }
+
+  static get_session_data(key) {
+    try {
+      const data = sessionStorage.getItem(key);
+      if (data) {
+        try {
+          const jsonData = JSON.parse(data);
+          return jsonData;
+        } catch (error) {
+          return data;
+        }
+      } else {
+        console.log(`Cant't find ${key}`);
+        return null;
+      }
+    } catch (err) {
+      console.error(`Can't retrieving ${key}`, err);
+    }
+  }
+}

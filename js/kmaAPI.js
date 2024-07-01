@@ -1,5 +1,5 @@
 const kma_api_url =
-  "https://apihub.kma.go.kr/api/typ01/url/fct_shrt_reg.php?tmfc=0&authKey=";
+  "https://apihub.kma.go.kr/api/typ01/url/fct_shrt_reg.php?tmfc=0&authKey=SuGjScGeSHiho0nBnih4zQ";
 const request_keys = [
   "stn",
   "reg",

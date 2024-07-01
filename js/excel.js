@@ -1,9 +1,13 @@
 function click_convert() {
   const fileUpload = document.getElementById("input_excel_upload");
   const file = fileUpload.files[0];
-  Modal.start_loading();
+
   excel_to_csv(file);
-  Modal.stop_loading();
+  const data = MyStorage.get_session_data("excel_json_data");
+
+  document.getElementById("output").innerHTML = json_to_csv(
+    JSON.stringify(data)
+  );
 }
 
 function excel_to_csv(file, sheet = undefined, isDownload = false) {
@@ -36,6 +40,7 @@ function json_to_csv(json, isDownload = false) {
       const csv = XLSX.utils.sheet_to_csv(worksheet);
 
       if (isDownload) download_csv(csv);
+      return csv;
     } catch (error) {
       console.error("Error parsing JSON:", error);
     }

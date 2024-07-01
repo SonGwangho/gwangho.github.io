@@ -31,7 +31,8 @@ class MyDate {
 class MyStorage {
   static save_local(key, data) {
     try {
-      localStorage.setItem(key, data);
+      const value = typeof data === "object" ? JSON.stringify(data) : data;
+      localStorage.setItem(key, value);
     } catch (err) {
       console.error(`Can't Save ${key}`, err);
     }
@@ -58,7 +59,8 @@ class MyStorage {
 
   static save_session(key, data) {
     try {
-      sessionStorage.setItem(key, data);
+      const value = typeof data === "object" ? JSON.stringify(data) : data;
+      sessionStorage.setItem(key, value);
     } catch (err) {
       console.error(`Can't Save ${key}`, err);
     }

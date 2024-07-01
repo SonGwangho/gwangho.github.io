@@ -1,24 +1,29 @@
 function click_convert() {
-  const fileUpload = document.getElementsByClassName("file_upload");
+  const fileUpload = document.getElementById("input_excel_upload");
   const file = fileUpload.files[0];
 
   excel_to_csv(file);
 }
 
-function excel_to_csv(file, sheet_name = undefined, isDownload = false) {
+function excel_to_csv(file, sheet = undefined, isDownload = false) {
   if (file) {
     const reader = new FileReader();
 
     reader.onload = (e) => {
       const data = new Uint8Array(e.target.result);
       const workbook = XLSX.read(data, { type: "array" });
-      if (sheet_name) sheet_name = workbook.SheetNames[0];
-
-      const worksheet = workbook.Sheets[firstSheetName];
+      let sheet_name = sheet;
+      if (!sheet) sheet_name = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheet_name];
       const csv = XLSX.utils.sheet_to_csv(worksheet);
-      MyStorage.save_session(XLSX.utils.sheet_to_json(worksheet));
-      if (isDownload) download_csv(csv);
+
+      MyStorage.save_session(
+        "excel_json_data",
+        XLSX.utils.sheet_to_json(worksheet)
+      );
+      if (isDownload) download_csv(csv, file.name);
     };
+    reader.readAsArrayBuffer(file);
   }
 }
 
@@ -45,6 +50,8 @@ function download_csv(csv, name = undefined) {
   if (name) {
     const timestamp = MyDate.get_now("yyyyMMdd_HHmmss");
     name = `download_${timestamp}.csv`;
+  } else {
+    name = `${name}_${timestamp}.csv`;
   }
   link.download = name;
   link.click();

@@ -44,4 +44,3 @@ class Modal {
     modal.style.display = "none";
   }
 }
-z;

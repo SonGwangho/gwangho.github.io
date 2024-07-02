@@ -10,7 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 class Modal {
-  static show_modal() {
+  static show_modal(contents = undefined) {
+    const content = modal.querySelector("modal_content");
+    if (!contents) content.innerHTML = contents;
+    else {
+      const div = document.createElement("div");
+      div.style.width = "100%";
+      div.style.height = "100%";
+    }
+
     modal.style.display = "flex";
   }
 
@@ -36,3 +44,4 @@ class Modal {
     modal.style.display = "none";
   }
 }
+z;

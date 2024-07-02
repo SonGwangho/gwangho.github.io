@@ -1,6 +1,11 @@
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
 .modal{
   position: absolute;
-  display: flex;
+  display: none;
 
   justify-content: center;
   top: 0;
@@ -12,7 +17,7 @@
 }
 .modal_body{
   position: absolute;
-  display: none;
+  display: flex;
   flex-direction: column;
 
   width: max-content;

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
@@ -20,27 +23,27 @@
     <title>테스트 입니다.</title>
   </head>
   <body>
-    <header>
-
-    </header>
-    <main>
-      <div class="modal">
-        <div class="modal_body">
-          <div class="modal_content">
-            모달컨텐츠
-          </div>
-          <div class="modal_close">
-            <button class="btn_close_modal">close</button>
-          </div>
+    <div class="modal">
+      <div class="modal_body">
+        <div class="modal_content">
+          모달컨텐츠
+        </div>
+        <div class="modal_close">
+          <button class="btn_close_modal">close</button>
         </div>
       </div>
-      <h1>hello world!</h1>
-      <input type="file" id="input_excel_upload"/>
-      <button id="uploadBtn" onclick="click_convert()">버튼</button>
-      <pre id="output"></pre>
-    </main>
-    <footer>
-
-    </footer>
+    </div>
+    <!-- <h1>hello world!</h1>
+    <input type="file" id="input_excel_upload"/>
+    <button id="uploadBtn" onclick="click_convert()">버튼</button>
+    <pre id="output"></pre> -->
+    <nav>
+      <a href="#" data-link="/">Home</a>
+      <a href="#" data-link="/about">About</a>
+      <a href="#" data-link="/contact">Contact</a>
+    </nav>
+    <div id="app">
+      <script type="module" src="./app.js"></script>
+    </div>
   </body>
 </html>

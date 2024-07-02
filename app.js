@@ -7,25 +7,25 @@ const routes = [
   {
     path: "/index",
     view: () => {
-      console.log("메인화면입니다.");
+      return "메인화면입니다.";
     },
   },
   {
     path: "/index.html",
     view: () => {
-      console.log("메인화면입니다.");
+      return "메인화면입니다.";
     },
   },
   {
     path: "/",
     view: () => {
-      console.log("메인화면입니다.");
+      return "메인화면입니다.";
     },
   },
   {
     path: "/about",
     view: () => {
-      console.log("마이페이지입니다.");
+      return "마이페이지입니다.";
     },
   },
 ];

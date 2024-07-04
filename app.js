@@ -32,7 +32,7 @@ const routes = [
 
 const App = async () => {
   if (window.location.hash != "") {
-    const path = window.location.hash.replace("#!/", "");
+    const path = window.location.hash.replace("#!", "");
 
     const pageMatches = routes.map((route) => {
       return {

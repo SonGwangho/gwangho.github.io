@@ -3,6 +3,8 @@ const navigateTo = (url) => {
   App();
 };
 
+const pathFront = "/gwangho.github.io";
+
 const routes = [
   {
     path: "/index",
@@ -34,7 +36,7 @@ const App = async () => {
   const pageMatches = routes.map((route) => {
     return {
       route: route,
-      isMatch: window.location.pathname === route.path,
+      isMatch: window.location.pathname === pathFront + route.path,
     };
   });
 

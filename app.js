@@ -2,7 +2,7 @@ const navigateTo = (url) => {
   history.pushState(null, null, url);
   App();
 };
-
+const front = "/gwangho.github.io";
 const routes = [
   {
     path: "/index",
@@ -32,12 +32,12 @@ const routes = [
 
 const App = async () => {
   if (window.location.hash != "") {
-    const path = window.location.hash.replace("#!/gwangho.github.io", "");
+    const path = window.location.hash.replace("#!/", "");
 
     const pageMatches = routes.map((route) => {
       return {
         route: route,
-        isMatch: path === route.path,
+        isMatch: path === front + route.path,
       };
     });
 
@@ -53,7 +53,7 @@ const App = async () => {
     const pageMatches = routes.map((route) => {
       return {
         route: route,
-        isMatch: window.location.pathname === route.path,
+        isMatch: window.location.pathname === front + route.path,
       };
     });
 

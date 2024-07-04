@@ -33,17 +33,35 @@ const routes = [
 ];
 
 const App = async () => {
+  // const pageMatches = routes.map((route) => {
+  //   return {
+  //     route: route,
+  //     isMatch: window.location.pathname === pathFront + route.path,
+  //   };
+  // });
+
+  // let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
+  // if (!match) {
+  //   match = {
+  //     route: routes[0],
+  //     isMatch: true,
+  //   };
+  // }
+  // document.querySelector("#app").innerHTML = await match.route.view();
+  const hashPath = window.location.hash.slice(2);
+  const fullPath = window.location.pathname + (hashPath ? "/" + hashPath : "");
+
   const pageMatches = routes.map((route) => {
     return {
       route: route,
-      isMatch: window.location.pathname === pathFront + route.path,
+      isMatch: fullPath === pathFront + route.path,
     };
   });
 
   let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
   if (!match) {
     match = {
-      route: routes[0],
+      route: routes.find((route) => route.path === "/404"),
       isMatch: true,
     };
   }

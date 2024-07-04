@@ -8,8 +8,8 @@
 </head>
 <body>
     <script>
-        const pathname = window.location.pathname;
-        const redirectBase = '/gwangho.github.io';
+        const pathname = window.location.pathname.replace("/gwangho.github.io", "");
+        const redirectBase = 'https://songwangho.github.io/gwangho.github.io/';
 
         if (pathname !== redirectBase) {
             window.location.replace(redirectBase + '#!' + pathname);

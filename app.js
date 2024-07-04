@@ -3,8 +3,6 @@ const navigateTo = (url) => {
   App();
 };
 
-const pathFront = "/gwangho.github.io";
-
 const routes = [
   {
     path: "/index",
@@ -33,22 +31,41 @@ const routes = [
 ];
 
 const App = async () => {
-  const pageMatches = routes.map((route) => {
-    return {
-      route: route,
-      isMatch: window.location.pathname === pathFront + route.path,
-    };
-  });
+  if (window.location.hash != "") {
+    const path = window.location.hash.replace("#!/gwangho.github.io", "");
 
-  let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
-  if (!match) {
-    match = {
-      route: routes[0],
-      isMatch: true,
-    };
+    const pageMatches = routes.map((route) => {
+      return {
+        route: route,
+        isMatch: path === route.path,
+      };
+    });
+
+    let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
+    if (!match) {
+      match = {
+        route: routes[0],
+        isMatch: true,
+      };
+    }
+    document.querySelector("#app").innerHTML = await match.route.view();
+  } else {
+    const pageMatches = routes.map((route) => {
+      return {
+        route: route,
+        isMatch: window.location.pathname === route.path,
+      };
+    });
+
+    let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
+    if (!match) {
+      match = {
+        route: routes[0],
+        isMatch: true,
+      };
+    }
+    document.querySelector("#app").innerHTML = await match.route.view();
   }
-  document.querySelector("#app").innerHTML = await match.route.view();
-  const hashPath = window.location.hash.startsWith("#!");
 };
 
 window.addEventListener("popstate", App);

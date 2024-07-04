@@ -12,7 +12,7 @@
         const redirectBase = '/gwangho.github.io';
 
         if (pathname !== redirectBase) {
-            window.location.replace(pathname);
+            window.location.replace(redirectBase + '#!' + pathname);
         } else {
             document.body.innerHTML = "404 Not Found";
         }

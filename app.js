@@ -48,6 +48,7 @@ const App = async () => {
     };
   }
   document.querySelector("#app").innerHTML = await match.route.view();
+  const hashPath = window.location.hash.startsWith("#!");
 };
 
 window.addEventListener("popstate", App);

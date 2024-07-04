@@ -48,8 +48,10 @@ const App = async () => {
   //   };
   // }
   // document.querySelector("#app").innerHTML = await match.route.view();
-  const hashPath = window.location.hash.slice(2);
-  const fullPath = window.location.pathname + (hashPath ? "/" + hashPath : "");
+  const hashPath = window.location.hash.startsWith("#!")
+    ? window.location.hash.slice(2)
+    : "";
+  const fullPath = pathFront + hashPath;
 
   const pageMatches = routes.map((route) => {
     return {

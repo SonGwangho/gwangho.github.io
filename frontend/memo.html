@@ -24,15 +24,13 @@
         margin-top: 20px;
     }
     .note {
+      display: flex;
         border: 1px solid #ccc;
         padding: 10px;
         margin-bottom: 10px;
         position: relative;
     }
     .delete-button {
-        position: absolute;
-        top: 10px;
-        right: 10px;
         background-color: red;
         color: white;
         border: none;
@@ -40,95 +38,103 @@
         cursor: pointer;
     }
   </style>
-  <div class="container">
-    <h1>메모장</h1>
-    <div id="write">
-        <h2>메모 작성</h2>
-        <textarea id="note-content" placeholder="여기에 메모를 작성하세요..."></textarea>
-        <button onclick="saveNote()">저장</button>
-    </div>
-    <div id="read">
-        <h2>저장된 메모</h2>
-        <div id="saved-notes"></div>
-    </div>
+  
+<div class="container">
+  <h1>메모장</h1>
+  <div id="write">
+      <h2>메모 작성</h2>
+      <textarea id="note-content" placeholder="여기에 메모를 작성하세요..."></textarea>
+      <button onclick="saveNote()">저장</button>
+  </div>
+  <div id="read">
+      <h2>저장된 메모</h2>
+      <div id="saved-notes"></div>
+  </div>
 </div>
 <script>
-    const API_KEY = "$2a$10$r46IyvSambW8Qwk889KeSOGHTKCuOxQMGJROZoMWQ7kfxjtT0TwRm";  // 여기에 실제 API 키를 넣어주세요
-    const BIN_ID = "668b8b70e41b4d34e40ebaeb";    // 여기에 실제 BIN ID를 넣어주세요
+  const API_KEY = "$2a$10$f8kgZZ3N6OqzpsgvVNBZweNPu6ixzzfw2mFBeMC/fSWlRbLWNZYRK";  // 여기에 실제 API 키를 넣어주세요
+  const BIN_ID = "668b8b70e41b4d34e40ebaeb";    // 여기에 실제 BIN ID를 넣어주세요
 
-    async function saveNote() {
-        const noteContent = document.getElementById('note-content').value;
-        if (noteContent.trim() === '') {
-            alert('메모를 입력하세요.');
-            return;
-        }
-
-        const notes = await getData() || [];
-        notes.push(noteContent);
-        await saveData(notes);
-        document.getElementById('note-content').value = '';
-        displayNotes();
+  async function saveNote() {
+    const noteContent = document.getElementById('note-content').value;
+    if (noteContent.trim() === '') {
+        alert('메모를 입력하세요.');
+        return;
     }
 
-    async function displayNotes() {
-        const notes = await getData() || [];
-        const savedNotesDiv = document.getElementById('saved-notes');
-        savedNotesDiv.innerHTML = '';
+    const notesData = await getData();
+    const notes = notesData.record.memos || [];
+    notes.push({ memo: noteContent });
+    await saveData({ memos: notes });
+    document.getElementById('note-content').value = '';
+    displayNotes();
+  }
 
-        if (notes.length === 0) {
-            savedNotesDiv.innerHTML = '<p>저장된 메모가 없습니다.</p>';
-        } else {
-            notes.forEach((note, index) => {
-                const noteDiv = document.createElement('div');
-                noteDiv.classList.add('note');
-                noteDiv.innerText = note;
+  async function displayNotes() {
+      const notesData = await getData();
+      const notes = notesData.record.memos || [];
+      const savedNotesDiv = document.getElementById('saved-notes');
+      savedNotesDiv.innerHTML = '';
 
-                const deleteButton = document.createElement('button');
-                deleteButton.innerText = '삭제';
-                deleteButton.classList.add('delete-button');
-                deleteButton.onclick = () => deleteNote(index);
+      if (notes.length === 0) {
+          savedNotesDiv.innerHTML = '<p>저장된 메모가 없습니다.</p>';
+      } else {
+          notes.forEach((noteObj, index) => {
+              const noteDiv = document.createElement('div');
+              noteDiv.classList.add('note');
 
-                noteDiv.appendChild(deleteButton);
-                savedNotesDiv.appendChild(noteDiv);
-            });
-        }
-    }
+              const noteText = document.createElement('div');
+              noteText.style.flex = "1 0 auto";
+              noteText.style.padding = "5px 10px";
+              noteText.innerText = noteObj.memo;
 
-    async function deleteNote(index) {
-        const notes = await getData() || [];
-        notes.splice(index, 1);
-        await saveData(notes);
-        displayNotes();
-    }
+              const deleteButton = document.createElement('button');
+              deleteButton.innerText = '삭제';
+              deleteButton.classList.add('delete-button');
+              deleteButton.onclick = () => deleteNote(index);
 
-    window.onload = displayNotes;
+              noteDiv.appendChild(deleteButton);
+              savedNotesDiv.appendChild(noteDiv);
+          });
+      }
+  }
 
-    async function saveData(data) {
-        return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "X-Master-Key": API_KEY,
-                "X-Bin-Versioning": "false"
-            },
-            body: JSON.stringify({ record: data }),
-        })
-        .then(response => response.json())
-        .catch(error => console.error("Error:", error));
-    }
+  async function deleteNote(index) {
+      const notesData = await getData();
+      const notes = notesData.record.memos || [];
+      notes.splice(index, 1);
+      await saveData({ memos: notes });
+      displayNotes();
+  }
 
-    async function getData() {
-        return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
-            headers: {
-                "X-Master-Key": API_KEY,
-            },
-        })
-        .then(response => response.json())
-        .then(json => json.record)
-        .catch(error => {
-            console.error("Error:", error);
-            return [];
-        });
-    }
-</script>
+  window.onload = displayNotes;
+
+  async function saveData(data) {
+      return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+          method: "PUT",
+          headers: {
+              "Content-Type": "application/json",
+              "X-Master-Key": API_KEY,
+              "X-Bin-Versioning": "false"
+          },
+          body: JSON.stringify({ record: data }),
+      })
+      .then(response => response.json())
+      .catch(error => console.error("Error:", error));
+  }
+
+  async function getData() {
+      return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+          headers: {
+              "X-Master-Key": API_KEY,
+          },
+      })
+      .then(response => response.json())
+      .then(json => json.record)
+      .catch(error => {
+          console.error("Error:", error);
+          return { memos: [] };
+      });
+  }
+  </script>
 </div>

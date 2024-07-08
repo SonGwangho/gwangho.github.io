@@ -83,6 +83,7 @@ const App = async () => {
     }
     document.querySelector("#app").innerHTML = await match.route.view();
   }
+  created();
 };
 
 window.addEventListener("popstate", App);

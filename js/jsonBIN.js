@@ -7,14 +7,12 @@ async function saveNote() {
     alert("메모를 입력하세요.");
     return;
   }
-  Modal.start_loading();
   const notesData = await getData();
   const notes = notesData.record.memos || [];
   notes.push({ memo: noteContent });
   await saveData({ memos: notes });
   document.getElementById("note-content").value = "";
   displayNotes();
-  Modal.stop_loading();
 }
 
 async function displayNotes() {
@@ -50,13 +48,11 @@ async function displayNotes() {
 }
 
 async function deleteNote(index) {
-  Modal.start_loading();
   const notesData = await getData();
   const notes = notesData.record.memos || [];
   notes.splice(index, 1);
   await saveData({ memos: notes });
   displayNotes();
-  Modal.stop_loading();
 }
 
 async function saveData(data) {

@@ -1,5 +1,4 @@
 <div style="margin: 0; padding: 0;">
-  돈 쓴 내역 적거나 하면 될듯? 필요없으면 쓰지마
   <style>
     #write, #read {
       margin-bottom: 20px;
@@ -32,22 +31,25 @@
     <div id="saved-notes"></div>
   </div>
   <script>
-    function saveNote() {
+    const API_KEY = "$2a$10$r46IyvSambW8Qwk889KeSOGHTKCuOxQMGJROZoMWQ7kfxjtT0TwRm";
+    const BIN_ID = "668b8b70e41b4d34e40ebaeb";
+
+    async function saveNote() {
       const noteContent = document.getElementById('note-content').value;
       if (noteContent.trim() === '') {
         alert('메모를 입력하세요.');
         return;
       }
 
-      const notes = JSON.parse(localStorage.getItem('notes')) || [];
+      const notes = JSON.parse(await getData()) || [];
       notes.push(noteContent);
-      localStorage.setItem('notes', JSON.stringify(notes));
+      saveData(JSON.stringify(notes));
       document.getElementById('note-content').value = '';
       displayNotes();
     }
 
-    function displayNotes() {
-      const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    async function displayNotes() {
+      const notes = JSON.parse(await getData()) || [];
       const savedNotesDiv = document.getElementById('saved-notes');
       savedNotesDiv.innerHTML = '';
 
@@ -73,13 +75,50 @@
       }
     }
 
-    function deleteNote(index) {
-      const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    async function deleteNote(index) {
+      const notes = await JSON.parse(getData()) || [];
       notes.splice(index, 1);
-      localStorage.setItem('notes', JSON.stringify(notes));
+      saveData(JSON.stringify(notes));
       displayNotes();
     }
 
     window.onload = displayNotes;
+
+    async function saveData(data) {
+      return fetch("https://api.jsonbin.io/v3/b", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Master-Key": API_KEY,
+        },
+        body: data,
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          JSON.stringify(
+            json,
+            null,
+            2
+          );
+        })
+        .catch((error) => console.error("Error:", error));
+    }
+
+    async function getData() {
+      return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+        headers: {
+          "X-Master-Key": API_KEY,
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          JSON.stringify(
+            json.record,
+            null,
+            2
+          );
+        })
+        .catch((error) => console.error("Error:", error));
+    }
   </script>
 </div>

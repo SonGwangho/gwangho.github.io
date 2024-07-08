@@ -92,7 +92,8 @@
               deleteButton.innerText = '삭제';
               deleteButton.classList.add('delete-button');
               deleteButton.onclick = () => deleteNote(index);
-
+              
+              noteDiv.appendChild(noteText);
               noteDiv.appendChild(deleteButton);
               savedNotesDiv.appendChild(noteDiv);
           });

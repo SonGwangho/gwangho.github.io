@@ -7,19 +7,19 @@ const routes = [
   {
     path: "/index",
     view: () => {
-      return "메인화면입니다.";
+      return "/frontend/home.html";
     },
   },
   {
     path: "/index.html",
     view: () => {
-      return "메인화면입니다.";
+      return "/frontend/home.html";
     },
   },
   {
     path: "/",
     view: () => {
-      return "메인화면입니다.";
+      return "/frontend/home.html";
     },
   },
   {

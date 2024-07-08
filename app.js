@@ -83,7 +83,11 @@ const App = async () => {
     }
     document.querySelector("#app").innerHTML = await match.route.view();
   }
-  created();
+  triggerLoadEvents(document.querySelector("#app"));
+};
+
+const triggerLoadEvents = (element) => {
+  eval(element.querySelector("script"));
 };
 
 window.addEventListener("popstate", App);

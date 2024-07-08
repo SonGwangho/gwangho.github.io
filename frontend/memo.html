@@ -1,124 +1,134 @@
 <div style="margin: 0; padding: 0;">
   <style>
-    #write, #read {
-      margin-bottom: 20px;
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
     }
     textarea {
-      width: 100%;
-      height: 100px;
-      padding: 10px;
-      box-sizing: border-box;
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        box-sizing: border-box;
     }
     button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
     }
     #saved-notes {
-      margin-top: 20px;
+        margin-top: 20px;
+    }
+    .note {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    .delete-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
     }
   </style>
-</head>
-<body>
-  <h1>메모장</h1>
-  <div id="write">
-    <h2>메모 작성</h2>
-    <textarea id="note-content" placeholder="여기에 메모를 작성하세요..."></textarea>
-    <button style="margin: 20 0 0 0;" onclick="saveNote()">저장</button>
-  </div>
-  <div id="read">
-    <h2>저장된 메모</h2>
-    <div id="saved-notes"></div>
-  </div>
-  <script>
-    const API_KEY = "$2a$10$r46IyvSambW8Qwk889KeSOGHTKCuOxQMGJROZoMWQ7kfxjtT0TwRm";
-    const BIN_ID = "668b8b70e41b4d34e40ebaeb";
+  <div class="container">
+    <h1>메모장</h1>
+    <div id="write">
+        <h2>메모 작성</h2>
+        <textarea id="note-content" placeholder="여기에 메모를 작성하세요..."></textarea>
+        <button onclick="saveNote()">저장</button>
+    </div>
+    <div id="read">
+        <h2>저장된 메모</h2>
+        <div id="saved-notes"></div>
+    </div>
+</div>
+<script>
+    const API_KEY = "$2a$10$r46IyvSambW8Qwk889KeSOGHTKCuOxQMGJROZoMWQ7kfxjtT0TwRm";  // 여기에 실제 API 키를 넣어주세요
+    const BIN_ID = "668b8b70e41b4d34e40ebaeb";    // 여기에 실제 BIN ID를 넣어주세요
 
     async function saveNote() {
-      const noteContent = document.getElementById('note-content').value;
-      if (noteContent.trim() === '') {
-        alert('메모를 입력하세요.');
-        return;
-      }
+        const noteContent = document.getElementById('note-content').value;
+        if (noteContent.trim() === '') {
+            alert('메모를 입력하세요.');
+            return;
+        }
 
-      const notes = JSON.parse(await getData()) || [];
-      notes.push(noteContent);
-      saveData(JSON.stringify(notes));
-      document.getElementById('note-content').value = '';
-      displayNotes();
+        const notes = await getData() || [];
+        notes.push(noteContent);
+        await saveData(notes);
+        document.getElementById('note-content').value = '';
+        displayNotes();
     }
 
     async function displayNotes() {
-      const notes = JSON.parse(await getData()) || [];
-      const savedNotesDiv = document.getElementById('saved-notes');
-      savedNotesDiv.innerHTML = '';
+        const notes = await getData() || [];
+        const savedNotesDiv = document.getElementById('saved-notes');
+        savedNotesDiv.innerHTML = '';
 
-      if (notes.length === 0) {
-        savedNotesDiv.innerHTML = '<p>저장된 메모가 없습니다.</p>';
-      } else {
-        notes.forEach((note, index) => {
-          const noteDiv = document.createElement('div');
-          noteDiv.style.border = '1px solid #ccc';
-          noteDiv.style.padding = '10px';
-          noteDiv.style.marginBottom = '10px';
-          noteDiv.innerText = note;
+        if (notes.length === 0) {
+            savedNotesDiv.innerHTML = '<p>저장된 메모가 없습니다.</p>';
+        } else {
+            notes.forEach((note, index) => {
+                const noteDiv = document.createElement('div');
+                noteDiv.classList.add('note');
+                noteDiv.innerText = note;
 
-          const deleteButton = document.createElement('button');
-          deleteButton.innerText = '삭제';
-          deleteButton.style.marginTop = '10px';
-          deleteButton.style.marginLeft = '20px';
-          deleteButton.onclick = () => deleteNote(index);
+                const deleteButton = document.createElement('button');
+                deleteButton.innerText = '삭제';
+                deleteButton.classList.add('delete-button');
+                deleteButton.onclick = () => deleteNote(index);
 
-          noteDiv.appendChild(deleteButton);
-          savedNotesDiv.appendChild(noteDiv);
-        });
-      }
+                noteDiv.appendChild(deleteButton);
+                savedNotesDiv.appendChild(noteDiv);
+            });
+        }
     }
 
     async function deleteNote(index) {
-      const notes = await JSON.parse(getData()) || [];
-      notes.splice(index, 1);
-      saveData(JSON.stringify(notes));
-      displayNotes();
+        const notes = await getData() || [];
+        notes.splice(index, 1);
+        await saveData(notes);
+        displayNotes();
     }
 
     window.onload = displayNotes;
 
     async function saveData(data) {
-      return fetch("https://api.jsonbin.io/v3/b", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Master-Key": API_KEY,
-        },
-        body: data,
-      })
-        .then((response) => response.json())
-        .then((json) => {
-          JSON.stringify(
-            json,
-            null,
-            2
-          );
+        return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Master-Key": API_KEY,
+                "X-Bin-Versioning": "false"
+            },
+            body: JSON.stringify({ record: data }),
         })
-        .catch((error) => console.error("Error:", error));
+        .then(response => response.json())
+        .catch(error => console.error("Error:", error));
     }
 
     async function getData() {
-      return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
-        headers: {
-          "X-Master-Key": API_KEY,
-        },
-      })
-        .then((response) => response.json())
-        .then((json) => {
-          JSON.stringify(
-            json.record,
-            null,
-            2
-          );
+        return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+            headers: {
+                "X-Master-Key": API_KEY,
+            },
         })
-        .catch((error) => console.error("Error:", error));
+        .then(response => response.json())
+        .then(json => json.record)
+        .catch(error => {
+            console.error("Error:", error);
+            return [];
+        });
     }
-  </script>
+</script>
 </div>

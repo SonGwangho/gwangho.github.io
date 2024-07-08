@@ -7,19 +7,31 @@ const routes = [
   {
     path: "/index",
     view: () => {
-      return getView("/frontend/home.html");
+      return getView("/home.html");
     },
   },
   {
     path: "/index.html",
     view: () => {
-      return getView("/frontend/home.html");
+      return getView("/home.html");
     },
   },
   {
     path: "/",
     view: () => {
-      return getView("/frontend/home.html");
+      return getView("/home.html");
+    },
+  },
+  {
+    path: "/enjoy",
+    view: () => {
+      return getView("/enjoy.html");
+    },
+  },
+  {
+    path: "/memo",
+    view: () => {
+      return getView("/memo.html");
     },
   },
   {
@@ -31,7 +43,7 @@ const routes = [
 ];
 
 const getView = async (url) => {
-  const response = await fetch(front + url);
+  const response = await fetch(front + "/frontend" + url);
   return await response.text();
 };
 

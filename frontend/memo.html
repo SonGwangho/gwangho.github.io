@@ -1,0 +1,90 @@
+<div style="margin: 0; padding: 0;">
+  돈 쓴 내역 적거나 하면 될듯? 필요없으면 쓰지마
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    #write, #read {
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #saved-notes {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>메모장</h1>
+  <div id="write">
+    <h2>메모 작성</h2>
+    <textarea id="note-content" placeholder="여기에 메모를 작성하세요..."></textarea>
+    <button style="margin: 20 0 0 0;" onclick="saveNote()">저장</button>
+  </div>
+  <div id="read">
+    <h2>저장된 메모</h2>
+    <div id="saved-notes"></div>
+  </div>
+  <script>
+    function saveNote() {
+      const noteContent = document.getElementById('note-content').value;
+      if (noteContent.trim() === '') {
+        alert('메모를 입력하세요.');
+        return;
+      }
+
+      const notes = JSON.parse(localStorage.getItem('notes')) || [];
+      notes.push(noteContent);
+      localStorage.setItem('notes', JSON.stringify(notes));
+      document.getElementById('note-content').value = '';
+      displayNotes();
+    }
+
+    function displayNotes() {
+      const notes = JSON.parse(localStorage.getItem('notes')) || [];
+      const savedNotesDiv = document.getElementById('saved-notes');
+      savedNotesDiv.innerHTML = '';
+
+      if (notes.length === 0) {
+        savedNotesDiv.innerHTML = '<p>저장된 메모가 없습니다.</p>';
+      } else {
+        notes.forEach((note, index) => {
+          const noteDiv = document.createElement('div');
+          noteDiv.style.border = '1px solid #ccc';
+          noteDiv.style.padding = '10px';
+          noteDiv.style.marginBottom = '10px';
+          noteDiv.innerText = note;
+
+          const deleteButton = document.createElement('button');
+          deleteButton.innerText = '삭제';
+          deleteButton.style.marginTop = '10px';
+          deleteButton.style.marginLeft = '20px';
+          deleteButton.onclick = () => deleteNote(index);
+
+          noteDiv.appendChild(deleteButton);
+          savedNotesDiv.appendChild(noteDiv);
+        });
+      }
+    }
+
+    function deleteNote(index) {
+      const notes = JSON.parse(localStorage.getItem('notes')) || [];
+      notes.splice(index, 1);
+      localStorage.setItem('notes', JSON.stringify(notes));
+      displayNotes();
+    }
+
+    window.onload = displayNotes;
+  </script>
+</div>

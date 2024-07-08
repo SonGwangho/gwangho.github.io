@@ -87,7 +87,7 @@ const App = async () => {
 };
 
 const triggerLoadEvents = (element) => {
-  eval(element.querySelector("script"));
+  eval(element.querySelector("DOMCreated").innerText);
 };
 
 window.addEventListener("popstate", App);

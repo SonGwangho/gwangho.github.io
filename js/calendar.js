@@ -29,6 +29,11 @@ function loadCalendar() {
     let headCol = document.createElement("td");
     headCol.classList.add("thead_column");
     headCol.innerText = element;
+    if (element === "일") {
+      headCol.color = "red";
+    } else if (element === "토") {
+      headCol.color = "blue";
+    }
     headRow.appendChild(headCol);
   });
 
@@ -51,8 +56,11 @@ function loadCalendar() {
     td.classList.add("tbody_column");
     td.innerText = weekday.Day;
     if (weekday.weekday === "일") {
+      tr.style.color = "red";
       tableBody.appendChild(tr);
       tr = document.createElement("tr");
+    } else if (weekday.weekday === "토") {
+      tr.style.color = "blue";
     }
     tr.appendChild(td);
   }

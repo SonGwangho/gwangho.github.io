@@ -29,10 +29,10 @@ function loadCalendar() {
     let headCol = document.createElement("td");
     headCol.classList.add("thead_column");
     headCol.innerText = element;
-    if (element == "일") {
-      headCol.color = "red";
-    } else if (element == "토") {
-      headCol.color = "blue";
+    if (element === "일") {
+      headCol.style.color = "red";
+    } else if (element === "토") {
+      headCol.style.color = "blue";
     }
     headRow.appendChild(headCol);
   });

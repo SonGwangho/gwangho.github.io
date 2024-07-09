@@ -40,6 +40,12 @@ const routes = [
       return "마이페이지입니다.";
     },
   },
+  {
+    path: "/calendar",
+    view: () => {
+      return getView("/calendar.html");
+    },
+  },
 ];
 
 const getView = async (url) => {

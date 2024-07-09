@@ -1,0 +1,93 @@
+function loadCalendar() {
+  const calendarDiv = document.getElementById("calendar_div");
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const month = document.createElement("h1");
+  month.style.textAlign = "center";
+  month.style.color = "orange";
+  month.innerText = monthNames[new Date().getMonth()];
+
+  const table = document.createElement("table");
+
+  const tableHead = document.createElement("thead");
+  let headRow = document.createElement("tr");
+  headRow.classList.add("thead_row");
+
+  "일월화수목금토".split("").forEach((element) => {
+    let headCol = document.createElement("td");
+    headCol.classList.add("thead_column");
+    headCol.innerText = element;
+    headRow.appendChild(headCol);
+  });
+
+  const weekdays = getDayWithweekdays();
+
+  const tableBody = document.createElement("tbody");
+  let tr = document.createElement("tr");
+  while (weekdays.length > 0) {
+    weekday = weekdays.shift();
+    tr.classList.add("tbody_row");
+    if (tableBody.children.length < 1 && tr.children.length < 1) {
+      for (let i = 0; i < weekday.weekdayNumber; i++) {
+        const nullDay = document.createElement("td");
+        nullDay.classList.add("tbody_column");
+        tr.appendChild(nullDay);
+      }
+    }
+
+    const td = document.createElement("td");
+    td.classList.add("tbody_column");
+    td.innerText = weekday.Day;
+    if (weekday.weekday === "일") {
+      tableBody.appendChild(tr);
+      tr = document.createElement("tr");
+    }
+    tr.appendChild(td);
+  }
+  tableBody.appendChild(tr);
+
+  tableHead.appendChild(headRow);
+  table.appendChild(tableHead);
+  table.appendChild(tableBody);
+
+  calendarDiv.appendChild(month);
+  calendarDiv.appendChild(table);
+  calendarDiv.appendChild(document.createElement("br"));
+}
+
+function getDayWithweekdays() {
+  const today = new Date();
+  const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  const firstDayOfNextMonth = new Date(
+    today.getFullYear(),
+    today.getMonth() + 1,
+    1
+  );
+  const lastDayOfMonth = new Date(firstDayOfNextMonth - 1);
+  const daysOfWeek = "일월화수목금토".split("");
+
+  lst = [];
+  for (
+    let day = firstDayOfMonth;
+    day <= lastDayOfMonth;
+    day.setDate(day.getDate() + 1)
+  ) {
+    const weekday = daysOfWeek[day.getDay()];
+    let d = day.getDate().toString();
+    lst.push({ Day: d, weekday: weekday, weekdayNumber: day.getDay() });
+  }
+
+  return lst;
+}

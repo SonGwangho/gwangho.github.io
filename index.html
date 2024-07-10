@@ -19,6 +19,7 @@
     <script defer type="text/javascript" src="./js/jsonBIN.js"></script>
     <!-- <script type="text/javascript" src="/js/kmaAPI.js"></script> -->
     <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/navbar.css"/>
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
@@ -39,11 +40,14 @@
     <input type="file" id="input_excel_upload"/>
     <button id="uploadBtn" onclick="click_convert()">버튼</button>
     <pre id="output"></pre> -->
-    <nav>
-      <a href="/gwangho.github.io/" data-link>먹거리</a>
-      <a href="/gwangho.github.io/enjoy" data-link>놀거리</a>
-      <a href="/gwangho.github.io/memo" data-link>메모장</a>
-      <a href="/gwangho.github.io/calendar" data-link>달력</a>
+    <nav class="navbar">
+      <img class="banner" src=""/>
+      <ul class="navbar_ul">
+        <li class="navbar_item active"><a href="/gwangho.github.io/" data-link>먹거리</a></li>
+        <li class="navbar_item"><a href="/gwangho.github.io/enjoy" data-link>놀거리</a></li>
+        <li class="navbar_item"><a href="/gwangho.github.io/memo" data-link>메모장</a></li>
+        <li class="navbar_item"><a href="/gwangho.github.io/calendar" data-link>달력</a></li>
+      </ul>
       <!-- <a href="/gwangho.github.io/about" data-link>About</a>
       <a href="/gwangho.github.io/contact" data-link>Contact</a> -->
     </nav>
@@ -51,5 +55,15 @@
     <br/>
     <div id="app"></div>
     <script type="module" src="./app.js"></script>
+    <script>
+      const nav_items = document.querySelectorAll(".navbar_item");
+      nav_items.forEach((item)=>{
+        item.addEventListener('click',()=>{
+          nav_items.forEach((e)=>{
+          e.classList.remove('active');
+        })
+        item.classList.add('active');
+      })});
+    </script>
   </body>
 </html>

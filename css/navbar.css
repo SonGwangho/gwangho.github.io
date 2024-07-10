@@ -26,7 +26,7 @@
   border-bottom: 2px solid black;
   font-weight: 600;
 }
-a{
+.navbar_item a{
   text-decoration: none;
   color: black;
 }

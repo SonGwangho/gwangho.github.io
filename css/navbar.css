@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 30px;
+  border-bottom: 2px solid black;
 }
 .banner{
   display: inline-block;

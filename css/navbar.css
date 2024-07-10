@@ -1,30 +1,36 @@
 .navbar{
   display: flex;
   justify-content: space-between;
-  padding: 30px 5%;
+  overflow: hidden;
   border-bottom: 2px solid black;
+  height: 120px;
 }
 .banner{
   display: inline-block;
   flex: 1 0 auto;
-  max-width: 100px;
+  max-width: 400px;
+  height: 160px;
+  object-fit: cover;
+  margin: 0 0 0 0;
 }
 .navbar_ul {
   list-style-type: none;
-  display: inline-block;
+  display: flex;
+  margin: 0 5% 0 0;
 }
 .navbar_item{
   display: inline-block;
   font-size: 18px;
   font-weight: 500;
-  margin: 10px;
+  margin: auto 12px;
+  padding-bottom: 5px;
 }
 .navbar_item.active{
   /* text-decoration: underline;
   text-decoration-thickness: 1px; */
-  padding-bottom: 5px;
   border-bottom: 2px solid black;
   font-weight: 600;
+  margin: auto 15px;
 }
 .navbar_item a{
   text-decoration: none;

@@ -113,3 +113,47 @@ class MyToast {
     ).showToast();
   }
 }
+
+class myNotification {
+  static checkPermission() {
+    if (Notification.permission === "granted") {
+      return true;
+    }
+    return false;
+  }
+
+  static sendPermission(callback = undefined) {
+    if (Notification.permission != "granted") {
+      Notification.requestPermission().then((permission) => {
+        if (permission != "granted") {
+          console.error("fail get permission");
+        } else {
+          if (!this.callback) callback();
+        }
+      });
+    }
+  }
+
+  static sendNotification(title, option = undefined) {
+    if (!this.checkPermission()) {
+      sendPermission(sendNotification(title, option));
+    }
+    if (!option) return;
+    const notification = new Notification(
+      title,
+      Object.assign(
+        {
+          tag: "message",
+        },
+        option
+      )
+    );
+
+    notification.onclick = function (event) {
+      event.preventDefault(); // 브라우저가 포커스를 이동하지 않도록 방지
+      window.open("https://songwangho.github.io/gwangho.github.io", "_blank");
+    };
+  }
+}
+
+// myNotification.sendNotification("제목", { body: "내용" });

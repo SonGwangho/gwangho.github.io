@@ -8,17 +8,17 @@ class JsonBin {
       alert("메모를 입력하세요.");
       return;
     }
-    const notesData = await getData();
+    const notesData = await this.getData();
     const notes = notesData.record.memos || [];
     notes.push({ memo: noteContent });
-    await saveData({ memos: notes });
+    await this.saveData({ memos: notes });
     document.getElementById("note-content").value = "";
     displayNotes();
   }
 
   static async displayNotes() {
     Modal.start_loading();
-    const notesData = await getData();
+    const notesData = await this.getData();
     const notes = notesData.record.memos || [];
     const savedNotesDiv = document.getElementById("saved-notes");
     savedNotesDiv.innerHTML = "";
@@ -49,10 +49,10 @@ class JsonBin {
   }
 
   static async deleteNote(index) {
-    const notesData = await getData();
+    const notesData = await this.getData();
     const notes = notesData.record.memos || [];
     notes.splice(index, 1);
-    await saveData({ memos: notes });
+    await this.saveData({ memos: notes });
     displayNotes();
   }
 

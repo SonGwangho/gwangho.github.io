@@ -14,7 +14,7 @@ class JsonBin {
     notes.push({ memo: noteContent });
     await this.saveData({ memos: notes });
     document.getElementById("note-content").value = "";
-    displayNotes();
+    this.displayNotes();
   }
 
   static async displayNotes() {
@@ -54,7 +54,7 @@ class JsonBin {
     const notes = notesData.record.memos || [];
     notes.splice(index, 1);
     await this.saveData({ memos: notes });
-    displayNotes();
+    this.displayNotes();
   }
 
   static async saveData(data) {

@@ -13,6 +13,7 @@
 }
 
 html, body{
+  font-size: 20px;
   font-family: 'Ownglyph_noocar-Rg', sans-serif;
 }
 
@@ -87,7 +88,7 @@ li{
   transform: translateY(50%);
 }
 .loading_spinner {
-  font-size: 15px;
+  font-size: 20px;
   width: 1em;
   height: 1em;
   border-radius: 50%;

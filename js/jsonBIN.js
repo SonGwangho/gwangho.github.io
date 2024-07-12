@@ -57,11 +57,11 @@ class JsonBin {
   }
 
   static async saveData(data) {
-    return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+    return fetch(`https://api.jsonbin.io/v3/b/${this.BIN_ID}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "X-Master-Key": API_KEY,
+        "X-Master-Key": this.API_KEY,
         "X-Bin-Versioning": "false",
       },
       body: JSON.stringify({ record: data }),
@@ -71,9 +71,9 @@ class JsonBin {
   }
 
   static async getData() {
-    return fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+    return fetch(`https://api.jsonbin.io/v3/b/${this.BIN_ID}/latest`, {
       headers: {
-        "X-Master-Key": API_KEY,
+        "X-Master-Key": this.API_KEY,
       },
     })
       .then((response) => response.json())

@@ -39,7 +39,7 @@ class JsonBin {
         const deleteButton = document.createElement("button");
         deleteButton.innerText = "삭제";
         deleteButton.classList.add("delete-button");
-        deleteButton.onclick = () => deleteNote(index);
+        deleteButton.onclick = () => this.deleteNote(index);
 
         noteDiv.appendChild(noteText);
         noteDiv.appendChild(deleteButton);

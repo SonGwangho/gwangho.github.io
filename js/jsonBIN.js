@@ -18,7 +18,7 @@ class JsonBin {
   }
 
   static async displayNotes() {
-    Modal.start_loading();
+    Modal.startLoading();
     const notesData = await this.getData();
     const notes = notesData.record.memos || [];
     const savedNotesDiv = document.getElementById("saved-notes");
@@ -46,7 +46,7 @@ class JsonBin {
         savedNotesDiv.appendChild(noteDiv);
       });
     }
-    Modal.stop_loading();
+    Modal.stopLoading();
   }
 
   static async deleteNote(index) {

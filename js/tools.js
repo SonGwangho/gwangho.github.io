@@ -1,10 +1,10 @@
 class MyDate {
-  static get_now(format = "yyyy-MM-dd HH:mm:ss") {
+  static getNow(format = "yyyy-MM-dd HH:mm:ss") {
     const now = new Date();
     return this.convert_date_format(noew, format);
   }
 
-  static convert_date_format(date, format) {
+  static convertDateFormat(date, format) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
@@ -29,7 +29,7 @@ class MyDate {
 }
 
 class MyStorage {
-  static save_local(key, data) {
+  static saveLocal(key, data) {
     try {
       const value = typeof data === "object" ? JSON.stringify(data) : data;
       localStorage.setItem(key, value);
@@ -38,7 +38,7 @@ class MyStorage {
     }
   }
 
-  static get_local_data(key) {
+  static getLocalData(key) {
     try {
       const data = localStorage.getItem(key);
       if (data) {
@@ -57,7 +57,7 @@ class MyStorage {
     }
   }
 
-  static save_session(key, data) {
+  static saveSession(key, data) {
     try {
       const value = typeof data === "object" ? JSON.stringify(data) : data;
       sessionStorage.setItem(key, value);
@@ -66,7 +66,7 @@ class MyStorage {
     }
   }
 
-  static get_session_data(key) {
+  static getSessionData(key) {
     try {
       const data = sessionStorage.getItem(key);
       if (data) {
@@ -153,6 +153,42 @@ class myNotification {
       event.preventDefault(); // 브라우저가 포커스를 이동하지 않도록 방지
       window.open("https://songwangho.github.io/gwangho.github.io", "_blank");
     };
+  }
+}
+
+class myRss {
+  static async getXml(url) {
+    // https://www.youtube.com/feeds/videos.xml?channel_id=UC4aF4vjC__D4QPeTXB-l8NQ
+    return await fetch(url)
+      .then((response) => response.text())
+      .then((data) => {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(data);
+        return xml;
+      });
+  }
+
+  static getEntrys(xml) {
+    const entry = xml.querySelectorAll("entry");
+    const data = Array.from(entry).map((item) => ({
+      title: item.querySelector("title").textContent,
+      link: item.querySelector("link").getAttribute("href"),
+      published: item.querySelector("published").textContent,
+      updated: item.querySelector("updated").textContent,
+      id: item.querySelector("yt\\:videoId").textContent,
+      description: item.querySelector("media\\:description").textContent,
+      content: item.querySelector("media\\:content").getAttribute("url"),
+      thumbnail: item.querySelector("media\\:thumbnail").getAttribute("url"),
+      views: item
+        .querySelector("media\\:community")
+        .querySelector("media\\:statistics")
+        .getAttribute("views"),
+    }));
+    return data;
+  }
+
+  static entry2dom(datas) {
+    datas.forEach((data) => {});
   }
 }
 

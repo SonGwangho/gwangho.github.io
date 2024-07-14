@@ -1,16 +1,14 @@
-function click_convert() {
+function clickConvert() {
   const fileUpload = document.getElementById("input_excel_upload");
   const file = fileUpload.files[0];
 
-  excel_to_csv(file);
-  const data = MyStorage.get_session_data("excel_json_data");
+  excelToCsv(file);
+  const data = MyStorage.getSessionData("excel_json_data");
 
-  document.getElementById("output").innerHTML = json_to_csv(
-    JSON.stringify(data)
-  );
+  document.getElementById("output").innerHTML = jsonToCsv(JSON.stringify(data));
 }
 
-function excel_to_csv(file, sheet = undefined, isDownload = false) {
+function excelToCsv(file, sheet = undefined, isDownload = false) {
   if (file) {
     const reader = new FileReader();
 
@@ -22,24 +20,24 @@ function excel_to_csv(file, sheet = undefined, isDownload = false) {
       const worksheet = workbook.Sheets[sheet_name];
       const csv = XLSX.utils.sheet_to_csv(worksheet);
 
-      MyStorage.save_session(
+      MyStorage.saveSession(
         "excel_json_data",
         XLSX.utils.sheet_to_json(worksheet)
       );
-      if (isDownload) download_csv(csv, file.name);
+      if (isDownload) downloadCsv(csv, file.name);
     };
     reader.readAsArrayBuffer(file);
   }
 }
 
-function json_to_csv(json, isDownload = false) {
+function jsonToCsv(json, isDownload = false) {
   if (json) {
     try {
       const jsonData = JSON.parse(json);
-      const worksheet = XLSX.utils.json_to_sheet(jsonData);
-      const csv = XLSX.utils.sheet_to_csv(worksheet);
+      const worksheet = XLSX.utils.jsonToSheet(jsonData);
+      const csv = XLSX.utils.sheetToCsv(worksheet);
 
-      if (isDownload) download_csv(csv);
+      if (isDownload) downloadCsv(csv);
       return csv;
     } catch (error) {
       console.error("Error parsing JSON:", error);
@@ -49,12 +47,12 @@ function json_to_csv(json, isDownload = false) {
   }
 }
 
-function download_csv(csv, name = undefined) {
+function downloadCsv(csv, name = undefined) {
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
   if (name) {
-    const timestamp = MyDate.get_now("yyyyMMdd_HHmmss");
+    const timestamp = MyDate.getNow("yyyyMMdd_HHmmss");
     name = `download_${timestamp}.csv`;
   } else {
     name = `${name}_${timestamp}.csv`;

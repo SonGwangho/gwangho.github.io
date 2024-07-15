@@ -43,7 +43,7 @@
     <nav class="navbar">
       <img class="banner" src="./assets/banner.webp"/>
       <ul class="navbar_ul">
-        <li class="navbar_item active"><a href="/gwangho.github.io/" data-link>먹거리</a></li>
+        <li class="navbar_item"><a href="/gwangho.github.io/" data-link>먹거리</a></li>
         <li class="navbar_item"><a href="/gwangho.github.io/enjoy" data-link>놀거리</a></li>
         <li class="navbar_item"><a href="/gwangho.github.io/memo" data-link>메모장</a></li>
         <li class="navbar_item"><a href="/gwangho.github.io/calendar" data-link>달력</a></li>
@@ -63,7 +63,12 @@
           e.classList.remove('active');
         })
         item.classList.add('active');
-      })});
+        });
+        if ((item.querySelector('a').href).toString().indexOf(location.hash.replace('#!', '')) != -1){
+          item.classList.add('active');
+        }
+      });
+      
     </script>
   </body>
 </html>

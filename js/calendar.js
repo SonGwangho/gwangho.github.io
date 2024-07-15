@@ -58,7 +58,7 @@ function loadCalendar() {
       const outer = document.createElement("div");
       outer.style.textAlign = "center";
       const inner = document.createElement("div");
-      inner.style.border = "1px solid";
+      inner.style.border = "2px solid";
       inner.style.borderRadius = "50%";
       inner.style.margin = "auto";
       inner.style.maxHeight = "25px";

@@ -63,7 +63,9 @@ function loadCalendar() {
       inner.style.margin = "auto";
       inner.style.maxHeight = "25px";
       inner.style.aspectRatio = "1";
-      // inner.style.color = "#f59875";
+      inner.style.color = "lightgreen";
+      inner.style.backgroundColor = "#87cefa40";
+      // inner.style.backgroundColor = "#90ee9040";
       inner.innerText = weekday.Day;
 
       outer.appendChild(inner);

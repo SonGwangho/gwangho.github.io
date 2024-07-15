@@ -54,7 +54,23 @@ function loadCalendar() {
 
     const td = document.createElement("td");
     td.classList.add("tbody_column");
-    td.innerText = weekday.Day;
+    if (td.innerText == new Date().getDate()) {
+      const outer = document.createElement("div");
+      outer.style.textAlign = "center";
+      const inner = document.createElement("div");
+      inner.style.border = "1px solid";
+      inner.style.borderRadius = "50%";
+      inner.style.margin = "auto";
+      inner.style.maxHeight = "25px";
+      inner.style.aspectRatio = "1";
+      // inner.style.color = "#f59875";
+      inner.innerText = weekday.Day;
+
+      outer.appendChild(inner);
+      td.appendChild(outer);
+    } else {
+      td.innerText = weekday.Day;
+    }
     if (weekday.weekday === "일") {
       td.style.color = "red";
       tableBody.appendChild(tr);

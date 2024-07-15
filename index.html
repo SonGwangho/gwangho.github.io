@@ -60,13 +60,20 @@
       nav_items.forEach((item)=>{
         item.addEventListener('click',()=>{
           nav_items.forEach((e)=>{
-          e.classList.remove('active');
-        })
-        item.classList.add('active');
-        });
-        if ((item.querySelector('a').href).toString().indexOf(location.hash.replace('#!', '')) != -1){
+            e.classList.remove('active');
+          });
           item.classList.add('active');
+        });
+
+        if (location.hash){
+          if ((item.querySelector('a').href).toString().indexOf(location.hash.replace('#!', '')) != -1){
+            item.classList.add('active');
+          }
         }
+        else{
+          nav_items[0].classList.add('active');
+        }
+        
       });
       
     </script>

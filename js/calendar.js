@@ -54,7 +54,7 @@ function loadCalendar() {
 
     const td = document.createElement("td");
     td.classList.add("tbody_column");
-    if (td.innerText == new Date().getDate()) {
+    if (weekday.Day == new Date().getDate()) {
       const outer = document.createElement("div");
       outer.style.textAlign = "center";
       const inner = document.createElement("div");

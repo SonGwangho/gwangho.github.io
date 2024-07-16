@@ -46,6 +46,12 @@ const routes = [
       return getView("/calendar.html");
     },
   },
+  {
+    path: "/pokemon",
+    view: () => {
+      return getView("/pokemon.html");
+    },
+  },
 ];
 
 const getView = async (url) => {

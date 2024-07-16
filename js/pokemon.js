@@ -53,15 +53,16 @@ class Pokemon {
   }
 }
 
-let pokemonOffset = 0;
-let pokemonLimit = 20;
-
 async function loadPokemons() {
   Modal.startLoading();
 
   const div = document.getElementById("pokemon");
   const ol = document.createElement("ol");
   div.appendChild(ol);
+  let cnt = 0;
+  for (let o of document.getElementsByTagName("ol")) {
+    cnt += o.childElementCount;
+  }
 
   let url = `https://pokeapi.co/api/v2/pokemon?offset=${pokemonOffset}&limit=${pokemonLimit}`;
   const pokemons = await Pokemon.getPokemons(url);
@@ -123,7 +124,6 @@ async function loadPokemons() {
   ol.appendChild(fragment);
 
   Modal.stopLoading();
-  pokemonOffset += pokemonLimit;
 }
 
 function handleScroll(entries, observer) {

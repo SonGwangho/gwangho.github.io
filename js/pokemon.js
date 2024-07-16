@@ -55,6 +55,7 @@ class Pokemon {
 
 let pokemonOffset = 0;
 let pokemonLimit = 20;
+const loading = document.getElementById("loadingPokemon");
 
 async function loadPokemons() {
   Modal.startLoading();

@@ -1,6 +1,6 @@
 function loadCalendar() {
   const calendarDiv = document.getElementById("calendar_div");
-  const monthNames = [
+  let monthNames = [
     "January",
     "February",
     "March",

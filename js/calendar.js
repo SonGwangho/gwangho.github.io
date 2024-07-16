@@ -1,9 +1,5 @@
 function loadCalendar() {
   const calendarDiv = document.getElementById("calendar_div");
-  const data = MyStorage.getLocalData("calendar");
-  if (!data) {
-    data = `{${data[monthNames[new Date().getMonth()]]}: {"days":[]}}`;
-  }
   const monthNames = [
     "January",
     "February",
@@ -18,6 +14,10 @@ function loadCalendar() {
     "November",
     "December",
   ];
+  const data = MyStorage.getLocalData("calendar");
+  if (!data) {
+    data = `{${data[monthNames[new Date().getMonth()]]}: {"days":[]}}`;
+  }
   const clicked = data[monthNames[new Date().getMonth()]]
     ? MyStorage.getLocalData("calendar")[monthNames[new Date().getMonth()]]
     : JSON.parse('{"days":[]}');

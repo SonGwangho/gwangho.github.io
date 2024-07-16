@@ -46,7 +46,7 @@ async function saveNote() {
     return;
   }
   const notesData = await Gist.getData();
-  const notes = notesData.record.memos || [];
+  const notes = notesData.memos || [];
   notes.push({ memo: noteContent });
   await Gist.saveData({ memos: notes });
   document.getElementById("note-content").value = "";

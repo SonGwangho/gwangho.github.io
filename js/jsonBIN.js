@@ -14,12 +14,12 @@ class JsonBin {
     notes.push({ memo: noteContent });
     await this.saveData({ memos: notes });
     document.getElementById("note-content").value = "";
-    this.displayNotes();
+    this.displayNotes(notesData);
   }
 
-  static async displayNotes() {
+  static async displayNotes(data = undefined) {
     Modal.startLoading();
-    const notesData = await this.getData();
+    const notesData = data ? data : await this.getData();
     const notes = notesData.record.memos || [];
     const savedNotesDiv = document.getElementById("saved-notes");
     savedNotesDiv.innerHTML = "";
@@ -54,7 +54,7 @@ class JsonBin {
     const notes = notesData.record.memos || [];
     notes.splice(index, 1);
     await this.saveData({ memos: notes });
-    this.displayNotes();
+    this.displayNotes(notesData);
   }
 
   static async saveData(data) {

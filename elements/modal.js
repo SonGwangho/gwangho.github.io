@@ -1,9 +1,5 @@
-let modal = document.getElementsByClassName("modal")[0];
-
 document.addEventListener("DOMContentLoaded", () => {
-  modal = document.getElementsByClassName("modal")[0];
   const button = document.getElementsByClassName("btn_close_modal")[0];
-
   button.addEventListener("click", () => {
     Modal.hideModal();
   });
@@ -11,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 class Modal {
   static showModal(contents = undefined) {
+    let modal = document.getElementsByClassName("modal")[0];
     const content = modal.querySelector("modal_content");
     if (!contents) content.innerHTML = contents;
     else {
@@ -23,24 +20,35 @@ class Modal {
   }
 
   static hideModal() {
+    let modal = document.getElementsByClassName("modal")[0];
     modal.style.display = "none";
   }
 
   static startLoading() {
-    const body = modal.querySelector(".modal_body");
-    body.className = "modal_loading";
-    const oldHtml = body.innerHTML;
-    MyStorage.saveSession("beforeLoadingHtml", oldHtml);
-    const loadingHtml = '<span class="loading_spinner"></span>';
-    body.innerHTML = loadingHtml;
-    modal.style.display = "flex";
+    try {
+      let modal = document.getElementsByClassName("modal")[0];
+      const body = modal.querySelector(".modal_body");
+      body.className = "modal_loading";
+      const oldHtml = body.innerHTML;
+      MyStorage.saveSession("beforeLoadingHtml", oldHtml);
+      const loadingHtml = '<span class="loading_spinner"></span>';
+      body.innerHTML = loadingHtml;
+      modal.style.display = "flex";
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   static stopLoading() {
-    const body = modal.querySelector(".modal_loading");
-    body.className = "modal_body";
-    const oldHtml = MyStorage.getSessionData("beforeLoadingHtml");
-    body.innerHTML = oldHtml;
-    modal.style.display = "none";
+    try {
+      let modal = document.getElementsByClassName("modal")[0];
+      const body = modal.querySelector(".modal_loading");
+      body.className = "modal_body";
+      const oldHtml = MyStorage.getSessionData("beforeLoadingHtml");
+      body.innerHTML = oldHtml;
+      modal.style.display = "none";
+    } catch (e) {
+      console.log(e);
+    }
   }
 }

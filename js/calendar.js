@@ -23,6 +23,9 @@ function loadCalendar() {
   month.innerText = monthNames[new Date().getMonth()];
 
   const table = document.createElement("table");
+  const caption = document.createElement("caption");
+  caption.style.captionSide = "bottom";
+  caption.innerText = clicked.days.length + " 번";
 
   const tableHead = document.createElement("thead");
   let headRow = document.createElement("tr");
@@ -106,6 +109,7 @@ function loadCalendar() {
   tableBody.appendChild(tr);
 
   tableHead.appendChild(headRow);
+  table.appendChild(caption);
   table.appendChild(tableHead);
   table.appendChild(tableBody);
 

@@ -133,13 +133,3 @@ function handleScroll(entries, observer) {
     }
   });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver(handleScroll, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.8,
-  });
-
-  observer.observe(loading);
-});

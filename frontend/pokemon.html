@@ -3,5 +3,12 @@
 
 </div>
 <script>
+  const observer = new IntersectionObserver(handleScroll, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.8,
+  });
+
+  observer.observe(loading);
   loadPokemons();
 </script>

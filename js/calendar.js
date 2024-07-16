@@ -16,7 +16,7 @@ function loadCalendar() {
   ];
   const data = MyStorage.getLocalData("calendar");
   if (!data) {
-    data = `{${data[monthNames[new Date().getMonth()]]}: {"days":[]}}`;
+    data = `{${monthNames[new Date().getMonth()]}: {"days":[]}}`;
   }
   const clicked = data[monthNames[new Date().getMonth()]]
     ? MyStorage.getLocalData("calendar")[monthNames[new Date().getMonth()]]

@@ -255,3 +255,9 @@ class Gist {
     }
   }
 }
+
+class Task {
+  static delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+}

@@ -36,6 +36,7 @@ async function deleteNote(data, index) {
   const notes = data.memos || [];
   notes.splice(index, 1);
   await Gist.saveData({ memos: notes });
+  Task.delay(2000);
   displayNotes();
 }
 
@@ -50,5 +51,6 @@ async function saveNote() {
   notes.push({ memo: noteContent });
   await Gist.saveData({ memos: notes });
   document.getElementById("note-content").value = "";
+  Task.delay(2000);
   displayNotes();
 }

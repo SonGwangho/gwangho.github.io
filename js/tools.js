@@ -193,12 +193,9 @@ class myRss {
 }
 
 // myNotification.sendNotification("제목", { body: "내용" });
-
-const GIST_ID = "408041afe99b1a0b7d06197726070074";
-
 class Gist {
   static async getData() {
-    const url = `https://api.github.com/gists/${GIST_ID}`;
+    const url = `https://api.github.com/gists/408041afe99b1a0b7d06197726070074`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -220,7 +217,7 @@ class Gist {
   }
 
   static async saveData(json) {
-    const url = `https://api.github.com/gists/${GIST_ID}`;
+    const url = `https://api.github.com/gists/408041afe99b1a0b7d06197726070074`;
     const response = await fetch(url, {
       method: "PATCH",
       headers: {

@@ -224,6 +224,7 @@ class Gist {
       );
       if (param) return;
       const token = param.get("token");
+      MyStorage.saveLocal("github_token", token);
       GITHUB_TOKEN = token;
     }
     const url = `https://api.github.com/gists/408041afe99b1a0b7d06197726070074`;

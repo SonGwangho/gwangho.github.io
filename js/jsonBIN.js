@@ -3,19 +3,19 @@
 //     "$2a$10$f8kgZZ3N6OqzpsgvVNBZweNPu6ixzzfw2mFBeMC/fSWlRbLWNZYRK";
 //   static BIN_ID = "668b8b70e41b4d34e40ebaeb";
 
-  static async saveNote() {
-    const noteContent = document.getElementById("note-content").value;
-    if (noteContent.trim() === "") {
-      alert("메모를 입력하세요.");
-      return;
-    }
-    const notesData = await this.getData();
-    const notes = notesData.record.memos || [];
-    notes.push({ memo: noteContent });
-    await this.saveData({ memos: notes });
-    document.getElementById("note-content").value = "";
-    this.displayNotes();
-  }
+// static async saveNote() {
+//   const noteContent = document.getElementById("note-content").value;
+//   if (noteContent.trim() === "") {
+//     alert("메모를 입력하세요.");
+//     return;
+//   }
+//   const notesData = await this.getData();
+//   const notes = notesData.record.memos || [];
+//   notes.push({ memo: noteContent });
+//   await this.saveData({ memos: notes });
+//   document.getElementById("note-content").value = "";
+//   this.displayNotes();
+// }
 
 //   static async deleteNote(index) {
 //     const notesData = await this.getData();

@@ -217,12 +217,20 @@ class Gist {
   }
 
   static async saveData(json) {
+    let GITHUB_TOKEN = MyStorage.getLocalData("github_token");
+    if (GITHUB_TOKEN) {
+      const param = new URLSearchParams(
+        window.location.hash.replace("#!", "").split("?")[1]
+      );
+      if (param) return;
+      const token = param.get("token");
+      GITHUB_TOKEN = token;
+    }
     const url = `https://api.github.com/gists/408041afe99b1a0b7d06197726070074`;
     const response = await fetch(url, {
       method: "PATCH",
       headers: {
-        Authorization:
-          "token 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",
+        Authorization: `token ${GITHUB_TOKEN}`,
         Accept: "application/vnd.github.v3+json",
         "Content-Type": "application/json",
       },

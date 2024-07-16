@@ -25,6 +25,8 @@ function loadCalendar() {
   const table = document.createElement("table");
   const caption = document.createElement("caption");
   caption.style.captionSide = "bottom";
+  caption.style.fontSize = "30px";
+  caption.style.paddingLeft = "20px";
   caption.innerText = clicked.days.length + " 번";
 
   const tableHead = document.createElement("thead");

@@ -64,7 +64,7 @@ async function loadPokemons() {
     cnt += o.childElementCount;
   }
 
-  let url = `https://pokeapi.co/api/v2/pokemon?offset=${pokemonOffset}&limit=${pokemonLimit}`;
+  let url = `https://pokeapi.co/api/v2/pokemon?offset=${cnt}&limit=${cnt}`;
   const pokemons = await Pokemon.getPokemons(url);
 
   const promises = pokemons.results.map((pokemon) =>

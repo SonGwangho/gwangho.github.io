@@ -117,7 +117,10 @@ function loadCalendar() {
       }
       const month = monthNames[new Date().getMonth()];
       caption.innerText = getSum(data) + " 번";
-      MyStorage.saveLocal("calendar", JSON.stringify(`{${month}: ${json}}`));
+      MyStorage.saveLocal(
+        "calendar",
+        JSON.stringify(`{${month}: ${JSON.stringify(json)}}`)
+      );
     });
 
     tr.appendChild(td);
@@ -159,6 +162,6 @@ function getDayWithweekdays() {
   return lst;
 }
 
-function getSum() {
+function getSum(data) {
   let sum = 0;
 }

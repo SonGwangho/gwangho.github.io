@@ -1,5 +1,6 @@
 function loadCalendar() {
   const calendarDiv = document.getElementById("calendar_div");
+  const clicked = MyStorage.getLocalData("calendar");
   const monthNames = [
     "January",
     "February",
@@ -54,6 +55,9 @@ function loadCalendar() {
 
     const td = document.createElement("td");
     td.classList.add("tbody_column");
+    if (clicked.days.includes(weekday.Day)) {
+      td.classList.add("clicked_calendar");
+    }
     if (weekday.Day == new Date().getDate()) {
       const outer = document.createElement("div");
       outer.style.textAlign = "center";
@@ -80,6 +84,21 @@ function loadCalendar() {
     } else if (weekday.weekday === "토") {
       td.style.color = "blue";
     }
+
+    td.addEventListener("click", (e) => {
+      let day = e.target.innerText;
+      let data = MyStorage.getLocalData("calendar");
+      let json = data ? data : JSON.parse('{"days":[]}');
+      if (json.days.includes(day)) {
+        json.days = json.days.filter((item) => item != day);
+        e.target.classList.remove("clicked_calendar");
+      } else {
+        json.days.push(day);
+        e.target.classList.add("clicked_calendar");
+      }
+      MyStorage.saveLocal("calendar", JSON.stringify(json));
+    });
+
     tr.appendChild(td);
   }
   tableBody.appendChild(tr);

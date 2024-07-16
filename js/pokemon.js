@@ -53,18 +53,89 @@ class Pokemon {
   }
 }
 
+// async function loadPokemons() {
+//   Modal.startLoading();
+//   let isModal = true;
+
+//   const div = document.getElementById("pokemon");
+//   const ol = document.createElement("ol");
+//   let url = `https://pokeapi.co/api/v2/pokemon?offset=${ol.childElementCount}&limit=${ol.childElementCount}`;
+//   const pokemons = await Pokemon.getPokemons(url);
+
+//   div.appendChild(ol);
+//   for (let pokemon of pokemons.results) {
+//     url = pokemon.url;
+//     let data = await Pokemon.getPokemons(url);
+//     let parsed = await Pokemon.parsing(data);
+
+//     const li = document.createElement("li");
+//     const pokemonDiv = document.createElement("div");
+
+//     const img = document.createElement("img");
+//     const name = document.createElement("label");
+//     const types = document.createElement("div");
+//     const abilities = document.createElement("div");
+//     const stats = document.createElement("div");
+
+//     img.src = parsed.sprites.front_default;
+//     name.innerText = parsed.name;
+//     for (let t of parsed.types) {
+//       const type = document.createElement("label");
+//       type.innerText = t.name;
+//       types.appendChild(type);
+//     }
+//     for (let ab of parsed.abilities) {
+//       const ability = document.createElement("label");
+//       ability.innerText = ab.name;
+//       abilities.appendChild(ability);
+//     }
+//     for (let s of parsed.stats) {
+//       const stat = document.createElement("div");
+//       const n = document.createElement("label");
+//       n.innerText = s.name;
+//       const bs = document.createElement("label");
+//       bs.innerText = s.base_stat;
+//       stat.appendChild(n);
+//       stat.appendChild(bs);
+//       stats.appendChild(stat);
+//     }
+//     pokemonDiv.appendChild(img);
+//     pokemonDiv.appendChild(name);
+//     pokemonDiv.appendChild(types);
+//     pokemonDiv.appendChild(abilities);
+//     pokemonDiv.appendChild(stats);
+//     pokemonDiv.appendChild(img);
+//     pokemonDiv.appendChild(img);
+//     pokemonDiv.appendChild(img);
+//     pokemonDiv.appendChild(img);
+//     li.appendChild(pokemonDiv);
+//     ol.appendChild(li);
+
+//     if (isModal) {
+//       Modal.stopLoading();
+//     }
+//   }
+// }
 async function loadPokemons() {
+  Modal.startLoading();
+
   const div = document.getElementById("pokemon");
   const ol = document.createElement("ol");
+  div.appendChild(ol);
+
   let url = `https://pokeapi.co/api/v2/pokemon?offset=${ol.childElementCount}&limit=${ol.childElementCount}`;
   const pokemons = await Pokemon.getPokemons(url);
 
-  div.appendChild(ol);
-  for (let pokemon of pokemons.results) {
-    url = pokemon.url;
-    let data = await Pokemon.getPokemons(url);
-    let parsed = await Pokemon.parsing(data);
+  const promises = pokemons.results.map((pokemon) =>
+    Pokemon.getPokemons(pokemon.url)
+  );
+  const pokemonData = await Promise.all(promises);
+  const parsedPokemons = await Promise.all(
+    pokemonData.map((data) => Pokemon.parsing(data))
+  );
 
+  const fragment = document.createDocumentFragment();
+  for (let parsed of parsedPokemons) {
     const li = document.createElement("li");
     const pokemonDiv = document.createElement("div");
 
@@ -76,17 +147,20 @@ async function loadPokemons() {
 
     img.src = parsed.sprites.front_default;
     name.innerText = parsed.name;
-    for (let t of parsed.types) {
+
+    parsed.types.forEach((t) => {
       const type = document.createElement("label");
       type.innerText = t.name;
       types.appendChild(type);
-    }
-    for (let ab of parsed.abilities) {
+    });
+
+    parsed.abilities.forEach((ab) => {
       const ability = document.createElement("label");
       ability.innerText = ab.name;
       abilities.appendChild(ability);
-    }
-    for (let s of parsed.stats) {
+    });
+
+    parsed.stats.forEach((s) => {
       const stat = document.createElement("div");
       const n = document.createElement("label");
       n.innerText = s.name;
@@ -95,17 +169,18 @@ async function loadPokemons() {
       stat.appendChild(n);
       stat.appendChild(bs);
       stats.appendChild(stat);
-    }
+    });
+
     pokemonDiv.appendChild(img);
     pokemonDiv.appendChild(name);
     pokemonDiv.appendChild(types);
     pokemonDiv.appendChild(abilities);
     pokemonDiv.appendChild(stats);
-    pokemonDiv.appendChild(img);
-    pokemonDiv.appendChild(img);
-    pokemonDiv.appendChild(img);
-    pokemonDiv.appendChild(img);
     li.appendChild(pokemonDiv);
-    ol.appendChild(li);
+    fragment.appendChild(li);
   }
+
+  ol.appendChild(fragment);
+
+  Modal.stopLoading();
 }

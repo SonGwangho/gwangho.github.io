@@ -101,7 +101,7 @@ function loadCalendar() {
       let day = e.target.innerText;
       let data = MyStorage.getLocalData("calendar");
       if (!data) {
-        data = `{${data[monthNames[new Date().getMonth()]]}: {"days":[]}}`;
+        data = `{${monthNames[new Date().getMonth()]}: {"days":[]}}`;
       }
 
       let json = data[monthNames[new Date().getMonth()]]

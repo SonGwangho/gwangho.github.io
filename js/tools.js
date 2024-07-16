@@ -219,11 +219,11 @@ class Gist {
   static async saveData(json) {
     let GITHUB_TOKEN = MyStorage.getLocalData("github_token");
     if (GITHUB_TOKEN) {
-      const param = new URLSearchParams(
+      const urlParams = new URLSearchParams(
         window.location.hash.replace("#!", "").split("?")[1]
       );
-      if (param) return;
-      const token = param.get("token");
+      if (urlParams) return;
+      const token = urlParams.get("token");
       MyStorage.saveLocal("github_token", token);
       GITHUB_TOKEN = token;
     }
@@ -243,8 +243,6 @@ class Gist {
         },
       }),
     });
-
-    console.log(headers);
 
     if (response.ok) {
       return await response.json();

@@ -53,7 +53,8 @@ class Pokemon {
   }
 }
 
-let offset = 0;
+let pokemonOffset = 0;
+let pokemonLimit = 20;
 
 async function loadPokemons() {
   Modal.startLoading();
@@ -62,9 +63,7 @@ async function loadPokemons() {
   const ol = document.createElement("ol");
   div.appendChild(ol);
 
-  let url = `https://pokeapi.co/api/v2/pokemon?offset=${
-    div.childElementCount * 20
-  }&limit=${div.childElementCount * 20}`;
+  let url = `https://pokeapi.co/api/v2/pokemon?offset=${pokemonOffset}&limit=${pokemonLimit}`;
   const pokemons = await Pokemon.getPokemons(url);
 
   const promises = pokemons.results.map((pokemon) =>
@@ -124,7 +123,7 @@ async function loadPokemons() {
   ol.appendChild(fragment);
 
   Modal.stopLoading();
-  offset += limit;
+  pokemonOffset += pokemonLimit;
 }
 
 function handleScroll(entries, observer) {

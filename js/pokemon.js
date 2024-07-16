@@ -55,13 +55,17 @@ class Pokemon {
 
 async function loadPokemons() {
   const div = document.getElementById("pokemon");
-  let url = `https://pokeapi.co/api/v2/pokemon?offset=${div.childElementCount}&limit=${div.childElementCount}`;
+  const ol = document.createElement("ol");
+  let url = `https://pokeapi.co/api/v2/pokemon?offset=${ol.childElementCount}&limit=${ol.childElementCount}`;
   const pokemons = await Pokemon.getPokemons(url);
+
+  div.appendChild(ol);
   for (let pokemon of pokemons.results) {
     url = pokemon.url;
     let data = await Pokemon.getPokemons(url);
     let parsed = await Pokemon.parsing(data);
 
+    const li = document.createElement("li");
     const pokemonDiv = document.createElement("div");
 
     const img = document.createElement("img");
@@ -101,6 +105,7 @@ async function loadPokemons() {
     pokemonDiv.appendChild(img);
     pokemonDiv.appendChild(img);
     pokemonDiv.appendChild(img);
-    div.appendChild(pokemonDiv);
+    li.appendChild(pokemonDiv);
+    ol.appendChild(li);
   }
 }

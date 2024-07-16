@@ -222,7 +222,7 @@ class Gist {
       method: "PATCH",
       headers: {
         Authorization:
-          "token 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",
+          "token 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",
         Accept: "application/vnd.github.v3+json",
         "Content-Type": "application/json",
       },

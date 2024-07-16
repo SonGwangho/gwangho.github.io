@@ -103,7 +103,7 @@ function loadCalendar() {
         json.days.push(day);
         e.target.classList.add("clicked_calendar");
       }
-      e.parentElement.parentElement.parentElement.caption.innerText =
+      e.target.parentElement.parentElement.parentElement.caption.innerText =
         json.days.length + " 번";
       MyStorage.saveLocal("calendar", JSON.stringify(json));
     });

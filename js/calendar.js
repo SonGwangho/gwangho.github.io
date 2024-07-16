@@ -1,6 +1,6 @@
 function loadCalendar() {
   const calendarDiv = document.getElementById("calendar_div");
-  let monthNames = [
+  const monthNames = [
     "January",
     "February",
     "March",
@@ -14,7 +14,7 @@ function loadCalendar() {
     "November",
     "December",
   ];
-  const data = MyStorage.getLocalData("calendar");
+  let data = MyStorage.getLocalData("calendar");
   if (!data) {
     data = `{${monthNames[new Date().getMonth()]}: {"days":[]}}`;
   }

@@ -4,9 +4,6 @@ function loadCalendar() {
   if (!data) {
     data = `{${data[monthNames[new Date().getMonth()]]}: {"days":[]}}`;
   }
-  const clicked = data[monthNames[new Date().getMonth()]]
-    ? MyStorage.getLocalData("calendar")[monthNames[new Date().getMonth()]]
-    : JSON.parse('{"days":[]}');
   const monthNames = [
     "January",
     "February",
@@ -21,6 +18,10 @@ function loadCalendar() {
     "November",
     "December",
   ];
+  const clicked = data[monthNames[new Date().getMonth()]]
+    ? MyStorage.getLocalData("calendar")[monthNames[new Date().getMonth()]]
+    : JSON.parse('{"days":[]}');
+
   const month = document.createElement("h1");
   month.style.textAlign = "center";
   month.style.color = "orange";

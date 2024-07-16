@@ -193,3 +193,59 @@ class myRss {
 }
 
 // myNotification.sendNotification("제목", { body: "내용" });
+
+const GIST_ID = "408041afe99b1a0b7d06197726070074";
+
+class Gist {
+  static async getData() {
+    const url = `https://api.github.com/gists/${GIST_ID}`;
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/vnd.github.v3+json",
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const jsonContent = JSON.parse(data.files["mem.json"].content);
+      return jsonContent;
+    } else {
+      console.error(
+        "Failed to fetch Gist:",
+        response.status,
+        response.statusText
+      );
+    }
+  }
+
+  static async saveData(json) {
+    const url = `https://api.github.com/gists/${GIST_ID}`;
+    const response = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        Authorization:
+          "token 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",
+        Accept: "application/vnd.github.v3+json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        files: {
+          "mem.json": {
+            content: JSON.stringify(json, null, 2),
+          },
+        },
+      }),
+    });
+
+    if (response.ok) {
+      return await response.json();
+    } else {
+      console.error(
+        "Failed to update Gist:",
+        response.status,
+        response.statusText
+      );
+    }
+  }
+}

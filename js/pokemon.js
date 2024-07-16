@@ -53,69 +53,8 @@ class Pokemon {
   }
 }
 
-// async function loadPokemons() {
-//   Modal.startLoading();
-//   let isModal = true;
+let offset = 0;
 
-//   const div = document.getElementById("pokemon");
-//   const ol = document.createElement("ol");
-//   let url = `https://pokeapi.co/api/v2/pokemon?offset=${ol.childElementCount}&limit=${ol.childElementCount}`;
-//   const pokemons = await Pokemon.getPokemons(url);
-
-//   div.appendChild(ol);
-//   for (let pokemon of pokemons.results) {
-//     url = pokemon.url;
-//     let data = await Pokemon.getPokemons(url);
-//     let parsed = await Pokemon.parsing(data);
-
-//     const li = document.createElement("li");
-//     const pokemonDiv = document.createElement("div");
-
-//     const img = document.createElement("img");
-//     const name = document.createElement("label");
-//     const types = document.createElement("div");
-//     const abilities = document.createElement("div");
-//     const stats = document.createElement("div");
-
-//     img.src = parsed.sprites.front_default;
-//     name.innerText = parsed.name;
-//     for (let t of parsed.types) {
-//       const type = document.createElement("label");
-//       type.innerText = t.name;
-//       types.appendChild(type);
-//     }
-//     for (let ab of parsed.abilities) {
-//       const ability = document.createElement("label");
-//       ability.innerText = ab.name;
-//       abilities.appendChild(ability);
-//     }
-//     for (let s of parsed.stats) {
-//       const stat = document.createElement("div");
-//       const n = document.createElement("label");
-//       n.innerText = s.name;
-//       const bs = document.createElement("label");
-//       bs.innerText = s.base_stat;
-//       stat.appendChild(n);
-//       stat.appendChild(bs);
-//       stats.appendChild(stat);
-//     }
-//     pokemonDiv.appendChild(img);
-//     pokemonDiv.appendChild(name);
-//     pokemonDiv.appendChild(types);
-//     pokemonDiv.appendChild(abilities);
-//     pokemonDiv.appendChild(stats);
-//     pokemonDiv.appendChild(img);
-//     pokemonDiv.appendChild(img);
-//     pokemonDiv.appendChild(img);
-//     pokemonDiv.appendChild(img);
-//     li.appendChild(pokemonDiv);
-//     ol.appendChild(li);
-
-//     if (isModal) {
-//       Modal.stopLoading();
-//     }
-//   }
-// }
 async function loadPokemons() {
   Modal.startLoading();
 
@@ -183,4 +122,23 @@ async function loadPokemons() {
   ol.appendChild(fragment);
 
   Modal.stopLoading();
+  offset += limit;
 }
+
+function handleScroll(entries, observer) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      loadPokemons();
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver(handleScroll, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.8,
+  });
+
+  observer.observe(loading);
+});

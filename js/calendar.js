@@ -16,11 +16,11 @@ function loadCalendar() {
   ];
   let data = MyStorage.getLocalData("calendar");
   if (!data) {
-    data = `{${monthNames[new Date().getMonth()]}: {days:[]}}`;
+    data = `{${monthNames[new Date().getMonth()]}: {"days":[]}}`;
   }
-  const clicked = data[monthNames[new Date().getMonth()]]
-    ? MyStorage.getLocalData("calendar")[monthNames[new Date().getMonth()]]
-    : { days: [] };
+  const clicked = JSON.parse(data)[monthNames[new Date().getMonth()]]
+    ? JSON.parse(data)[monthNames[new Date().getMonth()]]
+    : JSON.parse('{"days":[]}');
 
   const month = document.createElement("h1");
   month.style.textAlign = "center";
@@ -101,12 +101,12 @@ function loadCalendar() {
       let day = e.target.innerText;
       let data = MyStorage.getLocalData("calendar");
       if (!data) {
-        data = `{${monthNames[new Date().getMonth()]}: {days:[]}}`;
+        data = `{${monthNames[new Date().getMonth()]}: {"days":[]}}`;
       }
 
-      let json = data[monthNames[new Date().getMonth()]]
-        ? data[monthNames[new Date().getMonth()]]
-        : { days: [] };
+      let json = JSON.parse(data)[monthNames[new Date().getMonth()]]
+        ? JSON.parse(data)[monthNames[new Date().getMonth()]]
+        : JSON.parse('{"days":[]}');
 
       if (json.days.includes(day)) {
         json.days = json.days.filter((item) => item != day);
@@ -116,10 +116,11 @@ function loadCalendar() {
         e.target.classList.add("clicked_calendar");
       }
       const month = monthNames[new Date().getMonth()];
-      caption.innerText = getSum(data) + " 번";
+      caption.innerText =
+        getSum(JSON.stringify(`{"${month}": ${JSON.stringify(json)}}`)) + " 번";
       MyStorage.saveLocal(
         "calendar",
-        JSON.stringify(`{${month}: ${JSON.stringify(json)}}`)
+        JSON.stringify(`{"${month}": ${JSON.stringify(json)}}`)
       );
     });
 
@@ -163,5 +164,26 @@ function getDayWithweekdays() {
 }
 
 function getSum(data) {
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   let sum = 0;
+  let json = JSON.parse(JSON.parse(data));
+  for (let month of monthNames) {
+    if (json[month]) {
+      sum += json[month].days.length;
+    }
+  }
+  return sum;
 }

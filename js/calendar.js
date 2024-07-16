@@ -20,7 +20,7 @@ function loadCalendar() {
   }
   const clicked = data[monthNames[new Date().getMonth()]]
     ? MyStorage.getLocalData("calendar")[monthNames[new Date().getMonth()]]
-    : JSON.parse("{days:[]}");
+    : { days: [] };
 
   const month = document.createElement("h1");
   month.style.textAlign = "center";
@@ -106,7 +106,7 @@ function loadCalendar() {
 
       let json = data[monthNames[new Date().getMonth()]]
         ? data[monthNames[new Date().getMonth()]]
-        : JSON.parse("{days:[]}");
+        : { days: [] };
 
       if (json.days.includes(day)) {
         json.days = json.days.filter((item) => item != day);

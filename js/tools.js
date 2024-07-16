@@ -219,11 +219,11 @@ class Gist {
   static async saveData(json) {
     let GITHUB_TOKEN = MyStorage.getLocalData("github_token");
     if (GITHUB_TOKEN) {
-      const urlParams = new URLSearchParams(
+      let urlParams = new URLSearchParams(
         window.location.hash.replace("#!", "").split("?")[1]
       );
       if (urlParams) return;
-      const token = urlParams.get("token");
+      let token = urlParams.get("token");
       MyStorage.saveLocal("github_token", token);
       GITHUB_TOKEN = token;
     }

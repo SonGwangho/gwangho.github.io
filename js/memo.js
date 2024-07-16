@@ -38,3 +38,17 @@ async function deleteNote(data, index) {
   await Gist.saveData({ memos: notes });
   displayNotes();
 }
+
+async function saveNote() {
+  const noteContent = document.getElementById("note-content").value;
+  if (noteContent.trim() === "") {
+    alert("메모를 입력하세요.");
+    return;
+  }
+  const notesData = await Gist.getData();
+  const notes = notesData.record.memos || [];
+  notes.push({ memo: noteContent });
+  await Gist.saveData({ memos: notes });
+  document.getElementById("note-content").value = "";
+  displayNotes();
+}

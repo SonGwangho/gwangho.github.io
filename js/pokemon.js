@@ -89,7 +89,7 @@ async function loadPokemons() {
 
     li.classList.add("pokemon_outer_div");
 
-    pokemonDiv.classList.add(".pokemon_inner_div");
+    pokemonDiv.classList.add("pokemon_inner_div");
 
     img.src = parsed.sprites.front_default;
     img.classList.add("pokemon_img");

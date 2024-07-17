@@ -3,9 +3,17 @@ class Pokemon {
     if (!url) {
       url = "https://pokeapi.co/api/v2/pokemon";
     }
-    let response = await fetch(url);
-    while (!response.ok) response = await fetch(url);
-    const data = await response.json();
+    let data;
+    let cnt = 0;
+    while (cnt++ < 100) {
+      try {
+        let response = await fetch(url);
+        data = await response.json();
+        break;
+      } catch (e) {
+        console.log(e);
+      }
+    }
     return data;
   }
 

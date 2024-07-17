@@ -3,6 +3,9 @@
   <ol id="pokeList"></ol>
 </div>
 <script>
-  loadPage = () => {window.addEventListener('scroll', handleScroll)};
+  loadPage = () => {
+    loadPokemons();
+    window.addEventListener('scroll', handleScroll)
+  };
   destroyPage = () => {window.removeEventListener('scroll', handleScroll)};
 </script>

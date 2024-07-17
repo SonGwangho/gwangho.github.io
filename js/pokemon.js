@@ -3,6 +3,7 @@ class Pokemon {
     if (!url) {
       url = "https://pokeapi.co/api/v2/pokemon";
     }
+    if (url == "https://pokeapi.co/api/v2/pokemon/218/") debugger;
     let data;
     let cnt = 0;
     while (cnt++ < 100) {

@@ -4,6 +4,7 @@ class Pokemon {
       url = "https://pokeapi.co/api/v2/pokemon";
     }
     const response = await fetch(url);
+    console.log(url);
     const data = await response.json();
     return data;
   }

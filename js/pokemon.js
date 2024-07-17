@@ -156,7 +156,7 @@ async function loadPokemons() {
     parsed.stats.forEach((s) => {
       const stat = document.createElement("div");
       const n = document.createElement("label");
-      n.innerText = s.name;
+      n.innerText = s.name + "  ";
       const bs = document.createElement("label");
       bs.innerText = s.base_stat;
       if (parseInt(s.base_stat) >= 130) {

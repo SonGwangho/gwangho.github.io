@@ -103,8 +103,9 @@ async function loadPokemons() {
   const fragment = document.createDocumentFragment();
   let number = cnt;
   for (let parsed of parsedPokemons) {
+    number++;
     if (!parsed) {
-      MyToast.showToast(`No.${++number} 는 여행을 떠나서 알 수 없어요..`);
+      MyToast.showToast(`No.${number} 는 여행을 떠나서 알 수 없어요..`);
       continue;
     }
     const li = document.createElement("div");

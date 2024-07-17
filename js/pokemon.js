@@ -82,6 +82,7 @@ async function loadPokemons() {
   const fragment = document.createDocumentFragment();
   let number = cnt;
   for (let parsed of parsedPokemons) {
+    number++;
     if (!parsed) continue;
     const li = document.createElement("div");
     const pokemonDiv = document.createElement("div");
@@ -102,7 +103,7 @@ async function loadPokemons() {
 
     infoDiv.classList.add("pokemon_info");
 
-    name.innerText = `${parsed.name} No.${(++number).toString()}`;
+    name.innerText = `${parsed.name} No.${number.toString()}`;
     name.style.fontSize = "40px";
     name.style.fontWeight = "700";
     name.style.marginBottom = "15px";

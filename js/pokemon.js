@@ -12,6 +12,7 @@ class Pokemon {
         break;
       } catch (e) {
         console.log(e);
+        console.log(url);
       }
     }
     return data;

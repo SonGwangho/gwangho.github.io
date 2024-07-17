@@ -165,7 +165,6 @@ li{
   display: flex;
   justify-content: space-between;
   list-style: none;
-  width: 100%;
 }
 .pokemon_area::before{
   display: inline-block;

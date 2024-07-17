@@ -61,6 +61,12 @@
     <div id="app"></div>
     <script type="module" src="./app.js"></script>
     <script>
+      function goHome(){
+        const a = document.createElement('a');
+        a.href = "/gwangho.github.io/"
+        a.click();
+      }
+
       const nav_items = document.querySelectorAll(".navbar_item");
       nav_items.forEach((item)=>{
         item.addEventListener('click',()=>{

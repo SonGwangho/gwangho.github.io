@@ -97,8 +97,17 @@ const App = async () => {
   triggerLoadEvents(document.querySelector("#app"));
 };
 
+let loadPage = function () {};
+let destroyPage = function () {};
+
 const triggerLoadEvents = (element) => {
-  eval(element.querySelector("script").innerText);
+  try {
+    destroyPage();
+    loadPage();
+    // eval(element.querySelector("script").innerText);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 window.addEventListener("popstate", App);

@@ -1,13 +1,8 @@
 <!-- <script src="../js/pokemon.js"></script> -->
-<div id="pokemon"></div>
-<div id="loadingPokemon"></div>
+<div id="pokemon">
+  <ol id="pokeList"></ol>
+</div>
 <script>
-  const observer = new IntersectionObserver(handleScroll, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.8,
-  });
-
-  observer.observe(document.getElementById("loadingPokemon"));
-  loadPokemons();
+  loadPage = () => {window.addEventListener('scroll', handleScroll)};
+  destroyPage = () => {window.removeEventListener('scroll', handleScroll)};
 </script>

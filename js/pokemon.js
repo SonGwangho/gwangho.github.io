@@ -57,13 +57,9 @@ async function loadPokemons() {
   Modal.startLoading();
 
   const div = document.getElementById("pokemon");
-  const ol = document.createElement("ol");
+  const ol = document.getElementById("pokeList");
   div.appendChild(ol);
-  let cnt = 0;
-  for (let o of document.getElementsByTagName("ol")) {
-    cnt += o.childElementCount;
-  }
-
+  let cnt = ol.childElementCount;
   let url = `https://pokeapi.co/api/v2/pokemon?offset=${cnt}&limit=${cnt}`;
   const pokemons = await Pokemon.getPokemons(url);
 
@@ -127,9 +123,11 @@ async function loadPokemons() {
 }
 
 function handleScroll(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      loadPokemons();
-    }
-  });
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const documentHeight = document.documentElement.scrollHeight;
+  const windowHeight = window.innerHeight;
+
+  if (scrollTop + windowHeight + 200 >= documentHeight) {
+    loadPokemons();
+  }
 }

@@ -76,16 +76,25 @@ async function loadPokemons() {
 
   const fragment = document.createDocumentFragment();
   for (let parsed of parsedPokemons) {
-    const li = document.createElement("li");
+    const li = document.createElement("div");
     const pokemonDiv = document.createElement("div");
 
     const img = document.createElement("img");
+    const infoDiv = document.createElement("div");
     const name = document.createElement("label");
     const types = document.createElement("div");
     const abilities = document.createElement("div");
     const stats = document.createElement("div");
 
+    li.classList.add("pokemon_outer_div");
+
+    pokemonDiv.classList.add(".pokemon_inner_div");
+
     img.src = parsed.sprites.front_default;
+    img.classList.add("pokemon_img");
+
+    infoDiv.classList.add("pokemon_info");
+
     name.innerText = parsed.name;
 
     parsed.types.forEach((t) => {
@@ -97,7 +106,9 @@ async function loadPokemons() {
     parsed.abilities.forEach((ab) => {
       const ability = document.createElement("label");
       ability.innerText = ab.name;
+      ability.classList.add("pokemon_item");
       abilities.appendChild(ability);
+      abilities.classList.add("pokemon_area");
     });
 
     parsed.stats.forEach((s) => {
@@ -108,14 +119,17 @@ async function loadPokemons() {
       bs.innerText = s.base_stat;
       stat.appendChild(n);
       stat.appendChild(bs);
+      stat.classList.add("pokemon_item");
       stats.appendChild(stat);
+      stats.classList.add("pokemon_area");
     });
 
     pokemonDiv.appendChild(img);
-    pokemonDiv.appendChild(name);
-    pokemonDiv.appendChild(types);
-    pokemonDiv.appendChild(abilities);
-    pokemonDiv.appendChild(stats);
+    infoDiv.appendChild(name);
+    infoDiv.appendChild(types);
+    infoDiv.appendChild(abilities);
+    infoDiv.appendChild(stats);
+    pokemonDiv.appendChild(infoDiv);
     li.appendChild(pokemonDiv);
     fragment.appendChild(li);
   }

@@ -138,16 +138,17 @@ li{
   max-width: 1200px;
   width: 100%;
   height: 100%;
+  margin: auto;
 }
 
 .pokemon_inner_div{
-  width: fit-content;
+  /* width: fit-content; */
   margin: auto;
 }
 
 .pokemon_img{
   display: inline-block;
-  max-width: 300px;
+  max-width: 250px;
 }
 
 .pokemon_info{

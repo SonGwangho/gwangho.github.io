@@ -143,7 +143,7 @@ li{
 
 .pokemon_inner_div{
   width: fit-content;
-  margin: auto;
+  margin: 20px auto;
 }
 
 .pokemon_img{
@@ -153,10 +153,10 @@ li{
 
 .pokemon_info{
   display: inline-block;
-  font-size: 35px;
+  font-size: 32px;
 }
 .pokemon_area{
-  margin: 10px 0;
+  margin: 7px 0;
   padding: 0;
   display: -webkit-box;
   display: -moz-box;

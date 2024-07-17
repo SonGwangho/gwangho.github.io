@@ -97,7 +97,8 @@ async function loadPokemons() {
     infoDiv.classList.add("pokemon_info");
 
     name.innerText = `${parsed.name} No.${(++number).toString()}`;
-    name.style.fontWeight = "40px";
+    name.style.fontSize = "40px";
+    name.style.fontWeight = "700";
     name.style.marginBottom = "15px";
 
     types.classList.add("pokemon_area");

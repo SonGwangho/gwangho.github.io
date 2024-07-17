@@ -102,9 +102,9 @@ let destroyPage = function () {};
 
 const triggerLoadEvents = (element) => {
   try {
+    eval(element.querySelector("script").innerText);
     destroyPage();
     loadPage();
-    // eval(element.querySelector("script").innerText);
   } catch (e) {
     console.log(e);
   }

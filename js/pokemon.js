@@ -98,18 +98,20 @@ async function loadPokemons() {
 
     name.innerText = `${parsed.name} No.${(++number).toString()}`;
 
+    types.classList.add("pokemon_area");
     parsed.types.forEach((t) => {
       const type = document.createElement("label");
       type.innerText = t.name;
+      type.classList.add("pokemon_item");
       types.appendChild(type);
     });
 
+    abilities.classList.add("pokemon_area");
     parsed.abilities.forEach((ab) => {
       const ability = document.createElement("label");
       ability.innerText = ab.name;
       ability.classList.add("pokemon_item");
       abilities.appendChild(ability);
-      abilities.classList.add("pokemon_area");
     });
 
     stats.classList.add("pokemon_area");

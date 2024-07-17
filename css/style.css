@@ -135,7 +135,6 @@ li{
 }
 
 .pokemon_outer_div{
-  margin: auto;
   max-width: 1200px;
   width: 100%;
   height: 100%;
@@ -153,6 +152,7 @@ li{
 
 .pokemon_info{
   display: inline-block;
+  font-size: 35px;
 }
 .pokemon_area{
   margin: 0;
@@ -165,6 +165,7 @@ li{
   display: flex;
   justify-content: space-between;
   list-style: none;
+  width: 100%;
 }
 .pokemon_area::before{
   display: inline-block;

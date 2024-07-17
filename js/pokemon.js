@@ -3,23 +3,18 @@ class Pokemon {
     if (!url) {
       url = "https://pokeapi.co/api/v2/pokemon";
     }
-    if (url == "https://pokeapi.co/api/v2/pokemon/218/") debugger;
-    let data;
-    let cnt = 0;
-    while (cnt++ < 100) {
-      try {
-        let response = await fetch(url);
-        data = await response.json();
-        break;
-      } catch (e) {
-        console.log(e);
-        console.log(url);
-      }
+    try {
+      let response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (e) {
+      console.log(e);
+      return null;
     }
-    return data;
   }
 
   static async parsing(data) {
+    if (!data) return null;
     const abilities = await Promise.all(
       data.abilities.map(async ({ ability: { url }, is_hidden }) => ({
         name: await this.changeLanguage(url),
@@ -87,6 +82,7 @@ async function loadPokemons() {
   const fragment = document.createDocumentFragment();
   let number = cnt;
   for (let parsed of parsedPokemons) {
+    if (!parsed) return;
     const li = document.createElement("div");
     const pokemonDiv = document.createElement("div");
 

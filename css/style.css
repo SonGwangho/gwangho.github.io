@@ -156,7 +156,7 @@ li{
   font-size: 35px;
 }
 .pokemon_area{
-  margin: 0;
+  margin: 10px 0;
   padding: 0;
   display: -webkit-box;
   display: -moz-box;

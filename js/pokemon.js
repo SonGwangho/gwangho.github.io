@@ -114,7 +114,6 @@ async function loadPokemons() {
       abilities.appendChild(ability);
     });
 
-    stats.classList.add("pokemon_area");
     const statrow = [
       document.createElement("div"),
       document.createElement("div"),
@@ -135,7 +134,9 @@ async function loadPokemons() {
       }
     });
     stats.appendChild(statrow[0]);
+    statrow[0].classList.add("pokemon_area");
     stats.appendChild(statrow[1]);
+    statrow[1].classList.add("pokemon_area");
 
     pokemonDiv.appendChild(img);
     infoDiv.appendChild(name);

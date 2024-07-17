@@ -126,7 +126,7 @@ async function loadPokemons() {
       stat.appendChild(n);
       stat.appendChild(bs);
       stat.classList.add("pokemon_item");
-      if (statrow[0].length < 3) {
+      if (statrow[0].childElementCount < 3) {
         statrow[0].appendChild(stat);
       } else {
         statrow[1].appendChild(stat);

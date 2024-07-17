@@ -75,6 +75,7 @@ async function loadPokemons() {
   );
 
   const fragment = document.createDocumentFragment();
+  let number = cnt;
   for (let parsed of parsedPokemons) {
     const li = document.createElement("div");
     const pokemonDiv = document.createElement("div");
@@ -95,7 +96,7 @@ async function loadPokemons() {
 
     infoDiv.classList.add("pokemon_info");
 
-    name.innerText = parsed.name;
+    name.innerText = `${parsed.name} No.${(++number).toString()}`;
 
     parsed.types.forEach((t) => {
       const type = document.createElement("label");

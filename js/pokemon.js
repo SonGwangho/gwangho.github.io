@@ -64,9 +64,26 @@ async function loadPokemons() {
   loading = true;
   Modal.startLoading();
 
-  // const typeColor = {
-  //   "노말"
-  // }
+  const typeColor = {
+    노말: "#949495",
+    격투: "#E09C40",
+    비행: "#A2C3E7",
+    독: "#735198",
+    땅: "#9C7743",
+    바위: "#BFB889",
+    벌레: "#9FA244",
+    고스트: "#684870",
+    강철: "#69A9C7",
+    불꽃: "#E56C3E",
+    물: "#5185C5",
+    풀: "#66A945",
+    전기: "#FCD533",
+    에스퍼: "#DD6B7B",
+    얼음: "#6DC8EB",
+    드래곤: "#535CA8",
+    악: "#4C4948",
+    페어리: "#DAB4D4",
+  };
 
   const div = document.getElementById("pokemon");
   const ol = document.getElementById("pokeList");
@@ -118,6 +135,7 @@ async function loadPokemons() {
     parsed.types.forEach((t) => {
       const type = document.createElement("label");
       type.innerText = t.name;
+      type.style.color = typeColor[t.name];
       type.classList.add("pokemon_item");
       types.appendChild(type);
     });
@@ -140,6 +158,9 @@ async function loadPokemons() {
       n.innerText = s.name;
       const bs = document.createElement("label");
       bs.innerText = s.base_stat;
+      if (parseInt(s.base_stat) >= 130) {
+        bs.style.color = "red";
+      }
       stat.appendChild(n);
       stat.appendChild(bs);
       stat.classList.add("pokemon_item");

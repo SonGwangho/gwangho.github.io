@@ -82,7 +82,7 @@ async function loadPokemons() {
   const fragment = document.createDocumentFragment();
   let number = cnt;
   for (let parsed of parsedPokemons) {
-    if (!parsed) return;
+    if (!parsed) continue;
     const li = document.createElement("div");
     const pokemonDiv = document.createElement("div");
 

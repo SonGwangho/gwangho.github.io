@@ -17,11 +17,13 @@ class Modal {
     }
 
     modal.style.display = "flex";
+    modal.classList.add("overflowHidden");
   }
 
   static hideModal() {
     let modal = document.getElementsByClassName("modal")[0];
     modal.style.display = "none";
+    modal.classList.remove("overflowHidden");
   }
 
   static startLoading() {
@@ -34,6 +36,7 @@ class Modal {
       const loadingHtml = '<span class="loading_spinner"></span>';
       body.innerHTML = loadingHtml;
       modal.style.display = "flex";
+      modal.classList.add("overflowHidden");
     } catch (e) {
       console.log(e);
     }
@@ -47,6 +50,7 @@ class Modal {
       const oldHtml = MyStorage.getSessionData("beforeLoadingHtml");
       body.innerHTML = oldHtml;
       modal.style.display = "none";
+      modal.classList.remove("overflowHidden");
     } catch (e) {
       console.log(e);
     }

@@ -53,7 +53,9 @@ class Pokemon {
   }
 }
 
+let loading = false;
 async function loadPokemons() {
+  loading = true;
   Modal.startLoading();
 
   const div = document.getElementById("pokemon");
@@ -120,6 +122,7 @@ async function loadPokemons() {
   ol.appendChild(fragment);
 
   Modal.stopLoading();
+  loading = false;
 }
 
 function handleScroll(entries, observer) {
@@ -128,6 +131,8 @@ function handleScroll(entries, observer) {
   const windowHeight = window.innerHeight;
 
   if (scrollTop + windowHeight + 200 >= documentHeight) {
-    loadPokemons();
+    if (!loading) {
+      loadPokemons();
+    }
   }
 }

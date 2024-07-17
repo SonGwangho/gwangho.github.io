@@ -149,11 +149,14 @@ li{
 .pokemon_img{
   display: inline-block;
   max-width: 250px;
+  overflow: hidden;
 }
 
 .pokemon_info{
   display: inline-block;
   font-size: 28px;
+  overflow: hidden;
+  height: 230px;
 }
 .pokemon_area{
   margin: 7px 0;

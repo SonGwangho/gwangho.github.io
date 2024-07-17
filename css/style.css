@@ -142,7 +142,7 @@ li{
 }
 
 .pokemon_inner_div{
-  /* width: fit-content; */
+  width: fit-content;
   margin: auto;
 }
 

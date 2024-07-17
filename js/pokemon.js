@@ -146,6 +146,9 @@ async function loadPokemons() {
       const ability = document.createElement("label");
       ability.innerText = ab.name;
       ability.classList.add("pokemon_item");
+      if (ab.is_hidden) {
+        ability.classList.add("pokemon_hidden_ability");
+      }
       abilities.appendChild(ability);
     });
 

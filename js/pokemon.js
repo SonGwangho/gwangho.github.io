@@ -111,6 +111,11 @@ async function loadPokemons() {
       abilities.classList.add("pokemon_area");
     });
 
+    stats.classList.add("pokemon_area");
+    const statrow = [
+      document.createElement("div"),
+      document.createElement("div"),
+    ];
     parsed.stats.forEach((s) => {
       const stat = document.createElement("div");
       const n = document.createElement("label");
@@ -120,9 +125,14 @@ async function loadPokemons() {
       stat.appendChild(n);
       stat.appendChild(bs);
       stat.classList.add("pokemon_item");
-      stats.appendChild(stat);
-      stats.classList.add("pokemon_area");
+      if (statrow[0].length < 3) {
+        statrow[0].appendChild(stat);
+      } else {
+        statrow[1].appendChild(stat);
+      }
     });
+    stats.appendChild(statrow[0]);
+    stats.appendChild(statrow[1]);
 
     pokemonDiv.appendChild(img);
     infoDiv.appendChild(name);

@@ -64,6 +64,10 @@ async function loadPokemons() {
   loading = true;
   Modal.startLoading();
 
+  // const typeColor = {
+  //   "노말"
+  // }
+
   const div = document.getElementById("pokemon");
   const ol = document.getElementById("pokeList");
   div.appendChild(ol);
@@ -82,8 +86,10 @@ async function loadPokemons() {
   const fragment = document.createDocumentFragment();
   let number = cnt;
   for (let parsed of parsedPokemons) {
-    MyToast.showToast(`No.${++number} 는 여행을 떠나서 알 수 없어요..`);
-    if (!parsed) continue;
+    if (!parsed) {
+      MyToast.showToast(`No.${++number} 는 여행을 떠나서 알 수 없어요..`);
+      continue;
+    }
     const li = document.createElement("div");
     const pokemonDiv = document.createElement("div");
 

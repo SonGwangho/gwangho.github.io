@@ -280,7 +280,7 @@ function keyboardEvent(direction) {
   const cnt = resultDiv.childElementCount;
   let index = -1;
   let items = resultDiv.querySelectorAll(".search_item");
-  for (let i in items) {
+  for (let i = 0; i < items.length; i++) {
     if (items[i].classList.contains("active")) index = i;
   }
 

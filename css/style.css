@@ -233,7 +233,7 @@ li{
   font-size: 24px;
   margin: 5px 0;
 }
-.search_item:hover, .search_item .active{
+.search_item:hover, .search_item_actived{
   font-size: 24px;
   font-weight: 600;
 }

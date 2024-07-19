@@ -281,7 +281,7 @@ function keyboardEvent(direction) {
   let index = -1;
   let items = resultDiv.querySelectorAll(".search_item");
   for (let i = 0; i < items.length; i++) {
-    if (items[i].classList.contains("active")) index = i;
+    if (items[i].classList.contains("search_item_actived")) index = i;
   }
 
   switch (direction) {
@@ -296,6 +296,6 @@ function keyboardEvent(direction) {
       break;
   }
   items = resultDiv.querySelectorAll(".search_item");
-  for (let item of items) item.classList.remove("active");
-  items[index].classList.add("active");
+  for (let item of items) item.classList.remove("search_item_actived");
+  items[index].classList.add("search_item_actived");
 }

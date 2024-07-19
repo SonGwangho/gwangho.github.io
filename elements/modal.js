@@ -1,8 +1,8 @@
 class Modal {
   static showModal(contents = undefined) {
     let modal = document.getElementsByClassName("modal")[0];
-    const content = modal.querySelector(".modal_content");
-    if (!contents) content.innerHTML = contents;
+    const content = modal.querySelector("modal_content");
+    if (contents) content.innerHTML = contents;
     else {
       const div = document.createElement("div");
       div.style.width = "100%";

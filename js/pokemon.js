@@ -306,7 +306,7 @@ async function search() {
       for (let item of tree.up) {
         if (item != "no") {
           const btn = document.createElement("button");
-          btn.innerText = item;
+          btn.innerText = converter[item.toLowerCase()];
           up.appendChild(btn);
         }
       }
@@ -318,7 +318,7 @@ async function search() {
       for (let item of tree.down) {
         if (item != "no") {
           const btn = document.createElement("button");
-          btn.innerText = item;
+          btn.innerText = converter[item.toLowerCase()];
           down.appendChild(btn);
         }
       }

@@ -281,10 +281,12 @@ async function search() {
   const text = document.getElementsByClassName("search_input")[0].value;
   const converter = MyStorage.getSessionData("pokemon_convert");
   if (converter[text]) {
+    Modal.startLoading();
     const url = "https://pokeapi.co/api/v2/pokemon/" + converter[text];
     const pokemon = await Pokemon.getPokemons(url.toLowerCase());
     const parsed = await Pokemon.parsing(pokemon);
     const div = getPokemonDiv(parsed);
+    Modal.stopLoading();
 
     Modal.showModal(div.innerHTML);
   } else {

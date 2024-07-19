@@ -232,7 +232,7 @@ function onInput(e) {
     const data = MyStorage.getSessionData("pokemon_ko");
     const resultDiv = document.getElementById("search_result_div");
     let value = e.target.value;
-    if (!value) resultDiv.style.display = "block";
+    if (value) resultDiv.style.display = "block";
     else resultDiv.style.display = "none";
 
     if (data[value].length < 1) return;
@@ -268,5 +268,7 @@ async function search() {
     const div = getPokemonDiv(parsed);
 
     Modal.showModal(div.innerHTML);
+  } else {
+    MyToast.showToast("그런 포켓몬은 없나봐요?");
   }
 }

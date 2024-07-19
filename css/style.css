@@ -206,6 +206,10 @@ li{
   flex: 1 0 auto;
   border: 0;
   border-right: 1px solid;
+  font-family: 'Ownglyph_noocar-Rg', sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 10px;
 }
 .search_button{
   width: 20%;
@@ -216,6 +220,18 @@ li{
   background-color: rgb(130, 130, 236);
   color: white;
 }
+#search_result_div{
+  border: 2px solid #80808047;
+  background-color: #a4daeb33;
+  border-radius: 10px;
+  padding: 10px;
+}
 .search_item{
-
+  font-size: 24px;
+  margin: 5px 0;
+}
+.search_item:hover{
+  font-size: 24px;
+  margin: 10px 0;
+  font-weight: 600;
 }

@@ -289,7 +289,7 @@ async function search() {
   if (converter[text]) {
     Modal.startLoading();
     const url = "https://pokeapi.co/api/v2/pokemon/" + converter[text];
-    const pokemon = await Pokemon.getPokemons(url.toLowerCase());
+    const pokemon = await Pokemon.getPokemons(url);
     const parsed = await Pokemon.parsing(pokemon);
     const pokeDiv = getPokemonDiv(parsed);
 
@@ -299,14 +299,14 @@ async function search() {
     div.appendChild(chainDiv);
 
     const chain = MyStorage.getSessionData("pokemon_chain");
-    const tree = chain[converter[text].toLowerCase()];
+    const tree = chain[converter[text]];
     try {
       const up = document.createElement("div");
       chainDiv.appendChild(up);
       for (let item of tree.up) {
         if (item != "no") {
           const btn = document.createElement("button");
-          btn.innerText = converter[item.toLowerCase()];
+          btn.innerText = converter[item];
           up.appendChild(btn);
         }
       }
@@ -318,7 +318,7 @@ async function search() {
       for (let item of tree.down) {
         if (item != "no") {
           const btn = document.createElement("button");
-          btn.innerText = converter[item.toLowerCase()];
+          btn.innerText = converter[item];
           down.appendChild(btn);
         }
       }

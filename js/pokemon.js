@@ -242,10 +242,7 @@ function onInput(e) {
     for (let pokemon of pokemons) {
       const div = document.createElement("div");
       div.classList.add("search_item");
-      div.addEventListener("click", (e) => {
-        let value = e.target.innerText;
-        document.getElementsByClassName("search_input")[0].value = value;
-      });
+      div.addEventListener("click", itemClick);
       const span = document.createElement("span");
       span.innerText = pokemon;
 
@@ -256,6 +253,11 @@ function onInput(e) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function itemClick(e) {
+  let value = e.target.innerText;
+  document.getElementsByClassName("search_input")[0].value = value;
 }
 
 async function search() {
@@ -271,4 +273,24 @@ async function search() {
   } else {
     MyToast.showToast("그런 포켓몬은 없나봐요?");
   }
+}
+
+function keyboardEvent(direction) {
+  const resultDiv = document.getElementById("search_result_div");
+  const cnt = resultDiv.childElementCount;
+  let index = resultDiv.querySelector(".active");
+  if (!index) index = -1;
+  switch (direction) {
+    case "up":
+      index--;
+      index = index % cnt;
+      break;
+    case "down":
+      index++;
+      index = index % cnt;
+      break;
+  }
+  let items = resultDiv.querySelectorAll("search_item");
+  for (let item of items) item.classList.remove("active");
+  items[index].classList.add("active");
 }

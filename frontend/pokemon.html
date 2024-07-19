@@ -16,8 +16,20 @@
     getPokemonJson();
     document.getElementsByClassName('search_input')[0].addEventListener("input", onInput);;
     document.getElementsByClassName('search_input')[0].addEventListener("keyup", (e) => {
-      if (e.keyCode == 13)
-        search()
+      switch(e.keyCode){
+        case 13:
+          search();
+          break;
+        case 9:
+          itemClick(e);
+          break;
+        case 38:
+          keyboardEvent("up");
+          break;
+        case 40:
+          keyboardEvent("down");
+          break;
+      }
     })
     loadPokemons();
     window.addEventListener('scroll', handleScroll)

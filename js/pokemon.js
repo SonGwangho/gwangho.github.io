@@ -225,6 +225,12 @@ async function getPokemonJson() {
     let cson = await response_convert.json();
     MyStorage.saveSession("pokemon_convert", JSON.stringify(cson));
   }
+
+  if (!MyStorage.getSessionData("pokemon_chain")) {
+    let response_ko = await fetch("./assets/pokemon_chain.json");
+    let kson = await response_ko.json();
+    MyStorage.saveSession("pokemon_chain", JSON.stringify(kson));
+  }
 }
 
 function onInput(e) {
@@ -285,9 +291,40 @@ async function search() {
     const url = "https://pokeapi.co/api/v2/pokemon/" + converter[text];
     const pokemon = await Pokemon.getPokemons(url.toLowerCase());
     const parsed = await Pokemon.parsing(pokemon);
-    const div = getPokemonDiv(parsed);
-    Modal.stopLoading();
+    const pokeDiv = getPokemonDiv(parsed);
 
+    const div = document.createElement("div");
+    const chainDiv = document.createElement("div");
+    div.appendChild(pokeDiv);
+    div.appendChild(chainDiv);
+
+    const chain = MyStorage.getSessionData("pokemon_chain");
+    const tree = chain[converter[text]];
+    try {
+      const up = document.createElement("div");
+      chainDiv.appendChild(up);
+      for (let item of tree.up) {
+        if (item != "no") {
+          const btn = document.createElement("button");
+          btn.innerText = item;
+          up.appendChild(btn);
+        }
+      }
+    } catch {}
+
+    try {
+      const down = document.createElement("div");
+      chainDiv.appendChild(down);
+      for (let item of tree.down) {
+        if (item != "no") {
+          const btn = document.createElement("button");
+          btn.innerText = item;
+          down.appendChild(btn);
+        }
+      }
+    } catch {}
+
+    Modal.stopLoading();
     Modal.showModal(div.innerHTML);
   } else {
     MyToast.showToast("메가진화 포켓몬들은 없어요 ㅎㅎ");

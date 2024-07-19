@@ -16,6 +16,7 @@
     getPokemonJson();
     document.getElementsByClassName('search_input')[0].addEventListener("input", onInput);;
     document.getElementsByClassName('search_input')[0].addEventListener("keyup", (e) => {
+      e.preventDefault();
       switch(e.keyCode){
         case 13:
           search();

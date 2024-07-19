@@ -304,37 +304,37 @@ async function search() {
     try {
       const up = document.createElement("div");
       up.classList.add("poke_up");
-      chainDiv.appendChild(up);
       for (let item of tree.up) {
         if (item != "no") {
           const btn = document.createElement("button");
           btn.innerText = converter[item];
-          btn.addEventListener("click", (e) => {
+          btn.onclick = () => {
             document.getElementsByClassName("search_input")[0].value =
               converter[item];
             search();
-          });
+          };
           up.appendChild(btn);
         }
       }
+      chainDiv.appendChild(up);
     } catch {}
 
     try {
       const down = document.createElement("div");
       down.classList.add("poke_down");
-      chainDiv.appendChild(down);
       for (let item of tree.down) {
         if (item != "no") {
           const btn = document.createElement("button");
           btn.innerText = converter[item];
-          btn.addEventListener("click", (e) => {
+          btn.onclick = () => {
             document.getElementsByClassName("search_input")[0].value =
               converter[item];
             search();
-          });
+          };
           down.appendChild(btn);
         }
       }
+      chainDiv.appendChild(down);
     } catch {}
 
     Modal.stopLoading();

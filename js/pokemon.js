@@ -231,7 +231,9 @@ function onInput(e) {
   try {
     const data = MyStorage.getSessionData("pokemon_ko");
     const resultDiv = document.getElementById("search_result_div");
-    let value = e.target.value;
+    let value = e
+      ? e.target.value
+      : document.getElementsByClassName("search_input")[0].value;
     if (!value) resultDiv.style.display = "none";
 
     if (data[value].length < 1) return;
@@ -263,6 +265,7 @@ function itemClick(e) {
   }
 
   document.getElementsByClassName("search_input")[0].value = value;
+  onInput();
 }
 
 async function search() {

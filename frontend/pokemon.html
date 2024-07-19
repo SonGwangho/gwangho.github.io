@@ -16,18 +16,22 @@
     getPokemonJson();
     document.getElementsByClassName('search_input')[0].addEventListener("input", onInput);;
     document.getElementsByClassName('search_input')[0].addEventListener("keydown", (e) => {
-      e.preventDefault();
+      
       switch(e.keyCode){
         case 13:
+          e.preventDefault();
           search();
           break;
         case 9:
+          e.preventDefault();
           itemClick(e);
           break;
         case 38:
+          e.preventDefault();
           keyboardEvent("up");
           break;
         case 40:
+          e.preventDefault();
           keyboardEvent("down");
           break;
       }

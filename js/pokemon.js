@@ -232,8 +232,7 @@ function onInput(e) {
     const data = MyStorage.getSessionData("pokemon_ko");
     const resultDiv = document.getElementById("search_result_div");
     let value = e.target.value;
-    if (value) resultDiv.style.display = "block";
-    else resultDiv.style.display = "none";
+    if (!value) resultDiv.style.display = "none";
 
     if (data[value].length < 1) return;
     let pokemons = data[value].slice(0, 5);
@@ -253,6 +252,7 @@ function onInput(e) {
       div.appendChild(span);
       resultDiv.appendChild(div);
     }
+    if (resultDiv.childElementCount > 0) resultDiv.style.display = "block";
   } catch (error) {
     console.log(error);
   }

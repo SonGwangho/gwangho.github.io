@@ -214,13 +214,13 @@ function getPokemonDiv(parsed) {
 }
 
 async function getPokemonJson() {
-  if (MyStorage.getSessionData("pokemon_ko")) {
+  if (!MyStorage.getSessionData("pokemon_ko")) {
     let response_ko = await fetch("./assets/pokemon_ko.json");
     let kson = await response_ko.json();
     MyStorage.saveSession("pokemon_ko", JSON.stringify(kson));
   }
 
-  if (MyStorage.getSessionData("pokemon_convert")) {
+  if (!MyStorage.getSessionData("pokemon_convert")) {
     let response_convert = await fetch("./assets/pokemon_convert.json");
     let cson = await response_convert.json();
     MyStorage.saveSession("pokemon_convert", JSON.stringify(cson));

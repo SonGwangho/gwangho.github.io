@@ -49,7 +49,7 @@ class MyStorage {
           return data;
         }
       } else {
-        console.log(`Cant't find ${key}`);
+        console.log(`Can't find ${key}`);
         return null;
       }
     } catch (err) {

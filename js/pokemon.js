@@ -290,7 +290,7 @@ async function search() {
 
     Modal.showModal(div.innerHTML);
   } else {
-    MyToast.showToast("그런 포켓몬은 없나봐요?");
+    MyToast.showToast("메가진화 포켓몬들은 없어요 ㅎㅎ");
   }
 }
 

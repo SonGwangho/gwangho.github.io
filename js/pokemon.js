@@ -213,23 +213,23 @@ function getPokemonDiv(parsed) {
   return pokemonDiv;
 }
 
-async function getDatas() {
+async function getPokemonJson() {
   if (MyStorage.getSessionData("pokemon_ko")) {
     let response_ko = await fetch("./assets/pokemon_ko.json");
     let kson = await response_ko.json();
-    MyStorage.saveSession("pokemon_ko", kson);
+    MyStorage.saveSession("pokemon_ko", JSON.stringify(kson));
   }
 
   if (MyStorage.getSessionData("pokemon_convert")) {
     let response_convert = await fetch("./assets/pokemon_convert.json");
     let cson = await response_convert.json();
-    MyStorage.saveSession("pokemon_convert", cson);
+    MyStorage.saveSession("pokemon_convert", JSON.stringify(cson));
   }
 }
 
 function onInput(e) {
   try {
-    const data = MyStorage.getSessionData("pokemon_ko");
+    const data = JSON.parse(MyStorage.getSessionData("pokemon_ko"));
     let value = e.tartget.innerText;
     if (data[value].length < 1) return;
     let pokemons = data[value].slice(0, 5);
@@ -253,7 +253,7 @@ function onInput(e) {
 
 async function search() {
   const text = document.getElementsByClassName("search_input")[0].innerText;
-  const converter = MyStorage.getSessionData("pokemon_convert");
+  const converter = JSON.parse(MyStorage.getSessionData("pokemon_convert"));
   if (!converter[text]) {
     const url = "https://pokeapi.co/api/v2/pokemon/" + converter[text];
     const pokemon = await Pokemon.getPokemons(url);

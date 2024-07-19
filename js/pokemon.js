@@ -261,7 +261,7 @@ function onInput(e) {
 async function search() {
   const text = document.getElementsByClassName("search_input")[0].value;
   const converter = MyStorage.getSessionData("pokemon_convert");
-  if (!converter[text]) {
+  if (converter[text]) {
     const url = "https://pokeapi.co/api/v2/pokemon/" + converter[text];
     const pokemon = await Pokemon.getPokemons(url);
     const parsed = await Pokemon.parsing(pokemon);

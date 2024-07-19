@@ -1,14 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementsByClassName("btn_close_modal")[0];
-  button.addEventListener("click", () => {
-    Modal.hideModal();
-  });
-});
-
 class Modal {
   static showModal(contents = undefined) {
     let modal = document.getElementsByClassName("modal")[0];
-    const content = modal.querySelector("modal_content");
+    const content = modal.querySelector(".modal_content");
     if (!contents) content.innerHTML = contents;
     else {
       const div = document.createElement("div");

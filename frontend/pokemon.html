@@ -14,7 +14,7 @@
 <script>
   loadPage = () => {
     getPokemonJson();
-    document.getElementsByClassName('search_input')[0].addEventListener("oninput", onInput)
+    document.getElementsByClassName('search_input')[0].addEventListener("input", onInput)
     loadPokemons();
     window.addEventListener('scroll', handleScroll)
   };

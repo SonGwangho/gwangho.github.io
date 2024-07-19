@@ -227,10 +227,10 @@ async function getPokemonJson() {
   }
 }
 
-function onInput() {
+function onInput(e) {
   try {
     const data = JSON.parse(MyStorage.getSessionData("pokemon_ko"));
-    let value = document.getElementsByClassName("search_input")[0].innerText;
+    let value = e.target.innerText;
     if (data[value].length < 1) return;
     let pokemons = data[value].slice(0, 5);
     const resultDiv = document.getElementById("search_result_div");

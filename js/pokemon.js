@@ -279,7 +279,7 @@ function keyboardEvent(direction) {
   const resultDiv = document.getElementById("search_result_div");
   const cnt = resultDiv.childElementCount;
   let index = -1;
-  resultDiv.querySelectorAll("search_item");
+  let items = resultDiv.querySelectorAll("search_item");
   for (let i in items) {
     if (items[i].classList.contains("active")) index = i;
   }
@@ -295,7 +295,7 @@ function keyboardEvent(direction) {
       index = index % cnt;
       break;
   }
-  let items = resultDiv.querySelectorAll("search_item");
+  items = resultDiv.querySelectorAll("search_item");
   for (let item of items) item.classList.remove("active");
   items[index].classList.add("active");
 }

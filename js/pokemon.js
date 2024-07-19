@@ -230,7 +230,7 @@ async function getPokemonJson() {
 function onInput(e) {
   try {
     const data = JSON.parse(MyStorage.getSessionData("pokemon_ko"));
-    let value = e.target.innerText;
+    let value = e.target.value;
     if (data[value].length < 1) return;
     let pokemons = data[value].slice(0, 5);
     const resultDiv = document.getElementById("search_result_div");
@@ -252,7 +252,7 @@ function onInput(e) {
 }
 
 async function search() {
-  const text = document.getElementsByClassName("search_input")[0].innerText;
+  const text = document.getElementsByClassName("search_input")[0].value;
   const converter = JSON.parse(MyStorage.getSessionData("pokemon_convert"));
   if (!converter[text]) {
     const url = "https://pokeapi.co/api/v2/pokemon/" + converter[text];

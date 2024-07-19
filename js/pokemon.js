@@ -109,6 +109,7 @@ async function loadPokemons() {
       continue;
     }
     const li = document.createElement("div");
+    li.classList.add("pokemon_outer_div");
     pokemonDiv = getPokemonDiv(parsed);
     li.appendChild(pokemonDiv);
     fragment.appendChild(li);
@@ -141,8 +142,6 @@ function getPokemonDiv(parsed) {
   const types = document.createElement("div");
   const abilities = document.createElement("div");
   const stats = document.createElement("div");
-
-  li.classList.add("pokemon_outer_div");
 
   pokemonDiv.classList.add("pokemon_inner_div");
 

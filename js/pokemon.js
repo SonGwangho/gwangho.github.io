@@ -38,6 +38,7 @@ class Pokemon {
     );
 
     const json = {
+      id: data.id,
       abilities,
       name,
       sprites: data.sprites.other["official-artwork"],
@@ -150,7 +151,7 @@ function getPokemonDiv(parsed) {
 
   infoDiv.classList.add("pokemon_info");
 
-  name.innerText = `${parsed.name} No.${number.toString()}`;
+  name.innerText = `${parsed.name} No.${parsed.id.toString()}`;
   name.style.fontSize = "40px";
   name.style.fontWeight = "700";
   name.style.marginBottom = "15px";

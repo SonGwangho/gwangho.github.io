@@ -299,7 +299,7 @@ async function search() {
     div.appendChild(chainDiv);
 
     const chain = MyStorage.getSessionData("pokemon_chain");
-    const tree = chain[converter[text]];
+    const tree = chain[converter[text].toLowerCase()];
     try {
       const up = document.createElement("div");
       chainDiv.appendChild(up);

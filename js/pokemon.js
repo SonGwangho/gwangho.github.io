@@ -237,7 +237,7 @@ function onInput(e) {
     if (!value) resultDiv.style.display = "none";
 
     if (data[value]?.length < 1) return;
-    let pokemons = data[value].slice(0, 5);
+    let pokemons = data[value]?.slice(0, 5);
     while (resultDiv.childElementCount > 0) {
       resultDiv.removeChild(resultDiv.children[0]);
     }
@@ -252,9 +252,7 @@ function onInput(e) {
       resultDiv.appendChild(div);
     }
     if (resultDiv.childElementCount > 0) resultDiv.style.display = "block";
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (_) {}
 }
 
 function itemClick(e) {
@@ -265,7 +263,18 @@ function itemClick(e) {
   }
 
   document.getElementsByClassName("search_input")[0].value = value;
-  onInput();
+
+  //다지우고 자기자신만 남기기
+  const resultDiv = document.getElementById("search_result_div");
+  try {
+    const backup = resultDiv.querySelector(".search_item_actived");
+    while (resultDiv.childElementCount > 0) {
+      resultDiv.removeChild(resultDiv.children[0]);
+    }
+    resultDiv.appendChild(backup);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function search() {

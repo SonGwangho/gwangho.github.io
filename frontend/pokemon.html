@@ -2,10 +2,19 @@
 <!-- <link rel="stylesheet" href="../css/style.css"/>
 <script src="../js/pokemon.js"></script> -->
 <div id="pokemon">
-  <div id="pokeList"></div>
+  <div class="search_section">
+    <div class="search_div">
+      <input class="search_input" oninput="onInput(e)"><button class="search_button" onclick="search()">검색</button>
+    </div>
+    <div id="search_result_div"></div>
+  </div>
+  <div id="pokemon_search"></div>
+  <div id="poke_list"></div>
 </div>
 <script>
   loadPage = () => {
+    getDatas();
+    document.getElementsByClassName('search_input')[0].addEventListener("oninput", onInput)
     loadPokemons();
     window.addEventListener('scroll', handleScroll)
   };

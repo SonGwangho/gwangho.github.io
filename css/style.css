@@ -192,3 +192,29 @@ li{
 .pokemon_hidden_ability{
   color: gold;
 }
+.search_section{
+  max-width: 400px;
+}
+.search_div{
+  display: flex;
+  margin: 20px auto;
+  height: 40px;
+  border: 2px solid;
+}
+.search_input{
+  flex: 1 0 auto;
+  border: 0;
+  border-right: 1px solid;
+}
+.search_button{
+  width: 20%;
+  background-color: lightblue;
+  border: 0;
+}
+.search_button:hover{
+  background-color: rgb(130, 130, 236);
+  color: white;
+}
+.search_item{
+  
+}

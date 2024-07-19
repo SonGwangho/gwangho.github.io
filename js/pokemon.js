@@ -236,7 +236,7 @@ function onInput(e) {
       : document.getElementsByClassName("search_input")[0].value;
     if (!value) resultDiv.style.display = "none";
 
-    if (data[value].length < 1) return;
+    if (data[value]?.length < 1) return;
     let pokemons = data[value].slice(0, 5);
     while (resultDiv.childElementCount > 0) {
       resultDiv.removeChild(resultDiv.children[0]);

@@ -257,6 +257,11 @@ function onInput(e) {
 
 function itemClick(e) {
   let value = e.target.innerText;
+
+  if (!value) {
+    value = document.getElementsByClassName("search_item_actived")[0].innerText;
+  }
+
   document.getElementsByClassName("search_input")[0].value = value;
 }
 

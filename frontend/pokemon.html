@@ -4,7 +4,7 @@
 <div id="pokemon">
   <div class="search_section">
     <div class="search_div">
-      <input class="search_input"><button class="search_button" onclick="search()">검색</button>
+      <input class="search_input" type="text"><button class="search_button" onclick="search()">검색</button>
     </div>
     <div id="search_result_div"></div>
   </div>
@@ -15,7 +15,7 @@
   loadPage = () => {
     getPokemonJson();
     document.getElementsByClassName('search_input')[0].addEventListener("input", onInput);;
-    document.getElementsByClassName('search_input')[0].addEventListener("keyup", (e) => {
+    document.getElementsByClassName('search_input')[0].addEventListener("keydown", (e) => {
       e.preventDefault();
       switch(e.keyCode){
         case 13:

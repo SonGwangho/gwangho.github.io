@@ -230,16 +230,23 @@ async function getPokemonJson() {
 function onInput(e) {
   try {
     const data = MyStorage.getSessionData("pokemon_ko");
+    const resultDiv = document.getElementById("search_result_div");
     let value = e.target.value;
+    if (!value) resultDiv.style.display = "block";
+    else resultDiv.style.display = "none";
+
     if (data[value].length < 1) return;
     let pokemons = data[value].slice(0, 5);
-    const resultDiv = document.getElementById("search_result_div");
     while (resultDiv.childElementCount > 0) {
       resultDiv.removeChild(resultDiv.children[0]);
     }
     for (let pokemon of pokemons) {
       const div = document.createElement("div");
       div.classList.add("search_item");
+      div.addEventListener("click", (e) => {
+        let value = e.target.innerText;
+        document.getElementsByClassName("search_input")[0].value = value;
+      });
       const span = document.createElement("span");
       span.innerText = pokemon;
 

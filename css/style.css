@@ -227,13 +227,13 @@ li{
   background-color: #a4daeb33;
   border-radius: 10px;
   padding: 10px;
+  display: none;
 }
 .search_item{
   font-size: 24px;
   margin: 5px 0;
 }
-.search_item:hover{
+.search_item:hover, .search_item .active{
   font-size: 24px;
-  margin: 10px 0;
   font-weight: 600;
 }

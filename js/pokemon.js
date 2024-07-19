@@ -263,7 +263,7 @@ async function search() {
   const converter = MyStorage.getSessionData("pokemon_convert");
   if (converter[text]) {
     const url = "https://pokeapi.co/api/v2/pokemon/" + converter[text];
-    const pokemon = await Pokemon.getPokemons(url);
+    const pokemon = await Pokemon.getPokemons(url.toLowerCase());
     const parsed = await Pokemon.parsing(pokemon);
     const div = getPokemonDiv(parsed);
 

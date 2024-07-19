@@ -288,7 +288,7 @@ function keyboardEvent(direction) {
     case "up":
       if (index == -1) index = 5;
       index--;
-      index = index % cnt;
+      index = (cnt + index) % cnt;
       break;
     case "down":
       index++;

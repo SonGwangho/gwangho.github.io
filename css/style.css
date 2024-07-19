@@ -194,6 +194,7 @@ li{
 }
 .search_section{
   max-width: 400px;
+  margin: auto;
 }
 .search_div{
   display: flex;
@@ -216,5 +217,5 @@ li{
   color: white;
 }
 .search_item{
-  
+
 }

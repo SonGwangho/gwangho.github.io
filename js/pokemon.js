@@ -278,10 +278,15 @@ async function search() {
 function keyboardEvent(direction) {
   const resultDiv = document.getElementById("search_result_div");
   const cnt = resultDiv.childElementCount;
-  let index = resultDiv.querySelector(".active");
-  if (!index) index = -1;
+  let index = -1;
+  resultDiv.querySelectorAll("search_item");
+  for (let i in items) {
+    if (items[i].classList.contains("active")) index = i;
+  }
+
   switch (direction) {
     case "up":
+      if (index == -1) index = 5;
       index--;
       index = index % cnt;
       break;

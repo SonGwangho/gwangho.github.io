@@ -215,6 +215,8 @@ li{
   width: 20%;
   background-color: lightblue;
   border: 0;
+  font-family: 'Ownglyph_noocar-Rg', sans-serif;
+  font-size: 24px;
 }
 .search_button:hover{
   background-color: rgb(130, 130, 236);

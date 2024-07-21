@@ -308,7 +308,7 @@ async function search() {
         if (item != "no") {
           const btn = document.createElement("button");
           btn.innerText = converter[item];
-          btn.onclick = () => {
+          btn.onclick = function () {
             document.getElementsByClassName("search_input")[0].value =
               converter[item];
             search();
@@ -326,7 +326,7 @@ async function search() {
         if (item != "no") {
           const btn = document.createElement("button");
           btn.innerText = converter[item];
-          btn.onclick = () => {
+          btn.onclick = function () {
             document.getElementsByClassName("search_input")[0].value =
               converter[item];
             search();

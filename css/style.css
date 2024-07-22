@@ -71,6 +71,18 @@ li{
   width: 100%;
   height: 50px;
 }
+.btn_close_modal{
+  margin-top: 30px;
+  font-size: 30px;
+  border: none;
+  border-radius: 10px;
+  background: #42efef36;
+  font-family: 'LINESeedKR-Bd', sans-serif;
+}
+.btn_close_modal:hover{
+  background: #02b9b9ad;
+  color: white;
+}
 .overflowHidden{
   overflow: hidden;
 }

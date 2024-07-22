@@ -340,7 +340,7 @@ async function search() {
     Modal.stopLoading();
     Modal.showModal(div.innerHTML);
   } else {
-    MyToast.showToast("메가진화 포켓몬들은 없어요 ㅎㅎ");
+    MyToast.showToast("그 포켓몬은 잘 모르겠어요...");
   }
 }
 

@@ -2,8 +2,10 @@ class Modal {
   static showModal(contents = undefined) {
     let modal = document.getElementsByClassName("modal")[0];
     const content = modal.querySelector(".modal_content");
-    if (contents) content.innerHTML = contents;
-    else {
+    if (contents) {
+      content.innerHTML = "";
+      content.appendChild(contents);
+    } else {
       const div = document.createElement("div");
       div.style.width = "100%";
       div.style.height = "100%";

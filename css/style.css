@@ -134,6 +134,10 @@ li{
   justify-content: space-between;
 }
 
+#pokeList div{
+  margin: 20px 0;
+}
+
 .pokemon_outer_div{
   max-width: 1200px;
   width: 100%;

@@ -237,14 +237,39 @@ li{
   font-weight: 600;
 }
 .chain_div{
-
+  margin: 7px 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
 }
-.poke_up{
-
+.chain_div::before{
+  display: inline-block;
+  width: 1px;
+  content: '';
 }
-.poke_down{
-
+.chain_div::after{
+  display: inline-block;
+  width: 1px;
+  content: '';
+}
+.poke_up button{
+  background-color: red;
+}
+.poke_down button{
+  background-color: blue;
 }
 .pokemon_evolution_item{
-  
+  display: inline-block;
+  text-align: center;
+  margin: 0 12px;
+  font-family: 'Ownglyph_noocar-Rg', sans-serif;
+  border: none;
+  color: white;
+  border-radius: 7px;
 }

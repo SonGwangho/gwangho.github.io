@@ -278,7 +278,7 @@ li{
 .pokemon_evolution_item{
   display: inline-block;
   text-align: center;
-  margin: 0 12px;
+  margin: 5px 10px;
   font-family: 'Ownglyph_noocar-Rg', sans-serif;
   border: none;
   color: white;

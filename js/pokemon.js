@@ -320,6 +320,7 @@ async function search() {
 
     const capture = document.createElement("button");
     capture.classList.add("pokemon_capture");
+    capture.innerText = "캡처";
     capture.addEventListener("click", () => {
       html2canvas(pokeDiv, {
         allowTaint: true,

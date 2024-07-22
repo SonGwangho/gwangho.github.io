@@ -212,6 +212,11 @@ li{
   margin: auto;
 }
 .search_div{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
   display: flex;
   margin: 20px auto;
   height: 40px;
@@ -252,9 +257,9 @@ li{
   font-size: 24px;
   font-weight: 600;
 }
-.chain_div{
+/* .chain_div{
 
-}
+} */
 .poke_up{
   margin: 0;
   padding: 0;

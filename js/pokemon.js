@@ -321,7 +321,25 @@ async function search() {
     const capture = document.createElement("button");
     capture.classList.add("pokemon_capture");
     capture.addEventListener("click", () => {
-      capture(pokeDiv, text);
+      html2canvas(pokeDiv, {
+        allowTaint: true,
+        useCORS: true,
+        width: pokeDiv.offsetWidth,
+        height: pokeDiv.offsetHeight,
+        scale: 1,
+      })
+        .then(function (canvas) {
+          const imageURL = canvas.toDataURL("image/jpeg");
+          const link = document.createElement("a");
+          link.href = imageURL;
+          link.download = text;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
     });
     div.appendChild(capture);
 

@@ -227,7 +227,7 @@ li{
   padding: 10px;
 }
 .search_button{
-  width: 20%;
+  width: 80px;
   background-color: lightblue;
   border: 0;
   font-family: 'Ownglyph_noocar-Rg', sans-serif;
@@ -294,7 +294,7 @@ li{
 .pokemon_evolution_item{
   display: inline-block;
   text-align: center;
-  margin: 5px 10px;
+  margin: 5px 10px; 
   font-family: 'Ownglyph_noocar-Rg', sans-serif;
   border: none;
   color: white;

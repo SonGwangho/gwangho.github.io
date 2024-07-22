@@ -206,10 +206,13 @@ function getPokemonDiv(parsed) {
   statrow[1].classList.add("pokemon_area");
 
   const sumStat = document.createElement("div");
+  sumStat.style.textAlign = "center";
   const sumStatSpan = document.createElement("span");
   sumStatSpan.innerText = "종족값 : " + allStatSum.toString();
   sumStatSpan.style.display = "block";
   sumStatSpan.style.margin = "auto";
+  sumStatSpan.style.fontSize = "30px";
+  sumStatSpan.style.fontWeight = "700";
   sumStat.appendChild(sumStatSpan);
 
   pokemonDiv.appendChild(img);

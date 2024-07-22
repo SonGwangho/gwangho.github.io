@@ -307,6 +307,7 @@ async function search() {
       for (let item of tree.up) {
         if (item != "no") {
           const btn = document.createElement("button");
+          btn.classList.add("pokemon_evolution_item");
           btn.innerText = converter[item];
           btn.onclick = function () {
             document.getElementsByClassName("search_input")[0].value =
@@ -325,6 +326,7 @@ async function search() {
       for (let item of tree.down) {
         if (item != "no") {
           const btn = document.createElement("button");
+          btn.classList.add("pokemon_evolution_item");
           btn.innerText = converter[item];
           btn.onclick = function () {
             document.getElementsByClassName("search_input")[0].value =
@@ -338,7 +340,7 @@ async function search() {
     } catch {}
 
     Modal.stopLoading();
-    Modal.showModal(div.innerHTML);
+    Modal.showModal(div);
   } else {
     MyToast.showToast("그 포켓몬은 잘 모르겠어요...");
   }

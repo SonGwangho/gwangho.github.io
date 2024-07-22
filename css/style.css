@@ -237,7 +237,10 @@ li{
   font-weight: 600;
 }
 .chain_div{
-  margin: 7px 0;
+
+}
+.poke_up{
+  margin: 0;
   padding: 0;
   display: -webkit-box;
   display: -moz-box;
@@ -248,21 +251,29 @@ li{
   justify-content: space-between;
   list-style: none;
 }
-.chain_div::before{
+.poke_up::before{
   display: inline-block;
   width: 1px;
   content: '';
 }
-.chain_div::after{
+.poke_up::after{
   display: inline-block;
   width: 1px;
   content: '';
 }
 .poke_up button{
-  background-color: red;
+  background-color: rgba(21, 255, 0, 0.623);
+}
+.poke_up button:hover{
+  background-color: rgb(21, 255, 0);
+  color: black;
 }
 .poke_down button{
-  background-color: blue;
+  background-color: rgba(0, 119, 255, 0.493);
+}
+.poke_down button:hover{
+  background-color: rgb(0, 174, 255);
+  color: black;
 }
 .pokemon_evolution_item{
   display: inline-block;
@@ -272,5 +283,6 @@ li{
   border: none;
   color: white;
   border-radius: 7px;
-  font-size: 18px;
+  font-size: 22px;
+  padding: 3px;
 }

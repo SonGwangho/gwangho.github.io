@@ -270,7 +270,8 @@ function onInput(e) {
       div.appendChild(span);
       resultDiv.appendChild(div);
     }
-    if (resultDiv.childElementCount > 0) resultDiv.style.display = "block";
+    if (resultDiv.childElementCount == 0) resultDiv.style.display = "none";
+    else if (resultDiv.childElementCount > 0) resultDiv.style.display = "block";
   } catch (_) {}
 }
 

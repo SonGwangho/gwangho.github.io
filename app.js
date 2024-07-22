@@ -113,8 +113,10 @@ const triggerLoadEvents = (element) => {
 window.addEventListener("popstate", App);
 
 document.addEventListener("DOMContentLoaded", () => {
-  MyToast.showToast("크롬에서 최적화 되어있습니다.");
-  MyToast.showToast("크롬으로 봐주세요...");
+  if (!navigator.userAgent.toLowerCase().includes("chrome")) {
+    MyToast.showToast("가능하시면 크롬으로 봐주세요...");
+    MyToast.showToast("크롬에서 최적화 되어있습니다.");
+  }
 
   document.body.addEventListener("click", (e) => {
     if (e.target.matches("[data-link]")) {

@@ -207,8 +207,12 @@ function getPokemonDiv(parsed) {
 
   const sumStat = document.createElement("div");
   sumStat.style.textAlign = "center";
+  sumStat.style.margin = "0 0 30px 0";
   const sumStatSpan = document.createElement("span");
   sumStatSpan.innerText = "종족값 : " + allStatSum.toString();
+  if (allStatSum >= 600) {
+    sumStatSpan.style.color = "red";
+  }
   sumStatSpan.style.display = "block";
   sumStatSpan.style.margin = "auto";
   sumStatSpan.style.fontSize = "30px";

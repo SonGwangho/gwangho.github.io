@@ -418,25 +418,3 @@ function keyboardEvent(direction) {
   for (let item of items) item.classList.remove("search_item_actived");
   items[index].classList.add("search_item_actived");
 }
-
-function capture(div, name) {
-  html2canvas(div, {
-    allowTaint: true,
-    useCORS: true,
-    width: div.offsetWidth,
-    height: div.offsetHeight,
-    scale: 1,
-  })
-    .then(function (canvas) {
-      const imageURL = canvas.toDataURL("image/jpeg");
-      const link = document.createElement("a");
-      link.href = imageURL;
-      link.download = name;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
-}

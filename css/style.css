@@ -307,3 +307,13 @@ li{
   font-size: 22px;
   padding: 3px;
 }
+.pokemon_capture{
+  position: fixed;
+  right: 5%;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  background: black;
+  font-size: 16px;
+  padding: 5px 12px;
+}

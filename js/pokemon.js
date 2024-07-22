@@ -92,6 +92,11 @@ async function loadPokemons() {
     li.classList.add("pokemon_outer_div");
     pokemonDiv = getPokemonDiv(parsed);
     li.appendChild(pokemonDiv);
+    pokemonDiv.addEventListener("click", (e) => {
+      e.stopPropagation();
+      document.getElementsByClassName("search_input")[0].value = parsed.name;
+      search();
+    });
     fragment.appendChild(li);
   }
 

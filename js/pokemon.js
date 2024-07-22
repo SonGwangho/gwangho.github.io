@@ -176,6 +176,7 @@ function getPokemonDiv(parsed) {
     abilities.appendChild(ability);
   });
 
+  let allStatSum = 0;
   const statrow = [
     document.createElement("div"),
     document.createElement("div"),
@@ -189,6 +190,7 @@ function getPokemonDiv(parsed) {
     if (parseInt(s.base_stat) >= 130) {
       bs.style.color = "red";
     }
+    allStatSum += parseInt(s.base_stat);
     stat.appendChild(n);
     stat.appendChild(bs);
     stat.classList.add("pokemon_item");
@@ -203,12 +205,20 @@ function getPokemonDiv(parsed) {
   stats.appendChild(statrow[1]);
   statrow[1].classList.add("pokemon_area");
 
+  const sumStat = document.createElement("div");
+  const sumStatSpan = document.createElement("span");
+  sumStatSpan.innerText = "종족값 : " + allStatSum.toString();
+  sumStatSpan.style.display = "block";
+  sumStatSpan.style.margin = "auto";
+  sumStat.appendChild(sumStatSpan);
+
   pokemonDiv.appendChild(img);
   infoDiv.appendChild(name);
   infoDiv.appendChild(types);
   infoDiv.appendChild(abilities);
   infoDiv.appendChild(stats);
   pokemonDiv.appendChild(infoDiv);
+  pokemonDiv.appendChild(sumStat);
 
   return pokemonDiv;
 }

@@ -114,6 +114,9 @@ function handleScroll(entries, observer) {
 }
 
 function getPokemonDiv(parsed) {
+  if (!parsed) {
+    return;
+  }
   const typeColor = {
     노말: "#949495",
     격투: "#E09C40",
@@ -314,6 +317,14 @@ async function search() {
     const div = document.createElement("div");
     const chainDiv = document.createElement("div");
     chainDiv.classList.add("chain_div");
+
+    const capture = document.createElement("button");
+    capture.classList.add("pokemon_capture");
+    capture.addEventListener("click", () => {
+      capture(pokeDiv, text);
+    });
+    div.appendChild(capture);
+
     div.appendChild(pokeDiv);
     div.appendChild(chainDiv);
 
@@ -387,4 +398,26 @@ function keyboardEvent(direction) {
   items = resultDiv.querySelectorAll(".search_item");
   for (let item of items) item.classList.remove("search_item_actived");
   items[index].classList.add("search_item_actived");
+}
+
+function capture(div, name) {
+  html2canvas(div, {
+    allowTaint: true,
+    useCORS: true,
+    width: div.offsetWidth,
+    height: div.offsetHeight,
+    scale: 1,
+  })
+    .then(function (canvas) {
+      const imageURL = canvas.toDataURL("image/jpeg");
+      const link = document.createElement("a");
+      link.href = imageURL;
+      link.download = name;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
 }

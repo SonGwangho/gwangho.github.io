@@ -114,7 +114,7 @@ class MyToast {
   }
 }
 
-class myNotification {
+class MyNotification {
   static checkPermission() {
     if (Notification.permission === "granted") {
       return true;

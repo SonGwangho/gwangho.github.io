@@ -113,6 +113,9 @@ const triggerLoadEvents = (element) => {
 window.addEventListener("popstate", App);
 
 document.addEventListener("DOMContentLoaded", () => {
+  MyToast.showToast("크롬에서 최적화 되어있습니다.");
+  MyToast.showToast("크롬으로 봐주세요...");
+
   document.body.addEventListener("click", (e) => {
     if (e.target.matches("[data-link]")) {
       e.preventDefault();

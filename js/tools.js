@@ -265,10 +265,6 @@ class Gist {
     iframe.width = "600px";
     iframe.height = "800px";
     iframe.frameBorder = 0;
-    iframe.onload = () => {
-      iframe.style.height =
-        iframe.contentWindow.document.body.scrollHeight + "px";
-    };
     mainDiv.appendChild(iframe);
 
     return mainDiv;

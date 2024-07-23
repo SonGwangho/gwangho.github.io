@@ -3,42 +3,50 @@
     {
       "id": "e2fbca807984b6fa531e65c1d3c49c48",
       "title": "폰켓몬",
-      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/1845"
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/1845",
+      "level": 1
     },
     {
       "id": "8514cb0c6baedd82377886182cbcab1d",
       "title": "완주하지 못한 선수",
-      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42576"
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42576",
+      "level": 1
     },
     {
       "id": "dc6790eddf9175b748c8e64b121bdb0e",
       "title": "전화번호 목록",
-      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42577"
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42577",
+      "level": 2
     },
     {
       "id": "3c11a1bb031848c672f429f8ea534963",
       "title": "의상",
-      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42578"
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42578",
+      "level": 2
     },
     {
       "id": "a25f50bf32dba299b0cb2698c07f88fd",
       "title": "베스트앨범",
-      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42579"
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42579",
+      "level": 3
     },
     {
       "id": "a486e9a835e9f9d0f6c8b2f8c29b8f09",
       "title": "같은 숫자는 싫어",
-      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12906"
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12906",
+      "level": 1
     },
     {
       "id": "7f0b8bc2a7c9e1c6c2d2909713cb6f11",
       "title": "기능개발",
-      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42586"
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42586",
+      "level": 2
     },
     {
       "id": "b987ec5520e46b37c1690c9cbf552514",
       "title": "올바른 괄호",
-      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12909"
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12909",
+      "level": 2
     }
   ]
 }

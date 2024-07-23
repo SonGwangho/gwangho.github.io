@@ -1,4 +1,4 @@
-<div id="coding_body">
+<div id="coding_body" style="margin-bottom: 200px;">
 
 </div>
 <script>
@@ -14,7 +14,7 @@
         title.style.width = '600px';
         title.style.margin = '40px auto 10px';
         title.style.cursor = 'pointer'
-        title.innerText = gist.title;
+        title.innerText = `${gist.title} - ${["★", "★", "★", "★", "★"].slice(0, parseInt(gist.level)).join('')}`;
         title.addEventListener("click", () => {
           const a = document.createElement('a');
           a.target = '_blank';

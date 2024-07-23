@@ -3,20 +3,26 @@
 </div>
 <script>
   loadPage = () => {
-    let gist_list = MyStorage.getSessionData("gist_id_list");
-    if (!MyStorage.getSessionData("gist_id_list")) {
-      fetch("./assets/gist_id_list.json")
-      .then(response => response.json())
-      .then(result => {
-        gist_list = result;
-        MyStorage.saveSession("gist_id_list", JSON.stringify(result));
-      });
-    }
+    fetch("./assets/gist_id_list.json")
+    .then(response => response.json())
+    .then(result => {
+      gist_list = result;
+      MyStorage.saveSession("gist_id_list", JSON.stringify(result));
+      for (let gist of gist_list.gists){
+        const body = document.getElementById('coding_body');
+        const title = document.createElement('h1');
+        title.innerText = gist.title;
+        h1.addEventListener("click", () => {
+          const a = document.createElement('a');
+          a.href = gist.url;
+          a.click();
+        });
+        body.appendChild(title);
+        const dom = Gist.getGistDom(gist.id);
+        body.appendChild(dom);
+      }
+    });
 
-    for (let id of gist_list.ids){
-      const body = document.getElementById('coding_body');
-      const dom = Gist.getGistDom(id);
-      body.appendChild(dom);
-    }
+    
   }
 </script>

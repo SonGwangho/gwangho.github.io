@@ -6,8 +6,7 @@
     fetch("./assets/gist_id_list.json")
     .then(response => response.json())
     .then(result => {
-      gist_list = result;
-      MyStorage.saveSession("gist_id_list", JSON.stringify(result));
+      const gist_list = result;
       for (let gist of gist_list.gists){
         const body = document.getElementById('coding_body');
         const title = document.createElement('h1');

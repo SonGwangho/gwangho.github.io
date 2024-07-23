@@ -52,6 +52,12 @@ const routes = [
       return getView("/pokemon.html");
     },
   },
+  {
+    path: "/coding",
+    view: () => {
+      return getView("/coding.html");
+    },
+  },
 ];
 
 const getView = async (url) => {

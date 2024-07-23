@@ -3,6 +3,7 @@
 </div>
 <script>
   loadPage = () => {
+    Modal.startLoading();
     fetch("./assets/gist_id_list.json")
     .then(response => response.json())
     .then(result => {
@@ -20,6 +21,7 @@
         const dom = Gist.getGistDom(gist.id);
         body.appendChild(dom);
       }
+      Modal.stopLoading();
     });
 
     

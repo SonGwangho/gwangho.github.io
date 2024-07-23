@@ -1,0 +1,22 @@
+<div id="coding_body">
+
+</div>
+<script>
+  loadPage = () => {
+    let gist_list = MyStorage.getSessionData("gist_id_list");
+    if (!MyStorage.getSessionData("gist_id_list")) {
+      fetch("./assets/gist_id_list.json")
+      .then(response => response.json())
+      .then(result => {
+        gist_list = result;
+        MyStorage.saveSession("gist_id_list", JSON.stringify(result));
+      });
+    }
+
+    for (let id of gist_list.ids){
+      const body = document.getElementById('coding_body');
+      const dom = Gist.getGistDom(id);
+      body.appendChild(dom);
+    }
+  }
+</script>

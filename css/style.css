@@ -317,3 +317,8 @@ li{
   font-size: 16px;
   padding: 5px 12px;
 }
+
+.code_main_div{
+  text-align: center;
+  margin: auto;
+}

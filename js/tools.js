@@ -194,8 +194,8 @@ class myRss {
 
 // myNotification.sendNotification("제목", { body: "내용" });
 class Gist {
-  static async getData() {
-    const url = `https://api.github.com/gists/408041afe99b1a0b7d06197726070074`;
+  static async getData(gist_id) {
+    const url = `https://api.github.com/gists/${gist_id}`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -253,6 +253,25 @@ class Gist {
         response.statusText
       );
     }
+  }
+
+  static getGistDom(gist_id) {
+    const mainDiv = document.createElement("div");
+    mainDiv.classList.add("code_main_div");
+
+    const iframe = document.createElement("iframe");
+    iframe.src = `data:text/html;charset=utf-8,<script src='https://gist.github.com/SonGwangho/${gist_id}.js'><\/script>`;
+    iframe.style.margin = "auto";
+    iframe.width = "600px";
+    iframe.height = "800px";
+    iframe.frameBorder = 0;
+    iframe.onload = () => {
+      iframe.style.height =
+        iframe.contentWindow.document.body.scrollHeight + "px";
+    };
+    mainDiv.appendChild(iframe);
+
+    return mainDiv;
   }
 }
 

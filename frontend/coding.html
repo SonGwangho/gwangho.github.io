@@ -23,7 +23,9 @@
         });
         body.appendChild(title);
         const dom = Gist.getGistDom(gist.id);
-        const detail = document.createElement('detatils');
+        const detail = document.createElement('details');
+        detail.style.width = '600px';
+        detail.style.margin = 'auto';
         const summary = document.createElement('summary');
         summary.innerText = '정답코드'
         detail.appendChild(summary);

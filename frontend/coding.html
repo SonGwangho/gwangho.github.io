@@ -11,9 +11,13 @@
       for (let gist of gist_list.gists){
         const body = document.getElementById('coding_body');
         const title = document.createElement('h1');
+        title.style.width = '600px';
+        title.style.margin = '40px auto 10px';
+        title.style.cursor = 'pointer'
         title.innerText = gist.title;
         title.addEventListener("click", () => {
           const a = document.createElement('a');
+          a.target = '_blank';
           a.href = gist.url;
           a.click();
         });

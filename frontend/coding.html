@@ -23,7 +23,13 @@
         });
         body.appendChild(title);
         const dom = Gist.getGistDom(gist.id);
-        body.appendChild(dom);
+        const detail = document.createElement('detatils');
+        const summary = document.createElement('summary');
+        summary.innerText = '정답코드'
+        detail.appendChild(summary);
+        detail.appendChild(dom);
+
+        body.appendChild(detail);
       }
       Modal.stopLoading();
     });

@@ -17,8 +17,10 @@ class Dino {
   }
 
   jump() {
-    this.dy += this.jumpStrength;
-    this.grounded = false;
+    if (this.grounded) {
+      this.dy += this.jumpStrength;
+      this.grounded = false;
+    }
   }
 
   update() {
@@ -105,7 +107,7 @@ class Game {
           350,
           20,
           135,
-          this.gameSpeed + Math.sqrt((this.gameSpeed * this.score) / 180)
+          this.gameSpeed + (this.gameSpeed * this.score) / 600
         )
       );
       this.oldScore = this.score;

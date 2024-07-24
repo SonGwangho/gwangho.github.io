@@ -2,7 +2,7 @@ function getLanguageTitle(title) {
   const h1 = document.createElement("h1");
   h1.innerText = title;
   h1.style.width = "800px";
-  h1.style.margin = "100px auto 40px";
+  h1.style.margin = "80px auto 30px";
   return h1;
 }
 

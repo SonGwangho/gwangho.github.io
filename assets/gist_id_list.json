@@ -1,4 +1,5 @@
 {
+  "languages" : ["javascript", "java", "C#", "kotlin", "python", "go"],
   "javascript": [
     {
       "id": "e2fbca807984b6fa531e65c1d3c49c48",
@@ -77,6 +78,12 @@
       "title": "디스크 컨트롤러",
       "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42627",
       "level": 3
+    },
+    {
+      "id": "532d1cb813de76fd311818c1645b7ad7",
+      "title": "K번째수",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42748",
+      "level": 1
     }
   ],
   "java": [
@@ -88,12 +95,45 @@
     }
   ],
   "python": [
-
+    {
+      "id": "9b9297ec4b214c4a7bbdbb6757d616aa",
+      "title": "올바른 괄호의 갯수",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12929",
+      "level": 4
+    },
+    {
+      "id": "dae99db9bd8a68e325a8a79f3d588dd4",
+      "title": "다단계 칫솔 판매",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/77486",
+      "level": 3
+    },
+    {
+      "id": "01e310195d58581b958183fdb153764b",
+      "title": "불량 사용자",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/64064",
+      "level": 3
+    },
+    {
+      "id": "7a13a63110ed2e973bb4ac81536df3e9",
+      "title": "입국심사",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43238",
+      "level": 3
+    }
   ],
   "go": [
-
+    {
+      "id": "0ac2879df080800468bb139432a79ee2",
+      "title": "올바른 괄호의 갯수",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12929",
+      "level": 4
+    }
   ],
   "C#": [
-    
+    {
+      "id": "679d4bc3f9523cd3a9697c91e1a9a6eb",
+      "title": "이중우선순위큐",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42628",
+      "level": 3
+    }
   ]
 }

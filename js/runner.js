@@ -83,16 +83,19 @@ class Game {
     if (this.isGameOver) return;
 
     this.dino.update();
-    this.obstacles.push(
-      new Obstacle(this.canvas.width, 100, 80, 30, this.gameSpeed, "grey")
-    );
-    if (Math.random() < 0.01)
-      if (Math.random() < 0.01 && this.score > this.oldScore + 60) {
-        this.obstacles.push(
-          new Obstacle(this.canvas.width, 350, 20, 150, this.gameSpeed)
-        );
-        this.oldScore = this.score;
-      }
+
+    if (Math.random() < 0.01) {
+      this.obstacles.push(
+        new Obstacle(this.canvas.width, 100, 80, 30, this.gameSpeed, "grey")
+      );
+    }
+
+    if (Math.random() < 0.01 && this.score > this.oldScore + 60) {
+      this.obstacles.push(
+        new Obstacle(this.canvas.width, 350, 20, 150, this.gameSpeed)
+      );
+      this.oldScore = this.score;
+    }
 
     this.obstacles.forEach((obstacle) => obstacle.update());
     this.obstacles = this.obstacles.filter(

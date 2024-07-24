@@ -51,7 +51,7 @@ class Obstacle {
   }
 
   draw(ctx) {
-    ctx.fillStyle = "red";
+    ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 }

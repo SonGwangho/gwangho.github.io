@@ -16,6 +16,9 @@
     game = new Game(canvas);
   }
   destroyPage = () => {
-    game.killEvents();
+    try{
+      game.killEvents();
+    }
+    catch(e){console.warn(e);}
   }
 </script>

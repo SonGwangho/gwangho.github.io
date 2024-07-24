@@ -79,12 +79,21 @@
       "level": 3
     }
   ],
-  "java":[
+  "java": [
     {
       "id": "679d4bc3f9523cd3a9697c91e1a9a6eb",
       "title": "이중우선순위큐",
       "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42628",
       "level": 3
     }
+  ],
+  "python": [
+
+  ],
+  "go": [
+
+  ],
+  "C#": [
+    
   ]
 }

@@ -21,10 +21,12 @@ function getCodeDetails(gist_list) {
       a.href = gist.url;
       a.click();
     });
-    body.appendChild(title);
-    const dom = Gist.getGistDom(gist.id);
 
-    return wrapDetail(dom, "정답코드");
+    const dom = Gist.getGistDom(gist.id);
+    const div = document.createElement("div");
+    div.appendChild(title);
+    div.appendChild(wrapDetail(dom, "정답코드"));
+    return div;
   }
 }
 

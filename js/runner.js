@@ -67,7 +67,10 @@ class Game {
     this.isGameOver = false;
 
     document.addEventListener("keydown", (event) => {
-      if (event.code === "Space") this.dino.jump();
+      if (event.code === "Space") {
+        event.preventDefault();
+        this.dino.jump();
+      }
     });
 
     this.loop();
@@ -80,7 +83,7 @@ class Game {
 
     if (Math.random() < 0.01) {
       this.obstacles.push(
-        new Obstacle(this.canvas.width, 150, 20, 20, this.gameSpeed)
+        new Obstacle(this.canvas.width, 150, 20, 150, this.gameSpeed)
       );
     }
 
@@ -97,7 +100,7 @@ class Game {
         this.dino.y + this.dino.height > obstacle.y
       ) {
         this.isGameOver = true;
-        alert(`Game over! Your score is: ${this.score}`);
+        MyToast.showToast("졌다! 점수: this.score");
         document.location.reload();
       }
     });

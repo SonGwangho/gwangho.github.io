@@ -6,9 +6,11 @@ class Dino {
     this.height = height;
     this.dy = 0;
     this.gravity = 0.6;
-    this.jumpStrength = -10;
+    this.jumpStrength = -13;
     this.grounded = true;
     this.canvasHeight = canvasHeight;
+    this.image = new Image();
+    this.image.src = "./asset/img/runner_character.png";
   }
 
   jump() {
@@ -32,6 +34,7 @@ class Dino {
   draw(ctx) {
     ctx.fillStyle = "black";
     ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
 }
 
@@ -60,7 +63,7 @@ class Game {
     this.ctx = canvas.getContext("2d");
     this.canvas.width = 800;
     this.canvas.height = 200;
-    this.dino = new Dino(50, 150, 20, 20, this.canvas.height);
+    this.dino = new Dino(50, 150, 30, 150, this.canvas.height);
     this.obstacles = [];
     this.score = 0;
     this.gameSpeed = 3;
@@ -100,7 +103,7 @@ class Game {
         this.dino.y + this.dino.height > obstacle.y
       ) {
         this.isGameOver = true;
-        MyToast.showToast("졌다! 점수: this.score");
+        alert("졌다! 점수: this.score");
         document.location.reload();
       }
     });

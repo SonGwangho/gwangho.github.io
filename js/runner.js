@@ -66,6 +66,7 @@ class Game {
     this.dino = new Dino(50, 150, 30, 80, this.canvas.height);
     this.obstacles = [];
     this.score = 0;
+    this.oldScore = -50;
     this.gameSpeed = 3;
     this.isGameOver = false;
 
@@ -84,10 +85,11 @@ class Game {
 
     this.dino.update();
 
-    if (Math.random() < 0.01) {
+    if (Math.random() < 0.01 && this.score > this.oldScore + 50) {
       this.obstacles.push(
         new Obstacle(this.canvas.width, 150, 20, 150, this.gameSpeed)
       );
+      this.oldScore = this.score;
     }
 
     this.obstacles.forEach((obstacle) => obstacle.update());

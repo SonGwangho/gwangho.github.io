@@ -36,8 +36,8 @@ class Dino {
 
   draw(ctx) {
     this.grounded
-      ? ctx.drawImage(this.image_jump, this.x, this.y, this.width, this.height)
-      : ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+      ? ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
+      : ctx.drawImage(this.image_jump, this.x, this.y, this.width, this.height);
   }
 }
 

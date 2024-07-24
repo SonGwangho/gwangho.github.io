@@ -1,9 +1,9 @@
 function getLanguageTitle(title) {
-  let title = document.createElement("h1");
-  title.innerText = title;
-  title.style.width = "800px";
-  title.style.margin = "100px auto 40px";
-  return title;
+  const h1 = document.createElement("h1");
+  h1.innerText = title;
+  h1.style.width = "800px";
+  h1.style.margin = "100px auto 40px";
+  return h1;
 }
 
 function getCodeDetails(gist_list) {

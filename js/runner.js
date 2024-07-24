@@ -71,7 +71,7 @@ class Game {
     this.obstacles = [];
     this.score = 0;
     this.oldScore = -50;
-    this.gameSpeed = 3;
+    this.gameSpeed = 5;
     this.isGameOver = false;
 
     document.addEventListener("keydown", (event) => {

@@ -105,7 +105,7 @@ class Game {
         this.dino.y + this.dino.height > obstacle.y
       ) {
         this.isGameOver = true;
-        alert("졌다! 점수: this.score");
+        alert(`졌다! 점수: ${this.score}`);
         document.location.reload();
       }
     });

@@ -74,27 +74,19 @@ class Game {
     this.gameSpeed = 5;
     this.isGameOver = false;
 
-    document.addEventListener("click", this.click);
-    document.addEventListener("keydown", this.keydown);
-
-    this.loop();
-  }
-
-  killEvents() {
-    document.removeEventListener("keydown", this.keydown);
-    document.removeEventListener("click", this.click);
-  }
-
-  keydown(event) {
-    if (event.code === "Space") {
+    document.addEventListener("click", (event) => {
       event.preventDefault();
       this.dino.jump();
-    }
-  }
+    });
 
-  click(event) {
-    event.preventDefault();
-    this.dino.jump();
+    document.addEventListener("keydown", (event) => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        this.dino.jump();
+      }
+    });
+
+    this.loop();
   }
 
   update() {

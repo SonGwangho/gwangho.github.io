@@ -33,7 +33,7 @@ class Modal {
       modal.style.display = "flex";
       modal.classList.add("overflowHidden");
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
   }
 
@@ -47,7 +47,7 @@ class Modal {
       modal.style.display = "none";
       modal.classList.remove("overflowHidden");
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
   }
 }

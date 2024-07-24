@@ -8,7 +8,7 @@ class Pokemon {
       const data = await response.json();
       return data;
     } catch (e) {
-      console.log(e);
+      console.warn(e);
       return null;
     }
   }
@@ -305,7 +305,7 @@ function itemClick(e) {
     }
     resultDiv.appendChild(backup);
   } catch (error) {
-    console.log(error);
+    console.warn(error);
   }
 }
 
@@ -344,7 +344,7 @@ async function search() {
           document.body.removeChild(link);
         })
         .catch(function (err) {
-          console.log(err);
+          console.warn(err);
         });
     });
     div.appendChild(capture);

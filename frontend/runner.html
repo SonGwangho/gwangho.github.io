@@ -6,19 +6,12 @@
   </div>
 </div>
 <script>
-  let game;
   loadPage = () => {
     MyToast.showToast('스페이스 바 눌러서 뛰셈!!!');
     let highScore = parseInt(MyStorage.getLocalData("runner_high_score"));
     if (!highScore) highScore = 0;
     document.getElementById('highscore').innerText = highScore;
     const canvas = document.getElementById('gameCanvas');
-    game = new Game(canvas);
-  }
-  destroyPage = () => {
-    try{
-      game.killEvents();
-    }
-    catch(e){console.warn(e);}
+    new Game(canvas);
   }
 </script>

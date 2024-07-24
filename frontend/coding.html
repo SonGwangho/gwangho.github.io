@@ -9,11 +9,11 @@
     .then(result => {
       const gist_list = result;
       const body = document.getElementById('coding_body');
-      // let javascript = document.createElement('h1');
-      // javascript.innerText = 'javascript'
-      // javascript.style.width = '600px';
-      // javascript.style.margin = '40px auto 10px';
-      // body.appendChild(javascript);
+      let javascript = document.createElement('h1');
+      javascript.innerText = 'javascript'
+      javascript.style.width = '800px';
+      javascript.style.margin = '100px auto 40px';
+      body.appendChild(javascript);
       for (let gist of gist_list.javascript){
         const title = document.createElement('h2');
         title.style.width = '800px';
@@ -39,6 +39,11 @@
         body.appendChild(detail);
       }
       
+      let java = document.createElement('h1');
+      java.innerText = 'javascript'
+      java.style.width = '800px';
+      java.style.margin = '100px auto 40px';
+      body.appendChild(java);
       for (let gist of gist_list.java){
         const title = document.createElement('h2');
         title.style.width = '800px';

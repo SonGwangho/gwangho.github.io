@@ -5,8 +5,8 @@ class Dino {
     this.width = width;
     this.height = height;
     this.dy = 0;
-    this.gravity = 0.6;
-    this.jumpStrength = -13;
+    this.gravity = 0.7;
+    this.jumpStrength = -11;
     this.grounded = true;
     this.canvasHeight = canvasHeight;
     this.image = new Image();

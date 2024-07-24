@@ -10,7 +10,7 @@ class Dino {
     this.grounded = true;
     this.canvasHeight = canvasHeight;
     this.image = new Image();
-    this.image.src = "./asset/img/runner_character.png";
+    this.image.src = "./assets/img/runner_character.png";
   }
 
   jump() {
@@ -63,7 +63,7 @@ class Game {
     this.ctx = canvas.getContext("2d");
     this.canvas.width = 800;
     this.canvas.height = 200;
-    this.dino = new Dino(50, 150, 30, 150, this.canvas.height);
+    this.dino = new Dino(50, 150, 30, 100, this.canvas.height);
     this.obstacles = [];
     this.score = 0;
     this.gameSpeed = 3;

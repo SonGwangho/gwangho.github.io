@@ -11,6 +11,9 @@ class Dino {
     this.canvasHeight = canvasHeight;
     this.image = new Image();
     this.image.src = "./assets/img/runner_character.png";
+
+    this.image_jump = new Image();
+    this.image_jump.src = "./assets/img/runner_character_jump.png";
   }
 
   jump() {
@@ -32,7 +35,9 @@ class Dino {
   }
 
   draw(ctx) {
-    ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    this.grounded
+      ? ctx.drawImage(this.image_jump, this.x, this.y, this.width, this.height)
+      : ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
 }
 

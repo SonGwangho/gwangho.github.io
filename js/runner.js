@@ -62,7 +62,7 @@ class Game {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.canvas.width = 800;
-    this.canvas.height = 400;
+    this.canvas.height = 200;
     this.dino = new Dino(50, 150, 30, 80, this.canvas.height);
     this.obstacles = [];
     this.score = 0;

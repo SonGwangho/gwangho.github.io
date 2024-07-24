@@ -1,0 +1,12 @@
+<div id="runner_div">
+  <div class="game_container">
+    <canvas id="gameCanvas"></canvas>
+    <div class="score">Score: <span id="score">0</span></div>
+  </div>
+</div>
+<script>
+  loadPage = () => {
+    const canvas = document.getElementById('gameCanvas');
+    new Game(canvas);
+  }
+</script>

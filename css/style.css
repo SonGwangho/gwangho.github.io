@@ -322,3 +322,28 @@ li{
   text-align: center;
   margin: auto;
 }
+
+#runner_div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.game_container {
+  text-align: center;
+  position: relative;
+}
+
+#gameCanvas {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.score {
+  font-size: 20px;
+  margin-top: 10px;
+}

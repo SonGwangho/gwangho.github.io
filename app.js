@@ -58,6 +58,12 @@ const routes = [
       return getView("/coding.html");
     },
   },
+  {
+    path: "/runner",
+    view: () => {
+      return getView("/runner.html");
+    },
+  },
 ];
 
 const getView = async (url) => {

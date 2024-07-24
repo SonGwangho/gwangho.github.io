@@ -9,65 +9,42 @@
     .then(result => {
       const gist_list = result;
       const body = document.getElementById('coding_body');
-      let javascript = document.createElement('h1');
-      javascript.innerText = 'JavaScript'
-      javascript.style.width = '800px';
-      javascript.style.margin = '100px auto 40px';
-      body.appendChild(javascript);
-      for (let gist of gist_list.javascript){
-        const title = document.createElement('h2');
-        title.style.width = '800px';
-        title.style.margin = '40px auto 10px';
-        title.style.cursor = 'pointer'
-        title.innerText = `${gist.title} - ${["★", "★", "★", "★", "★"].slice(0, parseInt(gist.level)).join('')}`;
-        title.addEventListener("click", () => {
-          const a = document.createElement('a');
-          a.target = '_blank';
-          a.href = gist.url;
-          a.click();
-        });
-        body.appendChild(title);
-        const dom = Gist.getGistDom(gist.id);
-        const detail = document.createElement('details');
-        detail.style.width = '800px';
-        detail.style.margin = 'auto';
-        const summary = document.createElement('summary');
-        summary.innerText = '정답코드'
-        detail.appendChild(summary);
-        detail.appendChild(dom);
-
-        body.appendChild(detail);
-      }
       
-      let java = document.createElement('h1');
-      java.innerText = 'Java'
-      java.style.width = '800px';
-      java.style.margin = '100px auto 40px';
-      body.appendChild(java);
-      for (let gist of gist_list.java){
-        const title = document.createElement('h2');
-        title.style.width = '800px';
-        title.style.margin = '40px auto 10px';
-        title.style.cursor = 'pointer'
-        title.innerText = `${gist.title} - ${["★", "★", "★", "★", "★"].slice(0, parseInt(gist.level)).join('')}`;
-        title.addEventListener("click", () => {
-          const a = document.createElement('a');
-          a.target = '_blank';
-          a.href = gist.url;
-          a.click();
-        });
-        body.appendChild(title);
-        const dom = Gist.getGistDom(gist.id);
-        const detail = document.createElement('details');
-        detail.style.width = '800px';
-        detail.style.margin = 'auto';
-        const summary = document.createElement('summary');
-        summary.innerText = '정답코드'
-        detail.appendChild(summary);
-        detail.appendChild(dom);
+      body.appendChild(getLanguageTitle('JavaScript'));
+      body.appendChild(wrapDetail(getCodeDetails(gist_list.javascript), "문제보기"));
 
-        body.appendChild(detail);
-      }
+      body.appendChild(getLanguageTitle('Java'));
+      body.appendChild(wrapDetail(getCodeDetails(gist_list.java), "문제보기"));
+      
+      // let java = document.createElement('h1');
+      // java.innerText = 'Java'
+      // java.style.width = '800px';
+      // java.style.margin = '100px auto 40px';
+      // body.appendChild(java);
+      // for (let gist of gist_list.java){
+      //   const title = document.createElement('h2');
+      //   title.style.width = '800px';
+      //   title.style.margin = '40px auto 10px';
+      //   title.style.cursor = 'pointer'
+      //   title.innerText = `${gist.title} - ${["★", "★", "★", "★", "★"].slice(0, parseInt(gist.level)).join('')}`;
+      //   title.addEventListener("click", () => {
+      //     const a = document.createElement('a');
+      //     a.target = '_blank';
+      //     a.href = gist.url;
+      //     a.click();
+      //   });
+      //   body.appendChild(title);
+      //   const dom = Gist.getGistDom(gist.id);
+      //   const detail = document.createElement('details');
+      //   detail.style.width = '800px';
+      //   detail.style.margin = 'auto';
+      //   const summary = document.createElement('summary');
+      //   summary.innerText = '정답코드'
+      //   detail.appendChild(summary);
+      //   detail.appendChild(dom);
+
+      //   body.appendChild(detail);
+      // }
       Modal.stopLoading();
     });
 

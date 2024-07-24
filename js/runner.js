@@ -84,7 +84,7 @@ class Game {
 
     this.dino.update();
     this.obstacles.push(
-      new Obstacle(this.canvas.width, 100, 80, 30, this.gameSpeed, grey)
+      new Obstacle(this.canvas.width, 100, 80, 30, this.gameSpeed, "grey")
     );
     if (Math.random() < 0.01)
       if (Math.random() < 0.01 && this.score > this.oldScore + 60) {

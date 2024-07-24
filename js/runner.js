@@ -17,10 +17,8 @@ class Dino {
   }
 
   jump() {
-    if (this.grounded) {
-      this.dy = this.jumpStrength;
-      this.grounded = false;
-    }
+    this.dy += this.jumpStrength;
+    this.grounded = false;
   }
 
   update() {

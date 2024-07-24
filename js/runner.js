@@ -6,7 +6,7 @@ class Dino {
     this.height = height;
     this.dy = 0;
     this.gravity = 0.7;
-    this.jumpStrength = -11;
+    this.jumpStrength = -12;
     this.grounded = true;
     this.canvasHeight = canvasHeight;
     this.image = new Image();
@@ -32,8 +32,6 @@ class Dino {
   }
 
   draw(ctx) {
-    // ctx.fillStyle = "black";
-    // ctx.fillRect(this.x, this.y, this.width, this.height);
     ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
 }
@@ -62,8 +60,8 @@ class Game {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.canvas.width = 800;
-    this.canvas.height = 200;
-    this.dino = new Dino(50, 150, 30, 80, this.canvas.height);
+    this.canvas.height = 400;
+    this.dino = new Dino(50, 350, 30, 80, this.canvas.height);
     this.obstacles = [];
     this.score = 0;
     this.oldScore = -50;
@@ -87,7 +85,7 @@ class Game {
 
     if (Math.random() < 0.01 && this.score > this.oldScore + 50) {
       this.obstacles.push(
-        new Obstacle(this.canvas.width, 150, 20, 150, this.gameSpeed)
+        new Obstacle(this.canvas.width, 350, 20, 150, this.gameSpeed)
       );
       this.oldScore = this.score;
     }

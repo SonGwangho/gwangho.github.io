@@ -7,6 +7,7 @@ function getLanguageTitle(title) {
 }
 
 function getCodeDetails(gist_list) {
+  const div = document.createElement("div");
   for (let gist of gist_list) {
     const title = document.createElement("h2");
     title.style.width = "800px";
@@ -21,13 +22,11 @@ function getCodeDetails(gist_list) {
       a.href = gist.url;
       a.click();
     });
-
     const dom = Gist.getGistDom(gist.id);
-    const div = document.createElement("div");
     div.appendChild(title);
     div.appendChild(wrapDetail(dom, "정답코드"));
-    return div;
   }
+  return div;
 }
 
 function wrapDetail(dom, summaryText) {

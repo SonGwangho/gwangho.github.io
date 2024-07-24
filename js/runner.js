@@ -115,7 +115,16 @@ class Game {
         this.dino.y + this.dino.height > obstacle.y
       ) {
         this.isGameOver = true;
-        alert(`졌다! 점수: ${this.score}`);
+
+        let highScore = parseInt(MyStorage.getLocalData("runner_high_score"));
+        if (!highScore) highScore = 0;
+
+        if (highScore < this.score) {
+          MyStorage.saveLocal("runner_high_score", this.score);
+          alert(`졌다! 하지만 최고기록!! - ${this.score}`);
+        } else {
+          alert(`졌다! 점수: ${this.score}`);
+        }
         document.location.reload();
       }
     });

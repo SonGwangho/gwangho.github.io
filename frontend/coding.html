@@ -8,7 +8,7 @@
     .then(response => response.json())
     .then(result => {
       const gist_list = result;
-      for (let gist of gist_list.gists){
+      for (let gist of gist_list.javascript){
         const body = document.getElementById('coding_body');
         const title = document.createElement('h1');
         title.style.width = '600px';

@@ -1,5 +1,5 @@
 {
-  "gists": [
+  "javascript": [
     {
       "id": "e2fbca807984b6fa531e65c1d3c49c48",
       "title": "폰켓몬",
@@ -47,6 +47,36 @@
       "title": "올바른 괄호",
       "url": "https://school.programmers.co.kr/learn/courses/30/lessons/12909",
       "level": 2
+    },
+    {
+      "id": "b27665c967d375f013a3cada91ee08e2",
+      "title": "프로세스",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42587",
+      "level": 2
+    },
+    {
+      "id": "1a148a1d33299c57e8e43518884389aa",
+      "title": "다리를 지나는 트럭",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42583",
+      "level": 2
+    },
+    {
+      "id": "b964642a08ffff7d2f5bee9143071abb",
+      "title": "주식가격",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42584",
+      "level": 2
+    },
+    {
+      "id": "6cf4e42b8e5191e64ac425e675324234",
+      "title": "더 맵게",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42626",
+      "level": 2
+    },
+    {
+      "id": "029bfdbdccbe99aec730bbb449575aaa",
+      "title": "디스크 컨트롤러",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/42627",
+      "level": 3
     }
   ]
 }

@@ -16,7 +16,7 @@
       // body.appendChild(javascript);
       for (let gist of gist_list.javascript){
         const title = document.createElement('h2');
-        title.style.width = '600px';
+        title.style.width = '800px';
         title.style.margin = '40px auto 10px';
         title.style.cursor = 'pointer'
         title.innerText = `${gist.title} - ${["★", "★", "★", "★", "★"].slice(0, parseInt(gist.level)).join('')}`;
@@ -29,7 +29,7 @@
         body.appendChild(title);
         const dom = Gist.getGistDom(gist.id);
         const detail = document.createElement('details');
-        detail.style.width = '600px';
+        detail.style.width = '800px';
         detail.style.margin = 'auto';
         const summary = document.createElement('summary');
         summary.innerText = '정답코드'
@@ -41,7 +41,7 @@
       
       for (let gist of gist_list.java){
         const title = document.createElement('h2');
-        title.style.width = '600px';
+        title.style.width = '800px';
         title.style.margin = '40px auto 10px';
         title.style.cursor = 'pointer'
         title.innerText = `${gist.title} - ${["★", "★", "★", "★", "★"].slice(0, parseInt(gist.level)).join('')}`;
@@ -54,7 +54,7 @@
         body.appendChild(title);
         const dom = Gist.getGistDom(gist.id);
         const detail = document.createElement('details');
-        detail.style.width = '600px';
+        detail.style.width = '800px';
         detail.style.margin = 'auto';
         const summary = document.createElement('summary');
         summary.innerText = '정답코드'

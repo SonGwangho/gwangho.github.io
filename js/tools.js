@@ -262,7 +262,7 @@ class Gist {
     const iframe = document.createElement("iframe");
     iframe.src = `data:text/html;charset=utf-8,<script src='https://gist.github.com/SonGwangho/${gist_id}.js'><\/script>`;
     iframe.style.margin = "auto";
-    iframe.width = "600px";
+    iframe.width = "800px";
     iframe.height = "400px";
     iframe.frameBorder = 0;
     mainDiv.appendChild(iframe);

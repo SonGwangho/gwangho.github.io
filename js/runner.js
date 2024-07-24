@@ -32,8 +32,8 @@ class Dino {
   }
 
   draw(ctx) {
-    ctx.fillStyle = "black";
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    // ctx.fillStyle = "black";
+    // ctx.fillRect(this.x, this.y, this.width, this.height);
     ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
 }

@@ -104,9 +104,9 @@ class Game {
       this.obstacles.push(
         new Obstacle(
           this.canvas.width,
-          350,
+          350 - (Math.random() - 0.5) * 50,
           20,
-          135,
+          135 + (Math.random() - 0.5) * 50,
           this.gameSpeed + (this.gameSpeed * this.score) / 300
         )
       );

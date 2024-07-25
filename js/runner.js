@@ -101,12 +101,13 @@ class Game {
     }
 
     if (Math.random() < 0.015 && this.score > this.oldScore + 60) {
+      const random_height = (Math.random() - 0.5) * 50;
       this.obstacles.push(
         new Obstacle(
           this.canvas.width,
-          350 - (Math.random() - 0.5) * 50,
+          350 - random_height,
           20,
-          135 + (Math.random() - 0.5) * 50,
+          135 + random_height,
           this.gameSpeed + (this.gameSpeed * this.score) / 300
         )
       );

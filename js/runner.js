@@ -112,7 +112,7 @@ class Game {
         )
       );
       this.oldScore = this.score;
-    } else if (Math.random() < 0.015 && this.score > this.oldScore + 30) {
+    } else if (Math.random() < 0.015 && this.score > this.oldScore + 60) {
       const random_height = (Math.random() - 0.5) * 30;
       this.obstacles.push(
         new Obstacle(

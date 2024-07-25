@@ -100,7 +100,7 @@ class Game {
       );
     }
 
-    if (Math.random() < 0.015 && this.score > this.oldScore + 60) {
+    if (Math.random() < 0.015 && this.score > this.oldScore + 30) {
       const random_height = Math.random() * 50;
       this.obstacles.push(
         new Obstacle(
@@ -111,9 +111,8 @@ class Game {
           this.gameSpeed + (this.gameSpeed * this.score) / 300
         )
       );
-    }
-
-    if (Math.random() < 0.015 && this.score > this.oldScore + 60) {
+      this.oldScore = this.score;
+    } else if (Math.random() < 0.015 && this.score > this.oldScore + 30) {
       const random_height = (Math.random() - 0.5) * 50;
       this.obstacles.push(
         new Obstacle(

@@ -84,7 +84,7 @@ class Game {
       this.dino.jump();
     });
 
-    document.addEventListener("keydown", (event) => {
+    document.addEventListener("keyup", (event) => {
       if (event.code === "Space") {
         event.preventDefault();
         this.dino.jump();

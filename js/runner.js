@@ -100,7 +100,7 @@ class Game {
       );
     }
 
-    if (Math.random() < 0.01 && this.score > this.oldScore + 60) {
+    if (Math.random() < 0.015 && this.score > this.oldScore + 60) {
       this.obstacles.push(
         new Obstacle(
           this.canvas.width,

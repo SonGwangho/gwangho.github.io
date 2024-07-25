@@ -158,7 +158,6 @@ class MyNotification {
 
 class Rss {
   static async getXml(url) {
-    // https://www.youtube.com/feeds/videos.xml?channel_id=UC4aF4vjC__D4QPeTXB-l8NQ
     return await fetch(url)
       .then((response) => response.text())
       .then((data) => {

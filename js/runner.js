@@ -107,7 +107,7 @@ class Game {
           350,
           20,
           135,
-          this.gameSpeed + (this.gameSpeed * this.score) / 600
+          this.gameSpeed + (this.gameSpeed * this.score) / 300
         )
       );
       this.oldScore = this.score;

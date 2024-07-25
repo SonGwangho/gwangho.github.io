@@ -156,39 +156,96 @@ class MyNotification {
   }
 }
 
-class myRss {
+class Rss {
   static async getXml(url) {
     // https://www.youtube.com/feeds/videos.xml?channel_id=UC4aF4vjC__D4QPeTXB-l8NQ
     return await fetch(url)
       .then((response) => response.text())
       .then((data) => {
         const parser = new DOMParser();
-        const xml = parser.parseFromString(data);
+        const xml = parser.parseFromString(data, "application/xml");
         return xml;
       });
   }
 
-  static getEntrys(xml) {
+  static parsing(xml) {
     const entry = xml.querySelectorAll("entry");
-    const data = Array.from(entry).map((item) => ({
-      title: item.querySelector("title").textContent,
-      link: item.querySelector("link").getAttribute("href"),
-      published: item.querySelector("published").textContent,
-      updated: item.querySelector("updated").textContent,
-      id: item.querySelector("yt\\:videoId").textContent,
-      description: item.querySelector("media\\:description").textContent,
-      content: item.querySelector("media\\:content").getAttribute("url"),
-      thumbnail: item.querySelector("media\\:thumbnail").getAttribute("url"),
-      views: item
-        .querySelector("media\\:community")
-        .querySelector("media\\:statistics")
-        .getAttribute("views"),
-    }));
+    const data = {};
+    data["self"] = {
+      title: a.querySelector("author name"),
+      uri: a.querySelector("author uri"),
+    };
+    data["entrys"] = [];
+    Array.from(entry).map((item) =>
+      data["entrys"].push({
+        title: item.querySelector("title").textContent,
+        link: item.querySelector("link").getAttribute("href"),
+        published: item.querySelector("published").textContent,
+        updated: item.querySelector("updated").textContent,
+        id: item.getElementsByTagName("yt:videoId")[0].textContent,
+        description:
+          item.getElementsByTagName("media:description")[0].textContent,
+        content: item
+          .getElementsByTagName("media:content")[0]
+          .getAttribute("url"),
+        thumbnail: item
+          .getElementsByTagName("media:thumbnail")[0]
+          .getAttribute("url"),
+        views: item
+          .getElementsByTagName("media:community")[0]
+          .getElementsByTagName("media:statistics")[0]
+          .getAttribute("views"),
+      })
+    );
     return data;
   }
 
-  static entry2dom(datas) {
-    datas.forEach((data) => {});
+  static entry2dom(entry) {
+    const dom = document.createElement("div");
+    dom.classList.add("youtube_entry");
+
+    const titleDiv = document.createElement("div");
+    titleDiv.classList.add("youtube_entry_left");
+    const title = document.createElement("h1");
+    thumbnail.classList.add("youtube_entry_title");
+    title.innerText = entry.title;
+
+    const thumbnail = document.createElement("img");
+    thumbnail.classList.add("youtube_entry_thumbnail");
+    thumbnail.src = entry.thumbnail;
+
+    const description = document.createElement("span");
+    thumbnail.classList.add("youtube_entry_description");
+    description.innerText = entry.description;
+
+    titleDiv.appendChild(title);
+    titleDiv.appendChild(thumbnail);
+    titleDiv.appendChild(description);
+
+    const infoDiv = document.createElement("div");
+    infoDiv.classList.add("youtube_entry_right");
+
+    const published = document.createElement("span");
+    published.innerText =
+      "게시일: " +
+      MyDate.convertDateFormat(
+        new Date(entry.published),
+        "yyyy-MM-dd HH:mm:ss"
+      );
+    const updated = document.createElement("span");
+    updated.innerText =
+      "마지막 업데이트: " +
+      MyDate.convertDateFormat(new Date(entry.updated), "yyyy-MM-dd HH:mm:ss");
+    const views = document.createElement("span");
+    views.innerText = "조회수: " + entry.views + " 번";
+
+    infoDiv.appendChild(published);
+    infoDiv.appendChild(updated);
+    infoDiv.appendChild(views);
+
+    dom.appendChild(titleDiv);
+    dom.appendChild(infoDiv);
+    return dom;
   }
 }
 
@@ -216,7 +273,7 @@ class Gist {
     }
   }
 
-  static async saveData(json) {
+  static async saveData(json, gist_id) {
     let GITHUB_TOKEN = MyStorage.getLocalData("github_token");
     if (!GITHUB_TOKEN) {
       let urlParams = new URLSearchParams(
@@ -227,7 +284,7 @@ class Gist {
       MyStorage.saveLocal("github_token", token);
       GITHUB_TOKEN = token;
     }
-    const url = `https://api.github.com/gists/408041afe99b1a0b7d06197726070074`;
+    const url = `https://api.github.com/gists/${gist_id}`;
     const response = await fetch(url, {
       method: "PATCH",
       headers: {

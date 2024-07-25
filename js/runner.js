@@ -8,6 +8,7 @@ class Dino {
     this.gravity = 0.7;
     this.jumpStrength = -12;
     this.grounded = true;
+    this.doubleJumpAble = true;
     this.canvasHeight = canvasHeight;
     this.image = new Image();
     this.image.src = "./assets/img/runner_character.png";
@@ -20,6 +21,9 @@ class Dino {
     if (this.grounded) {
       this.dy += this.jumpStrength;
       this.grounded = false;
+    } else if (this.doubleJumpAble) {
+      this.dy += this.jumpStrength;
+      this.doubleJumpAble = false;
     }
   }
 
@@ -31,6 +35,7 @@ class Dino {
       this.y = this.canvasHeight - this.height;
       this.dy = 0;
       this.grounded = true;
+      this.doubleJumpAble = true;
     }
   }
 

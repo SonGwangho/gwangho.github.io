@@ -64,6 +64,12 @@ const routes = [
       return getView("/runner.html");
     },
   },
+  {
+    path: "/test",
+    view: () => {
+      return getView("/test.html");
+    },
+  },
 ];
 
 const getView = async (url) => {

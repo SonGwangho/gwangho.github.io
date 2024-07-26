@@ -3,7 +3,7 @@ class NaverMap {
     this.API_KEY_ID = MyURL.getParam("API_KEY_ID");
     this.API_KEY = MyURL.getParam("API_KEY");
     this.map;
-    this.infowindow = new naver.maps.InfoWindow();
+    this.infowindow;
   }
 
   makeMap(id) {
@@ -24,7 +24,7 @@ class NaverMap {
         navigator.geolocation.getCurrentPosition((position) => {
           lat = position.coords.latitude;
           long = position.coords.longitude;
-
+          this.infowindow = new naver.maps.InfoWindow();
           this.infowindow.setContent(
             '<div style="width:10px; height:10px; border-radius:50%; border:none; background:red;"></div>'
           );

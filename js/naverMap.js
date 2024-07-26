@@ -15,6 +15,8 @@ class NaverMap {
   }
 
   makeMap(id) {
+    if (!naver) this.makeMap(id);
+
     let lat;
     let long;
     navigator.geolocation.getCurrentPosition((position) => {

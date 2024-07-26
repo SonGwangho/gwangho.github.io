@@ -120,8 +120,8 @@ let destroyPage = function () {};
 
 const triggerLoadEvents = (element) => {
   try {
-    eval(element.querySelector("script").innerText);
     destroyPage();
+    eval(element.querySelector("script").innerText);
     loadPage();
   } catch (e) {
     console.warn(e);

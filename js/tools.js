@@ -365,8 +365,8 @@ class Random {
 class MyURL {
   static getParams() {
     let urlParams;
-    if (!window.location.includes("?")) {
-      const params = window.location.split("?");
+    if (!window.location.href.includes("?")) {
+      const params = window.location.href.split("?");
       for (let param of params.split("&")) {
         const splited = param.split("=");
         param[splited[0]] = splited[1];

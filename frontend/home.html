@@ -21,7 +21,7 @@
       <li><a target="_blank" href="https://naver.me/5Amvf6XY">진수성찬 백반</a></li>
     </ol>
     <div>
-      <button id="initLocation">위치 새로고침</button>
+      <button id="initLocation">위치 새로고침</button><button id="moveHotel">호텔 주소로 이동</button>
     </div>
     <div id="naverMap" style="width: 100%; height: 600px;"></div>
 
@@ -61,6 +61,10 @@
     map.makeMap(naverMap);
     document.getElementById('initLocation').addEventListener('click', (e)=>{
       map.initLocation();
+    })
+
+    document.getElementById('moveHotel').addEventListener('click', (e)=>{
+      map.moveLocation(34.786659860134876, 126.38842463493347);
     })
   }
 </script>

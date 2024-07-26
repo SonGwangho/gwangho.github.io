@@ -361,3 +361,30 @@ class Random {
     }
   }
 }
+
+class MyURL {
+  static getParams() {
+    const urlParams = new URLSearchParams(
+      window.location.hash.replace("#!", "").split("?")[1]
+    );
+    if (!urlParams) return;
+    // let token = urlParams.get("token");
+
+    return urlParams;
+  }
+
+  static addParam(key, value) {
+    const urlParams = this.getParams();
+    urlParams.append(key, value);
+
+    let url = location.href.split("?")[0] + "?";
+    for (let param of urlParams) {
+      if (url.lastIndexOf("?") === url.length - 1) {
+        url += param.join("=");
+      } else {
+        url += "&" + param.join("=");
+      }
+    }
+    location.href = url;
+  }
+}

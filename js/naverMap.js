@@ -23,7 +23,7 @@ class NaverMap {
 
         const mapOptions = {
           center: new naver.maps.LatLng(lat, long),
-          zoom: 10,
+          zoom: 15,
           disableDoubleTapZoom: true,
         };
 
@@ -55,7 +55,6 @@ class NaverMap {
     navigator.geolocation.getCurrentPosition((position) => {
       lat = position.coords.latitude;
       long = position.coords.longitude;
-      console.log(lat, long);
       this.map.setCenter(new naver.maps.LatLng(lat, long));
     });
   }

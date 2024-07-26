@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- 스타일 -->
@@ -37,14 +37,7 @@
 
     </div>
     <script>
-      onload = () => {
-        const body = document.getElementById('test');
-        const prms = Rss.getXml('https://www.youtube.com/feeds/videos.xml?channel_id=UC4aF4vjC__D4QPeTXB-l8NQ');
-        prms.then(result => {
-          parsed = parsing(result)
-          body.appendChild(entry2dom(parsed.entrys[0]));
-        })
-      }
+      
     </script>
   </body>
 </html>

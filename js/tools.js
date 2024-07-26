@@ -365,17 +365,14 @@ class Random {
 class MyURL {
   static getParams() {
     let urlParams;
-    if (!window.location.hash.includes("#!")) {
-      urlParams = new URLSearchParams(window.location.search);
-    } else {
-      urlParams = new URLSearchParams(
-        window.location.hash.replace("#!", "").split("?")[1]
-      );
+    if (!window.location.includes("?")) {
+      const params = window.location.split("?");
+      for (let param of params.split("&")) {
+        const splited = param.split("=");
+        param[splited[0]] = splited[1];
+      }
+      urlParams = new URLSearchParams(params);
     }
-
-    if (!urlParams) return;
-    // let token = urlParams.get("token");
-
     return urlParams;
   }
 

@@ -11,7 +11,7 @@ class NaverMap {
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${API_KEY_ID}`;
-    document.head.appendChild();
+    document.head.appendChild(script);
   }
 
   makeMap(id) {

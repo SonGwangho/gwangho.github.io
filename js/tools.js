@@ -392,7 +392,11 @@ class MyURL {
   }
 
   static getParam(key) {
-    const urlParams = this.getParams();
-    return urlParams.get(key);
+    try {
+      const urlParams = this.getParams();
+      return urlParams.get(key);
+    } catch {
+      return null;
+    }
   }
 }

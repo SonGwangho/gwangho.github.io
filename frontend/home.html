@@ -56,8 +56,11 @@
 
   loadPage = () =>  {
     NaverMap.appendScript();
-
     const map = new NaverMap();
-    map.makeMap(naverMap);
+
+    setTimeout(() => {
+      map.makeMap(naverMap);
+    }, 2000);
+    
   }
 </script>

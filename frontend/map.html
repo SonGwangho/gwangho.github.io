@@ -1,0 +1,15 @@
+<div>
+  <div>
+    <button id="initLocation1">위치 새로고침</button>
+  </div>
+  <div id="naverMap1" style="width: 90%; height: 800px;"></div>
+</div>
+<script>
+  loadPage = () =>  {
+    const map = new NaverMap();
+    map.makeMap(naverMap);
+    document.getElementById('initLocation').addEventListener('click', (e)=>{
+      map.initLocation();
+    })
+  }
+</script>

@@ -70,6 +70,12 @@ const routes = [
       return getView("/test.html");
     },
   },
+  {
+    path: "/map",
+    view: () => {
+      return getView("/map.html");
+    },
+  },
 ];
 
 const getView = async (url) => {

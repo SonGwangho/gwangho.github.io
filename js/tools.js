@@ -364,9 +364,13 @@ class Random {
 
 class MyURL {
   static getParams() {
-    const urlParams = new URLSearchParams(
-      window.location.hash.replace("#!", "").split("?")[1]
-    );
+    let urlParams;
+    if (window.location.hash.includes("?")) {
+      urlParams = new URLSearchParams(window.location.hash.replace("#!", ""));
+    } else {
+      window.location.hash.replace("#!", "").split("?")[1];
+    }
+
     if (!urlParams) return;
     // let token = urlParams.get("token");
 

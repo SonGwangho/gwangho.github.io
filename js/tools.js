@@ -365,7 +365,7 @@ class Random {
 class MyURL {
   static getParams() {
     let urlParams;
-    if (window.location.hash.includes("#!")) {
+    if (!window.location.hash.includes("#!")) {
       urlParams = new URLSearchParams(window.location.search);
     } else {
       window.location.hash.replace("#!", "").split("?")[1];

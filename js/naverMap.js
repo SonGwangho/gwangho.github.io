@@ -15,8 +15,15 @@ class NaverMap {
   }
 
   makeMap(id) {
+    let lat;
+    let long;
+    navigator.geolocation.getCurrentPosition((position) => {
+      lat = position.coords.latitude;
+      long = position.coords.longitude;
+    });
+
     const mapOptions = {
-      center: new naver.maps.LatLng(37.3595704, 127.105399),
+      center: new naver.maps.LatLng(lat, long),
       zoom: 10,
       disableDoubleTapZoom: true,
     };

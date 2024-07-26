@@ -57,14 +57,8 @@
   }
 
   loadPage = () =>  {
-    NaverMap.appendScript();
     const map = new NaverMap();
-
-    setTimeout(() => {
-      map.makeMap(naverMap);
-    }, 2000);
-    
-
+    map.makeMap(naverMap);
     document.getElementById('initLocation').addEventListener('click', (e)=>{
       map.initLocation();
     })

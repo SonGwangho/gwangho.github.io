@@ -3,6 +3,7 @@ class NaverMap {
     this.API_KEY_ID = MyURL.getParam("API_KEY_ID");
     this.API_KEY = MyURL.getParam("API_KEY");
     this.map;
+    this.infowindow = new naver.maps.InfoWindow();
   }
 
   makeMap(id) {
@@ -24,6 +25,10 @@ class NaverMap {
           lat = position.coords.latitude;
           long = position.coords.longitude;
 
+          this.infowindow.setContent(
+            '<div style="width:10px; height:10px; border-radius:50%; border:none; background:red;"></div>'
+          );
+
           const mapOptions = {
             center: new naver.maps.LatLng(lat, long),
             zoom: 15,
@@ -31,7 +36,7 @@ class NaverMap {
           };
 
           this.map = new naver.maps.Map(id, mapOptions);
-
+          this.infowindow.open(this.map, mapOptions.center);
           MyStorage.saveLocal("naver_map_api_key_id", this.API_KEY_ID);
           MyStorage.saveLocal("naver_map_api_key", this.API_KEY);
         });
@@ -48,6 +53,7 @@ class NaverMap {
       lat = position.coords.latitude;
       long = position.coords.longitude;
       this.map.setCenter(new naver.maps.LatLng(lat, long));
+      this.infowindow.open(this.map, new naver.maps.LatLng(lat, long));
     });
   }
 }

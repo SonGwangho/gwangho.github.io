@@ -368,7 +368,9 @@ class MyURL {
     if (!window.location.hash.includes("#!")) {
       urlParams = new URLSearchParams(window.location.search);
     } else {
-      window.location.hash.replace("#!", "").split("?")[1];
+      urlParams = new URLSearchParams(
+        window.location.hash.replace("#!", "").split("?")[1]
+      );
     }
 
     if (!urlParams) return;

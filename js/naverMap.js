@@ -39,7 +39,7 @@ class NaverMap {
       lat = position.coords.latitude;
       long = position.coords.longitude;
     });
-
+    console.log(lat, long);
     this.map.setCenter(new naver.maps.LatLng(lat, long));
   }
 }

@@ -24,7 +24,13 @@ class NaverMap {
         navigator.geolocation.getCurrentPosition((position) => {
           lat = position.coords.latitude;
           long = position.coords.longitude;
-          this.infowindow = new naver.maps.InfoWindow();
+          this.infowindow = new naver.maps.InfoWindow({
+            borderWidth: 0,
+            disableAnchor: true,
+            backgroundColor: "transparent",
+
+            pixelOffset: new naver.maps.Point(0, -28),
+          });
           this.infowindow.setContent(
             '<div style="width:10px; height:10px; border-radius:50%; border:none; background:red;"></div>'
           );

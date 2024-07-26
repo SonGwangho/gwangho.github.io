@@ -369,9 +369,9 @@ class MyURL {
       const params = window.location.href.split("?")[1];
       for (let param of params.split("&")) {
         const splited = param.split("=");
-        param[splited[0]] = splited[1];
+        urlParams[splited[0]] = splited[1];
       }
-      urlParams = new URLSearchParams(params);
+      urlParams = new URLSearchParams(urlParams);
     }
     return urlParams;
   }

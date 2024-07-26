@@ -366,7 +366,7 @@ class MyURL {
   static getParams() {
     let urlParams;
     if (!window.location.href.includes("?")) {
-      const params = window.location.href.split("?");
+      const params = window.location.href.split("?")[1];
       for (let param of params.split("&")) {
         const splited = param.split("=");
         param[splited[0]] = splited[1];

@@ -2,6 +2,7 @@ class NaverMap {
   constructor() {
     this.API_KEY_ID = MyURL.getParam("API_KEY_ID");
     this.API_KEY = MyURL.getParam("API_KEY");
+    this.map;
   }
 
   static appendScript() {
@@ -16,7 +17,6 @@ class NaverMap {
 
   makeMap(id) {
     if (!naver) this.makeMap(id);
-
     let lat;
     let long;
     navigator.geolocation.getCurrentPosition((position) => {
@@ -30,6 +30,17 @@ class NaverMap {
       disableDoubleTapZoom: true,
     };
 
-    const map = new naver.maps.Map(id, mapOptions);
+    this.map = new naver.maps.Map(id, mapOptions);
+  }
+
+  initLocation() {
+    let lat;
+    let long;
+    navigator.geolocation.getCurrentPosition((position) => {
+      lat = position.coords.latitude;
+      long = position.coords.longitude;
+    });
+
+    this.map.setCenter(new naver.maps.LatLng(lat, long));
   }
 }

@@ -14,7 +14,7 @@ class NaverMap {
     script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${API_KEY_ID}`;
     script.async = false;
     document.head.appendChild(script);
-    script.onload(() => {
+    script.onload = () => {
       let lat;
       let long;
       navigator.geolocation.getCurrentPosition((position) => {
@@ -29,7 +29,7 @@ class NaverMap {
 
         this.map = new naver.maps.Map(id, mapOptions);
       });
-    });
+    };
   }
 
   // makeMap(id) {

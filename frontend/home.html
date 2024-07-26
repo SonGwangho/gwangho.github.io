@@ -21,7 +21,7 @@
       <li><a target="_blank" href="https://naver.me/5Amvf6XY">진수성찬 백반</a></li>
     </ol>
 
-    <div id="naverMap"></div>
+    <div id="naverMap" style="width: 100%; height: 600px;"></div>
 
     <div id="foods" style="visibility: collapse;">
       <br>
@@ -56,7 +56,7 @@
 
   loadPage = () =>  {
     NaverMap.appendScript();
-    
+
     const map = new NaverMap();
     map.makeMap(naverMap);
   }

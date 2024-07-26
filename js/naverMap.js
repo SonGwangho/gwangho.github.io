@@ -16,11 +16,11 @@ class NaverMap {
 
   makeMap(id) {
     const mapOptions = {
-      center: new NaverMap.maps.LatLng(37.3595704, 127.105399),
+      center: new naver.maps.LatLng(37.3595704, 127.105399),
       zoom: 10,
       disableDoubleTapZoom: true,
     };
 
-    const map = new NaverMap.maps.Map(id, mapOptions);
+    const map = new naver.maps.Map(id, mapOptions);
   }
 }

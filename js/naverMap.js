@@ -58,7 +58,8 @@ class NaverMap {
     navigator.geolocation.getCurrentPosition((position) => {
       lat = position.coords.latitude;
       long = position.coords.longitude;
-      this.moveLocation(lat, long);
+      this.map.setCenter(new naver.maps.LatLng(lat, long));
+      this.infowindow.open(this.map, new naver.maps.LatLng(lat, long));
     });
   }
 

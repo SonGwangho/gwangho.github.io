@@ -20,6 +20,9 @@
       <li><a target="_blank" href="https://m.place.naver.com/share?id=16788371&tabsPath=%2Fhome&appMode=detail">남경회관 백반</a></li>
       <li><a target="_blank" href="https://naver.me/5Amvf6XY">진수성찬 백반</a></li>
     </ol>
+
+    <div id="naverMap"></div>
+
     <div id="foods" style="visibility: collapse;">
       <br>
       <hr>
@@ -49,5 +52,12 @@
 <script>
   function food(){
     document.getElementById('foods').style.visibility = "visible";
+  }
+
+  loadPage = () =>  {
+    NaverMap.appendScript();
+    const map = NaverMap();
+
+    map.makeMap(naverMap);
   }
 </script>

@@ -387,4 +387,9 @@ class MyURL {
     }
     location.href = url;
   }
+
+  static getParam(key) {
+    const urlParams = this.getParams();
+    return urlParams.get(key);
+  }
 }

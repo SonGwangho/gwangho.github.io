@@ -9,69 +9,9 @@
   }
 </style>
 <div id="home_div">
-  <div style="margin-top: 30;">
-    <h1>목포 먹거리 리스트</h1>
-    <h3>네이버 주소 포함</h3>
-    <div>
-      <div class="food_div">
-        첫날 점심 - 광주
-      </div>
-      <div class="food_div">
-        첫날 저녁 - <a target="_blank" href="https://naver.me/5Y1wrIEh">영란횟집 민어회, 잎새주</a>
-      </div>
-      <br>
-      <div class="food_div">
-        둘째날 아침 - <a target="_blank" href="https://naver.me/x9JcQC10">해남 해장국 뼈해장국</a>
-      </div>
-      <div class="food_div">
-        둘째날 점심 - 백반(현지인 찬스)
-      </div>
-      <div class="food_div">
-        둘째날 저녁 - <a target="_blank" href="https://naver.me/Gw5EIILz">독천 식당 낙지비빔밥, 낙지볶음, 낙지호롱구이</a>
-      </div>
-      <br>
-      <div class="food_div">
-        <!-- 셋째날 아침 - <a target="_blank" href="https://naver.me/5Y1wrIEh">현지인한테 어디갈지 물어보기</a> -->
-        셋째날 아침 - 해장음식(현지인 찬스)
-      </div>
-      <div class="food_div">
-        셋째날 점심 - 광주
-      </div>
-    </div>
-    <br>
-    <ol>
-      <li><a target="_blank" href="https://m.place.naver.com/share?id=16797837&tabsPath=%2Fhome&appMode=detail">오두막집 백반</a></li>
-      <li><a target="_blank" href="https://naver.me/5Y1wrIEh">영란횟집 민어회, 잎새주</a></li>
-      <li><a target="_blank" href="https://map.naver.com/p/entry/place/13334888">장터식당 게살비빔밥, 꽃게탕</a></li>
-      <li><a target="_blank" href="https://naver.me/xfaRCBQ2">뜰채 낙지요리</a></li>
-      <li><a target="_blank" href="https://naver.me/F4N0iHUI">성식당 떡갈비</a></li>
-      <li><a target="_blank" href="https://naver.me/xE1qMskh">하당먹거리 낙지탕탕이</a></li>
-      <li><a target="_blank" href="https://naver.me/Gw5EIILz">독천 식당 낙지비빔밥, 낙지볶음</a></li>
-      <li><a target="_blank" href="https://naver.me/F36yKhbw">만선식당 밴댕이 회</a></li>
-      <li><a target="_blank" href="https://m.place.naver.com/share?id=1237588216&tabsPath=%2Fmenu%2Flist&appMode=detail">인동주마을 홍어삼합...</a></li>
-      <li><a target="_blank" href="https://m.place.naver.com/share?id=16788371&tabsPath=%2Fhome&appMode=detail">남경회관 백반</a></li>
-      <li><a target="_blank" href="https://naver.me/5Amvf6XY">진수성찬 백반</a></li>
-    </ol>
-    <div>
-      <button id="initLocation">위치 새로고침</button><button id="moveHotel">호텔 주소로 이동</button>
-    </div>
-  </div>
-  <div id="naverMap" style="width: 100%; height: 600px;"></div>
+  <h1>목포는 가지 마세요.</h1>
 </div>  
 <script>
-  function food(){
-    document.getElementById('foods').style.visibility = "visible";
-  }
-
   loadPage = () =>  {
-    const map = new NaverMap();
-    map.makeMap(naverMap);
-    document.getElementById('initLocation').addEventListener('click', (e)=>{
-      map.initLocation();
-    })
-
-    document.getElementById('moveHotel').addEventListener('click', (e)=>{
-      map.moveLocation(34.786659860134876, 126.38842463493347);
-    })
   }
 </script>

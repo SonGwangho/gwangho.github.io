@@ -23,12 +23,6 @@ const routes = [
     },
   },
   {
-    path: "/enjoy",
-    view: () => {
-      return getView("/enjoy.html");
-    },
-  },
-  {
     path: "/memo",
     view: () => {
       return getView("/memo.html");

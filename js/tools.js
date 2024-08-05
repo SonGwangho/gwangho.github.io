@@ -248,7 +248,6 @@ class Rss {
   }
 }
 
-// myNotification.sendNotification("제목", { body: "내용" });
 class Gist {
   static async getData(gist_id) {
     const url = `https://api.github.com/gists/${gist_id}`;

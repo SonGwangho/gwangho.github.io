@@ -6,7 +6,7 @@ async function displayNotes() {
   savedNotesDiv.innerHTML = "";
 
   if (notes.length === 0) {
-    savedNotesDiv.innerHTML = "<p>저장된 메모가 없습니다.</p>";
+    savedNotesDiv.innerHTML = "<p>저장된 글이 없습니다.</p>";
   } else {
     notes.forEach((noteObj, index) => {
       const noteDiv = document.createElement("div");
@@ -17,14 +17,14 @@ async function displayNotes() {
       noteText.style.padding = "5px 10px";
       noteText.innerText = noteObj.memo;
 
-      const deleteButton = document.createElement("button");
-      deleteButton.innerText = "삭제";
-      deleteButton.classList.add("delete-button");
+      // const deleteButton = document.createElement("button");
+      // deleteButton.innerText = "삭제";
+      // deleteButton.classList.add("delete-button");
 
-      deleteButton.onclick = () => deleteNote(notesData, index);
+      // deleteButton.onclick = () => deleteNote(notesData, index);
 
       noteDiv.appendChild(noteText);
-      noteDiv.appendChild(deleteButton);
+      // noteDiv.appendChild(deleteButton);
       savedNotesDiv.appendChild(noteDiv);
     });
   }
@@ -43,7 +43,7 @@ async function deleteNote(data, index) {
 async function saveNote() {
   const noteContent = document.getElementById("note-content").value;
   if (noteContent.trim() === "") {
-    alert("메모를 입력하세요.");
+    alert("뭐라도 입력하세요.");
     return;
   }
   const notesData = await Gist.getData();

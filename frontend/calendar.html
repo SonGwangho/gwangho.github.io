@@ -43,26 +43,12 @@
   <details>
     <summary>달력!</summary>
     <div id="calendar_div" style="text-align: center;"></div>
-    <div>
-      <details>
-        <summary>코드보기</summary>
-        <div>달력 그리는 코드</div>
-        <script src="https://gist.github.com/SonGwangho/9342b88e62f5e4673cbf375053cef4fb.js"></script>
-      </details>
-    </div>
+    <div id="calendar_detail"></div>
   </details>
   <details>
     <summary>시계!</summary>
     <div id="watch_div" style="text-align: center;"></div>
-    <div>
-      <details>
-        <summary>코드보기</summary>
-        <div>시계 그리는 코드</div>
-        <script src="https://gist.github.com/SonGwangho/3f882f6ef30f3bbc6d03c8604850319a.js"></script>
-        <div>초침 움직이는 코드</div>
-        <script src="https://gist.github.com/SonGwangho/46c81a6256c1c7fa9138bbefb0f071a1.js"></script>
-      </details>
-    </div>
+    <div id="watch_detail"></div>
   </details>
   <details>
     <summary>스톱워치!</summary>
@@ -78,5 +64,8 @@
     loadCalendar();
     const watch_div = document.getElementById('watch_div');
     watch_div.appendChild(makeWatch());
+    calendar_detail.appendChild(wrapDetail(Gist.getGistDom("9342b88e62f5e4673cbf375053cef4fb"), "달력만드는 코드"));
+    watch_detail.appendChild(wrapDetail(Gist.getGistDom("3f882f6ef30f3bbc6d03c8604850319a"), "시계만드는 코드"));
+    watch_detail.appendChild(wrapDetail(Gist.getGistDom("46c81a6256c1c7fa9138bbefb0f071a1"), "시분초침 움직이는 코드"));
   };
 </script>

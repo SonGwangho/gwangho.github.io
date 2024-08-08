@@ -189,9 +189,11 @@ function getSum(data) {
 }
 
 function makeWatch() {
+  const time = document.createElement("div");
   const watchOut = document.createElement("div");
   const watchIn = document.createElement("div");
 
+  time.classList.add("watch_time");
   watchOut.classList.add("watch_out");
   watchIn.classList.add("watch_in");
 
@@ -232,7 +234,10 @@ function makeWatch() {
     moveStick();
   }, 1000);
 
-  return watchOut;
+  const dom = document.createElement("div");
+  dom.appendChild(watchOut);
+  dom.appendChild(time);
+  return dom;
 }
 
 function moveStick() {
@@ -244,6 +249,7 @@ function moveStick() {
 
     const moveCenterText = "translate(270px, 270px) ";
 
+    const time = document.getElementsByClassName("watch_time")[0];
     const hour = document.getElementsByClassName("watch_hour")[0];
     const minute = document.getElementsByClassName("watch_minute")[0];
     const second = document.getElementsByClassName("watch_second")[0];
@@ -253,6 +259,8 @@ function moveStick() {
     minute.style.transform =
       moveCenterText + `rotate(${mm * 6 - 90 + ss * 0.1}deg)`;
     second.style.transform = moveCenterText + `rotate(${ss * 6 - 90}deg)`;
+
+    time.innerHTML = `현재 시각 - ${hh}시 ${mm}분 ${ss}초`;
   } catch (e) {
     console.warn(e);
   }

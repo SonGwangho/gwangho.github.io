@@ -249,7 +249,7 @@ function moveStick() {
     const second = document.getElementsByClassName("watch_second")[0];
 
     hour.style.transform =
-      moveCenterText + `rotate(${hh * 30 - 90 + mm * 0.5}deg)`;
+      moveCenterText + `rotate(${hh * 30 - 90 + mm * 0.5 + ss * 0.008}deg)`;
     minute.style.transform =
       moveCenterText + `rotate(${mm * 6 - 90 + ss * 0.1}deg)`;
     second.style.transform = moveCenterText + `rotate(${ss * 6 - 90}deg)`;

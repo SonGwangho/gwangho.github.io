@@ -384,7 +384,7 @@ button:hover{
   z-index: 998;
 }
 .watch_dance{
-  background-image: url("./assets/img/watch_dance.gif") !important;
+  background-image: url("../assets/img/watch_dance.gif") !important;
   background-size: cover !important;
   background-position: center !important;
 }

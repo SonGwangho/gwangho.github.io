@@ -25,6 +25,18 @@ li{
   margin: 10px;
 }
 
+button{
+  border: 0; 
+  font-size: 20px; 
+  font-family: 'Ownglyph_noocar-Rg', sans-serif;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button:hover{
+  font-weight: 700;
+}
+
 .modal{
   position: absolute;
   display: none;
@@ -370,6 +382,11 @@ li{
   border-radius: 50%;
   background-color: #fdfd9f;
   z-index: 998;
+}
+.watch_dance{
+  background-image: url("./assets/img/watch_dance.gif") !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
 .watch_stick{
   position: absolute;

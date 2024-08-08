@@ -269,3 +269,10 @@ function moveStick() {
     console.warn(e);
   }
 }
+
+function toggleWatchImg() {
+  const watch = document.getElementsByClassName("watch_in")[0];
+  if (watch.classList.contains("watch_dance"))
+    watch.classList.remove("watch_dance");
+  else watch.classList.add("watch_dance");
+}

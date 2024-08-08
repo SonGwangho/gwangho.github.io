@@ -349,7 +349,10 @@ li{
   font-size: 20px;
   margin-top: 10px;
 }
-
+.watch_div{
+  width: fit-content;
+  margin: auto;
+}
 .watch_out{
   width: 600px;
   height: 600px;

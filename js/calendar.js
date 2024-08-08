@@ -237,6 +237,10 @@ function makeWatch() {
   const dom = document.createElement("div");
   dom.appendChild(watchOut);
   dom.appendChild(time);
+
+  dom.style.margin = "auto";
+  dom.style.width = "fit-content";
+
   return dom;
 }
 

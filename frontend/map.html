@@ -1,6 +1,6 @@
 <div>
   <div>
-    <button id="initLocation1">위치 새로고침</button><button id="moveHotel1">호텔 주소로 이동</button>
+    <button id="initLocation1">위치 새로고침</button>
   </div>
   <div id="naverMap1" style="width: 90%; min-height: 800px;"></div>
 </div>
@@ -10,9 +10,6 @@
     map.makeMap(naverMap1);
     document.getElementById('initLocation1').addEventListener('click', (e)=>{
       map.initLocation();
-    })
-    document.getElementById('moveHotel1').addEventListener('click', (e)=>{
-      map.moveLocation(34.786659860134876, 126.38842463493347);
     })
   }
 </script>

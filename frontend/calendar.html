@@ -29,8 +29,27 @@
 
 </style>
 <div>
-  <div id="calendar_div" style="text-align: center;"></div>
+  <details>
+    <summary>달력!</summary>
+    <div id="calendar_div" style="text-align: center;"></div>
+  </details>
+  <details>
+    <summary>시계!</summary>
+    <div id="watch_div" style="text-align: center;"></div>
+  </details>
+  <details>
+    <summary>스톱워치!</summary>
+    <div id="stopwatch_div" style="text-align: center;"></div>
+  </details>
+  <details>
+    <summary>타이머!</summary>
+    <div id="timer_div" style="text-align: center;"></div>
+  </details>
 </div>
 <script>
-  loadPage = loadCalendar;
+  loadPage =  () => {
+    loadCalendar();
+    const watch_div = document.getElementById('watch_div');
+    watch_div.appendChild(dom);
+  };
 </script>

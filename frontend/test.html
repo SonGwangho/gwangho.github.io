@@ -34,9 +34,17 @@
   </head>
   <body>
     <div id="test">
-
+      <div style="height: 300px;"></div>
+      <div id = "watch_div">
+        
+      </div>
     </div>
     <script>
+      onload = () => {
+        const dom = makeWatch()
+        const watch_div = document.getElementById('watch_div');
+        watch_div.appendChild(dom);
+      }
       
     </script>
   </body>

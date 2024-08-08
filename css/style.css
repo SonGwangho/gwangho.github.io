@@ -349,3 +349,54 @@ li{
   font-size: 20px;
   margin-top: 10px;
 }
+
+.watch_out{
+  width: 600px;
+  height: 600px;
+  display: flex;
+  border-radius: 20px;
+  background-color: green;
+  text-align: center;
+  z-index: 999;
+}
+.watch_in{
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  border: 0;
+  border-radius: 50%;
+  background-color: olive;
+  z-index: 998;
+}
+.watch_stick{
+  position: absolute;
+  transform-origin: left;
+}
+.hour_line{
+  width: 5px;
+  height: 20px;
+  background-color: #000000;
+  border-radius: 10px;
+  position: absolute;
+}
+.watch_hour{
+  width: 150px;
+  height: 5px;
+  border-radius: 50px;
+  background-color: black;
+  z-index: 997;
+}
+.watch_minute{
+  width: 200px;
+  height: 5px;
+  border-radius: 50px;
+  background-color: black;
+  z-index: 996;
+}
+.watch_second{
+  width: 220px;
+  height: 3px;
+  border-radius: 10px;
+  background-color: red;
+  z-index: 995;
+}

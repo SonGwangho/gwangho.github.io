@@ -187,3 +187,73 @@ function getSum(data) {
   }
   return sum;
 }
+
+function makeWatch() {
+  const watchOut = document.createElement("div");
+  const watchIn = document.createElement("div");
+
+  watchOut.classList.add("watch_out");
+  watchIn.classList.add("watch_in");
+
+  const hour = document.createElement("div");
+  const minute = document.createElement("div");
+  const second = document.createElement("div");
+
+  hour.classList.add("watch_hour");
+  minute.classList.add("watch_minute");
+  second.classList.add("watch_second");
+  hour.classList.add("watch_stick");
+  minute.classList.add("watch_stick");
+  second.classList.add("watch_stick");
+
+  for (let i = 0; i < 12; i++) {
+    const deg = i * 30;
+    let x = 270 * Math.sin((deg * Math.PI) / 180);
+    let y = 270 * Math.cos((deg * Math.PI) / 180);
+
+    const hourLine = document.createElement("div");
+    hourLine.classList.add("hour_line");
+    hourLine.style.zIndex = 990 - i;
+    hourLine.style.transform = `
+    translateX(${270 - x}px) 
+    translateY(${260 + y}px) 
+    rotate(${deg}deg)`;
+
+    watchIn.appendChild(hourLine);
+  }
+
+  watchIn.appendChild(hour);
+  watchIn.appendChild(minute);
+  watchIn.appendChild(second);
+
+  watchOut.appendChild(watchIn);
+
+  setInterval(() => {
+    moveStick();
+  }, 1000);
+
+  return watchOut;
+}
+
+function moveStick() {
+  try {
+    const date = new Date();
+    const hh = date.getHours();
+    const mm = date.getMinutes();
+    const ss = date.getSeconds();
+
+    const moveCenterText = "translate(270px, 270px) ";
+
+    const hour = document.getElementsByClassName("watch_hour")[0];
+    const minute = document.getElementsByClassName("watch_minute")[0];
+    const second = document.getElementsByClassName("watch_second")[0];
+
+    hour.style.transform =
+      moveCenterText + `rotate(${hh * 30 - 90 + mm * 0.5}deg)`;
+    minute.style.transform =
+      moveCenterText + `rotate(${mm * 6 - 90 + ss * 0.1}deg)`;
+    second.style.transform = moveCenterText + `rotate(${ss * 6 - 90}deg)`;
+  } catch (e) {
+    console.warn(e);
+  }
+}

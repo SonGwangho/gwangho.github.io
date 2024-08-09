@@ -431,6 +431,9 @@ button:hover{
   min-width: 600px;
   max-width: 1200px;
 }
+.tick-flip-card{
+  font-family: fantasy;
+}
 .timer_dday{
   margin: 0 20px;
 }

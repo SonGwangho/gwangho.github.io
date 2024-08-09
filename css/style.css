@@ -426,3 +426,23 @@ button:hover{
   font-size: 30px;
   margin-top: 20px;
 }
+
+#timer_div{
+  min-width: 600px;
+  max-width: 1200px;
+}
+.timer_dday{
+  margin: 0 20px;
+}
+.timer_dday input{
+  border: 0;
+  width: 35px;
+  margin: 0 0px;
+  text-align: right;
+  font-family: 'Ownglyph_noocar-Rg', sans-serif;
+  font-size: 20px;
+}
+
+.timer_hour {
+  margin: 0 0 0 30px;
+}

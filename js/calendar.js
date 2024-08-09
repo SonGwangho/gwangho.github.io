@@ -276,3 +276,50 @@ function toggleWatchImg() {
     watch.classList.remove("watch_dance");
   else watch.classList.add("watch_dance");
 }
+
+function initDDAY() {
+  const span = document.getElementsByClassName("timer_dday")[0];
+  const ddayList = span.querySelectorAll("input");
+  const dday = MyStorage.getLocalData("timer_dday");
+  let inputValues = [];
+  if (dday) {
+    const [date, time] = dday.split(" ");
+
+    const dateParts = date.split("-").map(Number);
+    const timeParts = time.split(":").map(Number);
+
+    inputValues = [...dateParts, ...timeParts];
+  } else {
+    const now = new Date();
+    inputValues = [now.getFullYear() + 1, "01", "01", "00", "00", "00"];
+  }
+  for (let i = 0; i < ddayList.length; i++) {
+    ddayList[i].value = inputValues[i];
+  }
+}
+
+function handleTickInit(tick) {
+  const span = document.getElementsByClassName("timer_dday")[0];
+  const ddayList = span.querySelectorAll("input");
+  const dday = `${ddayList[0].value}-${ddayList[1].value}-${ddayList[2].value} ${ddayList[3].value}:${ddayList[4].value}:${ddayList[5].value}`;
+
+  Tick.count.down(dday).onupdate = function (value) {
+    tick.value = value;
+  };
+}
+
+function changeDDAY() {
+  const span = document.getElementsByClassName("timer_dday")[0];
+  const ddayList = span.querySelectorAll("input");
+  const dday = `${ddayList[0].value}-${ddayList[1].value}-${ddayList[2].value} ${ddayList[3].value}:${ddayList[4].value}:${ddayList[5].value}`;
+  MyStorage.saveLocal("timer_dday", dday);
+  location.reload();
+}
+
+function loadFlipJs() {
+  const script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = `./js/flip/flip.min.js`;
+  script.async = false;
+  document.head.appendChild(script);
+}

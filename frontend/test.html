@@ -17,6 +17,8 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="../css/flip/flip.min.css" />
+    <!-- <script defer src="../js/flip/flip.min.js"></script> -->
 
     <!-- 이벤트 등록부분 -->
     <script type="text/javascript" src="../elements/modal.js"></script>
@@ -35,16 +37,50 @@
   <body>
     <div id="test">
       <div style="height: 300px;"></div>
-      <button id="watch_dance" onclick="toggleWatchImg()">스누피 댄스!</button>
-      <div id = "watch_div">
+      <!-- <button id="watch_dance" onclick="toggleWatchImg()">스누피 댄스!</button>
+      <div id = "watch_div"> -->
         
+      <!-- </div> -->
+      <div id="timer_div" style="text-align: center;">
+        <div>DDAY - <span class="timer_dday">
+          <input class="timer_year"></input>년 
+          <input class="timer_month"></input>월 
+          <input class="timer_day"></input>일 
+          <input class="timer_hour"></input>시 
+          <input class="timer_minute"></input>분 
+          <input class="timer_second"></input>초 
+        </span><button style="margin: 0 0 0 30px;" onclick="changeDDAY()">적용!</button></div>
+        <div class="tick"
+          data-did-init="handleTickInit">
+          <div data-repeat="true"
+              data-layout="horizontal center fit"
+              data-transform="preset(d, h, m, s) -> delay">
+              <div class="tick-group" style="margin: 0 20px;">
+                <div data-key="value"
+                  data-repeat="true"
+                  data-transform="pad(00) -> split -> delay">
+                <span data-view="flip"></span>
+              </div>
+              <span data-key="label"
+                  data-view="text"
+                  class="tick-label" style="font-size: 30px;"></span>
+            </div>
+          </div>
+        </div>
       </div>
+
+      
+</div>
     </div>
     <script>
       onload = () => {
-        const dom = makeWatch()
-        const watch_div = document.getElementById('watch_div');
-        watch_div.appendChild(dom);
+        // const dom = makeWatch()
+        // const watch_div = document.getElementById('watch_div');
+        // watch_div.appendChild(dom);
+        
+        
+        initDDAY()
+        loadFlipJs()
       }
       
     </script>

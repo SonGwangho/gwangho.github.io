@@ -58,7 +58,33 @@
   </details>
   <details>
     <summary>타이머!</summary>
-    <div id="timer_div" style="text-align: center;"></div>
+    <div id="timer_div" style="text-align: center;">
+      <div>디데이 - <span class="timer_dday">
+        <span class="timer_year"></span>년 
+        <span class="timer_month"></span>월 
+        <span class="timer_day"></span>일 
+        <span class="timer_hour"></span>시 
+        <span class="timer_minute"></span>분 
+        <span class="timer_second"></span>초 
+      </span><button style="margin: 0 0 0 30px;" onclick="changeDDAY()">적용!</button></div>
+      <div class="tick"
+          data-did-init="handleTickInit">
+          <div data-repeat="true"
+              data-layout="horizontal center fit"
+              data-transform="preset(d, h, m, s) -> delay">
+              <div class="tick-group" style="margin: 0 25px;">
+                <div data-key="value"
+                  data-repeat="true"
+                  data-transform="pad(00) -> split -> delay">
+                <span data-view="flip"></span>
+              </div>
+              <span data-key="label"
+                  data-view="text"
+                  class="tick-label" style="font-size: 30px;"></span>
+            </div>
+          </div>
+        </div>
+    </div>
   </details>
 </div>
 <script>
@@ -69,5 +95,8 @@
     calendar_detail.appendChild(wrapDetail(Gist.getGistDom("9342b88e62f5e4673cbf375053cef4fb"), "달력만드는 코드"));
     watch_detail.appendChild(wrapDetail(Gist.getGistDom("3f882f6ef30f3bbc6d03c8604850319a"), "시계만드는 코드"));
     watch_detail.appendChild(wrapDetail(Gist.getGistDom("46c81a6256c1c7fa9138bbefb0f071a1"), "시분초침 움직이는 코드"));
+
+    initDDAY();
+    
   };
 </script>

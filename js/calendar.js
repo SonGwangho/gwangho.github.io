@@ -283,7 +283,9 @@ function initDDAY() {
   const dday = MyStorage.getLocalData("timer_dday");
   let inputValues = [];
   if (dday) {
-    span.parentElement.setAttribute("open", true);
+    document
+      .getElementById("timer_div")
+      .parentElement.setAttribute("open", true);
 
     const [date, time] = dday.split(" ");
     const dateParts = date.split("-").map(Number);

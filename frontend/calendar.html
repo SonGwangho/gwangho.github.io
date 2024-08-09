@@ -59,14 +59,16 @@
   <details>
     <summary>타이머!</summary>
     <div id="timer_div" style="text-align: center;">
-      <div>디데이 - <span class="timer_dday">
-        <span class="timer_year"></span>년 
-        <span class="timer_month"></span>월 
-        <span class="timer_day"></span>일 
-        <span class="timer_hour"></span>시 
-        <span class="timer_minute"></span>분 
-        <span class="timer_second"></span>초 
-      </span><button style="margin: 0 0 0 30px;" onclick="changeDDAY()">적용!</button></div>
+      <div>DDAY - 
+        <span class="timer_dday">
+          <input class="timer_year"></input>년 
+          <input class="timer_month"></input>월 
+          <input class="timer_day"></input>일 
+          <input class="timer_hour"></input>시 
+          <input class="timer_minute"></input>분 
+          <input class="timer_second"></input>초 
+        </span><button style="margin: 0 0 0 30px;" onclick="changeDDAY()">적용!</button>
+      </div>
       <div class="tick"
           data-did-init="handleTickInit">
           <div data-repeat="true"

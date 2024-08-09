@@ -319,7 +319,7 @@ function changeDDAY() {
 function loadFlipJs() {
   const script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = `./js/flip/flip.min.js`;
+  script.src = `./lib/flip.min.js`;
   script.async = false;
   document.head.appendChild(script);
 }

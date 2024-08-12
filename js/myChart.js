@@ -95,5 +95,5 @@ function addWeight(weight) {
 
 function clickAddWeight() {
   const input = document.getElementsByClassName("input_weight")[0];
-  if (input.value) addWeight(input.value.toFixed(1));
+  if (input.value) addWeight(parseFloat(input.value).toFixed(1));
 }

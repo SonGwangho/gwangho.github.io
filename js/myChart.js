@@ -2,17 +2,21 @@ function makeChart() {
   const canvas = document.getElementsByClassName("chart")[0];
 
   const weight = MyStorage.getLocalData("weight");
-  let datas = [50, 60, 70, 60, 50, 80.4];
+  let datas = [];
   let labels = [];
-  for (let i = datas.length; i > 0; i--) {
-    let date = new Date();
-    date.setDate(date.getDate() - i);
-    labels.push(MyDate.convertDateFormat(date, "yyyy-MM-dd"));
-  }
+  let title = "일별 무게 변화 차트..";
 
   if (weight) {
     datas = weight.labels;
     labels = weight.datas;
+    title = " 아래는 대충 테스트 데이터입니다...";
+  } else {
+    datas = [50, 60, 70, 60, 50, 80.4];
+    for (let i = datas.length; i > 0; i--) {
+      let date = new Date();
+      date.setDate(date.getDate() - i);
+      labels.push(MyDate.convertDateFormat(date, "yyyy-MM-dd"));
+    }
   }
 
   const datasets = [
@@ -27,7 +31,7 @@ function makeChart() {
     plugins: {
       title: {
         display: true,
-        text: "일별 무게 변화 차트..",
+        text: title,
       },
     },
     scales: {
@@ -87,4 +91,9 @@ function addWeight(weight) {
   json.labels = labels;
   MyStorage.saveLocal("weight", JSON.stringify(json));
   location.reload();
+}
+
+function clickAddWeight() {
+  const input = document.getElementsByClassName("input_weight")[0];
+  if (input.value) addWeight(input.value);
 }

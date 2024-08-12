@@ -449,7 +449,19 @@ button:hover{
 .timer_hour {
   margin: 0 0 0 30px;
 }
-
+.input_weight{
+  flex: 1 0 auto;
+  border: 0;
+  border-right: 1px solid;
+  font-family: 'Ownglyph_noocar-Rg', sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 10px;
+}
+.add_weight{
+  width: fit-content;
+  margin: 0 auto 30px;
+}
 .chart_weight{
   margin: auto;
   min-width: 600px;

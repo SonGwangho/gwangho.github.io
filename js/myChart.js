@@ -9,8 +9,8 @@ function makeChart() {
   if (weight) {
     datas = weight.labels;
     labels = weight.datas;
-    title = " 아래는 대충 테스트 데이터입니다...";
   } else {
+    title = " 아래는 대충 테스트 데이터입니다...";
     datas = [50, 60, 70, 60, 50, 80.4];
     for (let i = datas.length; i > 0; i--) {
       let date = new Date();

@@ -49,7 +49,7 @@ function makeChart() {
     },
   };
 
-  let chart = new Chart(canvas, {
+  new Chart(canvas, {
     type: "line",
     data: {
       labels: labels,

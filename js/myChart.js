@@ -12,7 +12,11 @@ function makeChart() {
 
     if (datas.length == 1) {
       datas = datas.push(datas[0]);
-      labels = labels.push(labels[0]);
+      labels = labels.push(
+        MyDate.convertDateFormat(
+          new Date(labels[0]).setDate(parseInt(labels[0].split("-")[2]) - 1)
+        )
+      );
     }
   } else {
     title = " 아래는 대충 테스트 데이터입니다...";

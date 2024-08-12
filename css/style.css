@@ -462,6 +462,9 @@ button:hover{
   font-size: 30px;
   font-weight: 500;
   padding: 10px;
+
+  width: 200px;
+  text-align: center;
 }
 .add_weight{
   width: fit-content;

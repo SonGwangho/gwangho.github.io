@@ -449,3 +449,9 @@ button:hover{
 .timer_hour {
   margin: 0 0 0 30px;
 }
+
+.chart_weight{
+  margin: auto;
+  min-width: 600px;
+  min-height: 600px;
+}

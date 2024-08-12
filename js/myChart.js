@@ -44,7 +44,6 @@ function makeChart() {
           text: "Weight",
         },
         suggestedMin: 40,
-        suggestedMax: 120,
       },
     },
   };

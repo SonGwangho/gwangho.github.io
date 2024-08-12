@@ -452,6 +452,7 @@ button:hover{
 .chart_kind {
   font-size: 30px;
   margin: auto;
+  margin-bottom: 30px;
   width: fit-content;
 }
 .chart_kind span{

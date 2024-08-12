@@ -11,8 +11,8 @@ function makeChart() {
   }
 
   if (weight) {
-    datas = Array.from(weight.labels.split(","));
-    labels = Array.from(weight.datas.split(","));
+    datas = weight.labels;
+    labels = weight.datas;
   }
 
   const datasets = [
@@ -65,8 +65,8 @@ function addWeight(weight) {
   let labels = [];
 
   if (json) {
-    datas = Array.from(json.labels.split(","));
-    labels = Array.from(json.datas.split(","));
+    datas = json.labels;
+    labels = json.datas;
   } else {
     json = {
       datas: datas,

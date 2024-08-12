@@ -23,12 +23,28 @@ function makeChart() {
   ];
 
   const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "일별 무게 변화 차트..",
+      },
+    },
     scales: {
       x: {
         type: "time",
         time: {
           unit: "day",
         },
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: "Weight",
+        },
+        suggestedMin: 40,
+        suggestedMax: 120,
       },
     },
   };
@@ -47,6 +63,7 @@ function addWeight(weight) {
   let json = MyStorage.getLocalData("weight");
   let datas = [];
   let labels = [];
+
   if (json) {
     datas = Array.from(json.labels.split(","));
     labels = Array.from(json.datas.split(","));
@@ -57,10 +74,18 @@ function addWeight(weight) {
     };
   }
 
+  const today = MyDate.convertDateFormat(new Date(), "yyyy-MM-dd");
+
+  if (labels[labels.length - 1] == today) {
+    labels.pop();
+    datas.pop();
+  }
+
   datas.push(weight);
-  labels.push(MyDate.convertDateFormat(new Date(), "yyyy-MM-dd"));
+  labels.push(today);
 
   json.datas = datas;
   json.labels = labels;
   MyStorage.saveLocal("weight", JSON.stringify(json));
+  location.reload();
 }

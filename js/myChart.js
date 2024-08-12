@@ -1,6 +1,14 @@
-function makeChart() {
-  const canvas = document.getElementsByClassName("chart")[0];
+function initKind() {
+  const weight = MyStorage.getLocalData("weight_kind");
+  weight
+    ? MyStorage.saveLocal("weight_kind", "days")
+    : MyStorage.saveLocal("weight_kind", "month");
+}
 
+function makeChart() {
+  const kind = MyStorage.getLocalData("weight_kind");
+
+  const canvas = document.getElementsByClassName("chart")[0];
   const weight = MyStorage.getLocalData("weight");
   let datas = [];
   let labels = [];
@@ -9,6 +17,16 @@ function makeChart() {
   if (weight) {
     datas = weight.datas;
     labels = weight.labels;
+
+    if (kind === "month") {
+      datas = [];
+      datas.push(Random.getNumber(500, 900) / 10);
+      for (let i = datas.length; i > 0; i--) {
+        let date = new Date();
+        date.setDate(date.getDate() - i);
+        labels.push(MyDate.convertDateFormat(date, "yyyy-MM-dd"));
+      }
+    }
 
     if (datas.length == 1) {
       datas.push(datas[0]);
@@ -51,7 +69,7 @@ function makeChart() {
       x: {
         type: "time",
         time: {
-          unit: "day",
+          unit: kind,
         },
       },
       y: {

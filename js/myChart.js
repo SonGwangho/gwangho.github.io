@@ -16,7 +16,8 @@ function makeChart() {
         MyDate.convertDateFormat(
           new Date(
             new Date(labels[0]).setDate(parseInt(labels[0].split("-")[2]) - 1)
-          )
+          ),
+          "yyyy-MM-dd"
         )
       );
     }

@@ -80,8 +80,8 @@ function addWeight(weight) {
   let labels = [];
 
   if (json) {
-    datas = json.labels;
-    labels = json.datas;
+    datas = json.datas;
+    labels = json.labels;
   } else {
     json = {
       datas: datas,
@@ -108,4 +108,12 @@ function addWeight(weight) {
 function clickAddWeight() {
   const input = document.getElementsByClassName("input_weight")[0];
   if (input.value) addWeight(parseFloat(input.value).toFixed(1));
+}
+
+function initWeight() {
+  json = {
+    datas: [],
+    labels: [],
+  };
+  MyStorage.saveLocal("weight", JSON.stringify(json));
 }

@@ -449,10 +449,15 @@ button:hover{
 .timer_hour {
   margin: 0 0 0 30px;
 }
+.input_weight::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
 .input_weight{
   flex: 1 0 auto;
-  border: 0;
-  border-right: 1px solid;
+  border: 2px solid #aeaeae;
+  border-radius: 10px;
   font-family: 'Ownglyph_noocar-Rg', sans-serif;
   font-size: 30px;
   font-weight: 500;

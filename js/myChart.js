@@ -7,8 +7,8 @@ function makeChart() {
   let title = "일별 무게 변화 차트..";
 
   if (weight) {
-    datas = weight.labels;
-    labels = weight.datas;
+    datas = weight.datas;
+    labels = weight.labels;
 
     if (datas.length == 1) {
       datas = datas.push(datas[0]);

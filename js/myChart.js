@@ -36,17 +36,6 @@ function makeChart() {
     datas = weight.datas;
     labels = weight.labels;
 
-    if (kind === "month") {
-      datas = [];
-      labels = [];
-      for (let i = 0; i < 100; i++) datas.push(Random.getNumber(500, 900) / 10);
-      for (let i = datas.length; i > 0; i--) {
-        let date = new Date();
-        date.setDate(date.getDate() - i);
-        labels.push(MyDate.convertDateFormat(date, "yyyy-MM-dd"));
-      }
-    }
-
     if (datas.length == 1) {
       datas.push(datas[0]);
       labels.push(

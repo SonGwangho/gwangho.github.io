@@ -22,6 +22,7 @@ function makeChart() {
       );
     }
   } else {
+    MyToast.showToast("추가해도 님만 보여요!");
     title = " 아래는 대충 테스트 데이터입니다...";
     datas = [50, 60, 70, 60, 50, 80.4];
     for (let i = datas.length; i > 0; i--) {

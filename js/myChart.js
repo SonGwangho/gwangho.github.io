@@ -9,6 +9,11 @@ function makeChart() {
   if (weight) {
     datas = weight.labels;
     labels = weight.datas;
+
+    if (data.length == 1) {
+      datas = datas.push(datas[0]);
+      labels = datas.push(labels[0]);
+    }
   } else {
     title = " 아래는 대충 테스트 데이터입니다...";
     datas = [50, 60, 70, 60, 50, 80.4];

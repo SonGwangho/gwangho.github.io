@@ -61,6 +61,7 @@ function makeChart() {
           text: "Weight(kg)",
         },
         suggestedMin: 40,
+        suggestedMax: Math.max(datas) * 1.1,
       },
     },
   };

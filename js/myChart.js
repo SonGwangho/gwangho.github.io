@@ -12,7 +12,7 @@ function makeChart() {
 
     if (datas.length == 1) {
       datas = datas.push(datas[0]);
-      labels = datas.push(labels[0]);
+      labels = labels.push(labels[0]);
     }
   } else {
     title = " 아래는 대충 테스트 데이터입니다...";

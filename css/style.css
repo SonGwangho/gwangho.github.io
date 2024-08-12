@@ -474,4 +474,6 @@ button:hover{
   margin: auto;
   min-width: 600px;
   min-height: 600px;
+  max-width: 1200px;
+  max-height: 800px;
 }

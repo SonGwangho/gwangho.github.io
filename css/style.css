@@ -457,6 +457,7 @@ button:hover{
 }
 .chart_kind span{
   margin: 0 10px;
+  cursor: pointer;
 }
 .chart_kind .active{
   font-weight: bold;

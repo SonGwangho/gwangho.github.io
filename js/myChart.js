@@ -4,9 +4,7 @@ function initKind() {
   const month = chartKind.children[1];
 
   let weight = MyStorage.getLocalData("weight_kind");
-  weight
-    ? MyStorage.saveLocal("weight_kind", "month")
-    : MyStorage.saveLocal("weight_kind", "day");
+  if (!weight) MyStorage.saveLocal("weight_kind", "day");
 
   weight = MyStorage.getLocalData("weight_kind");
   if (weight === "day") {

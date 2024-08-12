@@ -11,8 +11,8 @@ function makeChart() {
     labels = weight.labels;
 
     if (datas.length == 1) {
-      datas = datas.push(datas[0]);
-      labels = labels.push(
+      datas.push(datas[0]);
+      labels.push(
         MyDate.convertDateFormat(
           new Date(labels[0]).setDate(parseInt(labels[0].split("-")[2]) - 1)
         )

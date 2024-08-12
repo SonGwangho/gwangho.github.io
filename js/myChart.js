@@ -1,8 +1,28 @@
 function initKind() {
-  const weight = MyStorage.getLocalData("weight_kind");
+  const chartKind = document.getElementsByClassName("chart_kind")[0];
+  const day = chartKind.children[0];
+  const month = chartKind.children[1];
+
+  let weight = MyStorage.getLocalData("weight_kind");
   weight
-    ? MyStorage.saveLocal("weight_kind", "days")
-    : MyStorage.saveLocal("weight_kind", "month");
+    ? MyStorage.saveLocal("weight_kind", "month")
+    : MyStorage.saveLocal("weight_kind", "day");
+
+  weight = MyStorage.getLocalData("weight_kind");
+  if (weight === "day") {
+    day.classList.add("active");
+  } else {
+    month.classList.add("active");
+  }
+  day.addEventListener("click", () => {
+    MyStorage.saveLocal("weight_kind", "day");
+    location.reload();
+  });
+
+  month.addEventListener("click", () => {
+    MyStorage.saveLocal("weight_kind", "month");
+    location.reload();
+  });
 }
 
 function makeChart() {

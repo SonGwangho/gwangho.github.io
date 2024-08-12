@@ -10,7 +10,7 @@ function makeChart() {
     datas = weight.labels;
     labels = weight.datas;
 
-    if (data.length == 1) {
+    if (datas.length == 1) {
       datas = datas.push(datas[0]);
       labels = datas.push(labels[0]);
     }

@@ -10,7 +10,7 @@ function makeChart() {
     labels.push(MyDate.convertDateFormat(date, "yyyy-MM-dd"));
   }
 
-  if (!weight) {
+  if (weight) {
     datas = Array.from(weight.labels.split(","));
     labels = Array.from(weight.datas.split(","));
   }
@@ -47,7 +47,7 @@ function addWeight(weight) {
   let json = MyStorage.getLocalData("weight");
   let datas = [];
   let labels = [];
-  if (!json) {
+  if (json) {
     datas = Array.from(json.labels.split(","));
     labels = Array.from(json.datas.split(","));
   } else {

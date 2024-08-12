@@ -449,6 +449,14 @@ button:hover{
 .timer_hour {
   margin: 0 0 0 30px;
 }
+.chart_kind {
+  font-size: 30px;
+  margin: auto;
+  width: fit-content;
+}
+.chart_kind span{
+  margin: 0 10px;
+}
 .chart_kind .active{
   font-weight: bold;
 }

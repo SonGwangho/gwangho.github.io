@@ -14,7 +14,9 @@ function makeChart() {
       datas.push(datas[0]);
       labels.push(
         MyDate.convertDateFormat(
-          new Date(labels[0]).setDate(parseInt(labels[0].split("-")[2]) - 1)
+          new Date(
+            new Date(labels[0]).setDate(parseInt(labels[0].split("-")[2]) - 1)
+          )
         )
       );
     }

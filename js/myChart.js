@@ -76,7 +76,7 @@ function addWeight(weight) {
 
   const today = MyDate.convertDateFormat(new Date(), "yyyy-MM-dd");
 
-  if (labels[labels.length - 1] == today) {
+  if (labels.length > 0 && labels[labels.length - 1] == today) {
     labels.pop();
     datas.pop();
   }

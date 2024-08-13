@@ -1,4 +1,4 @@
-Array.prototype.sum = () => {
+Array.prototype.sum = function () {
   console.log(this);
   const a = this;
   const s = 0;

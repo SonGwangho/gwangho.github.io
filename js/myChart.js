@@ -30,7 +30,7 @@ function makeChart() {
   const weight = MyStorage.getLocalData("weight");
   let datas = [];
   let labels = [];
-  let title = "일별 무게 변화 차트..";
+  let title = "무게 변화 차트..";
 
   if (weight) {
     datas = weight.datas;
@@ -57,11 +57,15 @@ function makeChart() {
       labels.push(MyDate.convertDateFormat(date, "yyyy-MM-dd"));
     }
   }
-
+  const avg = Array(datas.length).fill(datas.sum() / datas.length);
   const datasets = [
     {
-      label: "무게",
+      label: "무게(하루)",
       data: datas,
+    },
+    {
+      label: "무게(평균)",
+      data: avg,
     },
   ];
 

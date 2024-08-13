@@ -1,5 +1,5 @@
 Array.prototype.sum = function () {
-  const s = 0;
+  let s = 0;
   for (const i of this) {
     s += parseFloat(i);
   }

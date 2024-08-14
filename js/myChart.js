@@ -90,7 +90,7 @@ function makeChart() {
           display: true,
           text: "Weight(kg)",
         },
-        suggestedMin: 40,
+        suggestedMin: Math.min(...datas) - 5,
         suggestedMax: Math.max(...datas) * 1.1,
       },
     },

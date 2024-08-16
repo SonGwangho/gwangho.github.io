@@ -149,3 +149,11 @@ function initWeight() {
   };
   MyStorage.saveLocal("weight", JSON.stringify(json));
 }
+
+async function backupWeight() {
+  MyFile.download(
+    `weight_${MyDate.convertDateFormat(MyDate.getNow(), "yyyy-MM-dd")}`,
+    "application/json",
+    JSON.stringify(MyStorage.getLocalData("weight"))
+  );
+}

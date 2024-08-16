@@ -399,3 +399,20 @@ class MyURL {
     }
   }
 }
+
+class MyFile {
+  /**
+   *
+   * @param {string} filename
+   * @param {string} filetype ex) application/json...
+   * @param {*} data
+   */
+  static async download(filename, filetype, data) {
+    const blob = new Blob([data], { type: filetype });
+    const a = document.createElement("a");
+    a.download = filename;
+    a.href = await URL.createObjectURL(blob);
+    a.click();
+    a.remove();
+  }
+}

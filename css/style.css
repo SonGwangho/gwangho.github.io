@@ -483,6 +483,9 @@ button:hover{
   width: fit-content;
   margin: 0 auto 30px;
 }
+.backup_weight{
+  position: absolute;
+}
 .chart_weight{
   margin: auto;
   min-width: 600px;

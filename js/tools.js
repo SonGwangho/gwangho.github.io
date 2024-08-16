@@ -1,7 +1,7 @@
 class MyDate {
   static getNow(format = "yyyy-MM-dd HH:mm:ss") {
     const now = new Date();
-    return this.convert_date_format(now, format);
+    return this.convertDateFormat(now, format);
   }
 
   static convertDateFormat(date, format) {

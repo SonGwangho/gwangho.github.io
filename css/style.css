@@ -485,6 +485,8 @@ button:hover{
 }
 .backup_weight{
   position: absolute;
+  margin: 0;
+  padding: 0;
 }
 .chart_weight{
   margin: auto;

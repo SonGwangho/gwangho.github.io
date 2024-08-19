@@ -164,4 +164,9 @@ async function uploadWeight() {
 
   const json = JSON.parse(text);
   MyStorage.saveLocal("weight", JSON.stringify(json));
+  MyToast.showToast("복원 되었습니다.");
+
+  setTimeout(() => {
+    location.reload();
+  }, 1000);
 }

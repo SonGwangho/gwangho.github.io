@@ -23,7 +23,7 @@ class InputFile extends HTMLElement {
     this.button.style.fontFamily = "'Ownglyph_noocar-Rg', sans-serif";
     this.button.style.fontSize = "18px";
 
-    button.addEventListener("click", () => {
+    this.button.addEventListener("click", () => {
       this.input.click();
     });
 

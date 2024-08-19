@@ -159,9 +159,9 @@ async function backupWeight() {
 }
 
 async function uploadWeight() {
-  const input = document.getElementById("weightJson");
+  const input = document.getElementById("weight_json");
   const text = await input.files[0].text();
 
   const json = JSON.parse(text);
-  MyStorage.saveLocal("weight", JSON.stringify(json));
+  // MyStorage.saveLocal("weight", JSON.stringify(json));
 }

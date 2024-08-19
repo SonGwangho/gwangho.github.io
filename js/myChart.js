@@ -157,3 +157,5 @@ async function backupWeight() {
     JSON.stringify(MyStorage.getLocalData("weight"))
   );
 }
+
+async function uploadWeight() {}

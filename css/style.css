@@ -37,6 +37,10 @@ button:hover{
   font-weight: 700;
 }
 
+input[type=file]{
+  text-align: center;
+}
+
 .modal{
   position: absolute;
   display: none;

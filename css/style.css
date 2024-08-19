@@ -39,6 +39,10 @@ button:hover{
 
 input[type=file]{
   text-align: center;
+  
+  border: 2px solid #aaaaaa;
+  border-radius: 10px;
+  margin: 0 15px;
 }
 
 .modal{

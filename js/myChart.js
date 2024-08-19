@@ -160,13 +160,24 @@ async function backupWeight() {
 
 async function uploadWeight() {
   const input = document.getElementById("weight_json");
-  const text = await input.files[0].text();
 
-  const json = JSON.parse(text);
-  MyStorage.saveLocal("weight", JSON.stringify(json));
-  MyToast.showToast("복원 되었습니다.");
+  try {
+    const text = await input.files[0].text();
 
-  setTimeout(() => {
-    location.reload();
-  }, 1000);
+    const json = JSON.parse(text);
+
+    if (json.datas.length != json.labels.length) {
+      throw new Error("데이터가 이상해요");
+    }
+
+    MyStorage.saveLocal("weight", JSON.stringify(json));
+    MyToast.showToast("복원 되었습니다.");
+
+    setTimeout(() => {
+      location.reload();
+    }, 1000);
+  } catch (e) {
+    MyToast.showToast("엥 데이터가 이상한데요.");
+    console.warn(e);
+  }
 }

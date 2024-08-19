@@ -143,7 +143,7 @@ function clickAddWeight() {
 }
 
 function initWeight() {
-  json = {
+  const json = {
     datas: [],
     labels: [],
   };
@@ -158,4 +158,7 @@ async function backupWeight() {
   );
 }
 
-async function uploadWeight() {}
+async function uploadWeight() {
+  const input = document.getElementById("weightJson");
+  input.file;
+}

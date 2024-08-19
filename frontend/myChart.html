@@ -2,7 +2,6 @@
   <div class="chart_kind"><span class="chart_day">일별</span> | <span class="chart_month">월별</span></div>
   <div class="add_weight"><input type="number" step="0.1" class="input_weight" placeholder="0.0"> <button style="font-size: 24px;" onclick="clickAddWeight()">오늘의 무게(kg) 추가</button></div>
   <div style="width: fit-content; margin: auto; text-align: right;">
-    <!-- <input type="file" id="weightJson" accept=".json" onchange="uploadWeight()"> -->
       <input-file id="weight_json" onchange="uploadWeight()" text="클릭해서 백업했던 json 파일을 업로드 해주세요."></input-file>
       <button class="backup_weight" onclick="backupWeight()">백업하기</button>
     <canvas class="chart chart_weight"></canvas>

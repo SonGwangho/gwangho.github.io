@@ -9,30 +9,30 @@ class InputFile extends HTMLElement {
       }`;
     shadow.appendChild(style);
 
-    const input = document.createElement("input");
-    input.type = "file";
-    input.style.display = "none";
+    this.input = document.createElement("input");
+    this.input.type = "file";
+    this.input.style.display = "none";
 
-    const button = document.createElement("button");
-    button.textContent = "파일 선택";
-    button.style.padding = "3px 5px";
-    button.style.backgroundColor = "transparent";
-    button.style.border = "0";
-    button.style.cursor = "pointer";
-    button.style.margin = "0 10px";
-    button.style.fontFamily = "'Ownglyph_noocar-Rg', sans-serif";
-    button.style.fontSize = "18px";
+    this.button = document.createElement("button");
+    this.button.textContent = "파일 선택";
+    this.button.style.padding = "3px 5px";
+    this.button.style.backgroundColor = "transparent";
+    this.button.style.border = "0";
+    this.button.style.cursor = "pointer";
+    this.button.style.margin = "0 10px";
+    this.button.style.fontFamily = "'Ownglyph_noocar-Rg', sans-serif";
+    this.button.style.fontSize = "18px";
 
     button.addEventListener("click", () => {
-      input.click();
+      this.input.click();
     });
 
-    input.addEventListener("change", (event) => {
+    this.input.addEventListener("change", (event) => {
       const fileName =
-        input.files.length > 0
-          ? input.files[0].name
+        this.input.files.length > 0
+          ? this.input.files[0].name
           : "파일이 선택되지 않았습니다.";
-      button.textContent = fileName;
+      this.button.textContent = fileName;
 
       this.dispatchEvent(new Event("change"));
       if (this.getAttribute("onchange")) {
@@ -41,8 +41,8 @@ class InputFile extends HTMLElement {
       }
     });
 
-    shadow.appendChild(button);
-    shadow.appendChild(input);
+    shadow.appendChild(this.button);
+    shadow.appendChild(this.input);
   }
 
   static get observedAttributes() {

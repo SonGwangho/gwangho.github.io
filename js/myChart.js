@@ -163,5 +163,5 @@ async function uploadWeight() {
   const text = await input.files[0].text();
 
   const json = JSON.parse(text);
-  // MyStorage.saveLocal("weight", JSON.stringify(json));
+  MyStorage.saveLocal("weight", JSON.stringify(json));
 }

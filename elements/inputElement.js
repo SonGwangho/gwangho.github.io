@@ -1,7 +1,7 @@
 class InputFile extends HTMLElement {
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: "open" });
+    const shadow = this.attachShadow({ mode: "closed" });
     const style = document.createElement("style");
     style.textContent = `
       button:hover {
@@ -34,11 +34,9 @@ class InputFile extends HTMLElement {
           : "파일이 선택되지 않았습니다.";
       this.button.textContent = fileName;
 
-      this.dispatchEvent(new Event("change"));
-      if (this.getAttribute("onchange")) {
-        const onchangeHandler = new Function(this.getAttribute("onchange"));
-        onchangeHandler.call(this, event);
-      }
+      this.dispatchEvent(
+        new Event("change", { bubbles: true, composed: true })
+      );
     });
 
     shadow.appendChild(this.button);

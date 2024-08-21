@@ -13,7 +13,7 @@ class Pokemon {
     }
   }
 
-  static async parsing(data) {
+  static async parsing(data, isMove = false) {
     if (!data) return null;
     const abilities = await Promise.all(
       data.abilities.map(async ({ ability: { url }, is_hidden }) => ({
@@ -38,12 +38,13 @@ class Pokemon {
       }))
     );
 
-    const sprites = data.sprites.other.showdown;
     const json = {
       id: data.id,
       abilities,
       name,
-      sprites: sprites ? sprites : data.sprites.other["official-artwork"],
+      sprites: isMove
+        ? data.sprites.other.showdown
+        : data.sprites.other["official-artwork"],
       stats,
       types,
     };
@@ -599,7 +600,7 @@ async function search() {
     Modal.startLoading();
     const url = "https://pokeapi.co/api/v2/pokemon/" + converter[text];
     const pokemon = await Pokemon.getPokemons(url);
-    const parsed = await Pokemon.parsing(pokemon);
+    const parsed = await Pokemon.parsing(pokemon, true);
     const pokeDiv = getPokemonDiv(parsed);
 
     const div = document.createElement("div");

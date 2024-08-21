@@ -38,14 +38,17 @@ class Pokemon {
       }))
     );
 
+    let imgSrc;
+    if (isMove) {
+      imgSrc = data.sprites.other.showdown;
+    } else imgSrc = data.sprites.other["official-artwork"];
+
     const json = {
       id: data.id,
       abilities,
       name,
-      sprites: isMove
-        ? data.sprites.other.showdown.front_default
-          ? data.sprites.other.showdown
-          : data.sprites.other["official-artwork"]
+      sprites: imgSrc.front_default
+        ? imgSrc
         : data.sprites.other["official-artwork"],
       stats,
       types,

@@ -51,7 +51,7 @@ function loadCalendar(now = new Date()) {
     headRow.appendChild(headCol);
   });
 
-  const weekdays = getDayWithweekdays();
+  const weekdays = getDayWithweekdays(now);
 
   const tableBody = document.createElement("tbody");
   let tr = document.createElement("tr");
@@ -139,18 +139,20 @@ function loadCalendar(now = new Date()) {
   calendarDiv.appendChild(document.createElement("br"));
 
   calendarDiv.addEventListener("click", (e) => {
+    e.preventDefault();
     calendarDiv.innerHTML = "";
     loadCalendar(now.setMonth(now.getMonth() + 1));
   });
 
   calendarDiv.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
     calendarDiv.innerHTML = "";
     loadCalendar(now.setMonth(now.getMonth() - 1));
   });
 }
 
-function getDayWithweekdays() {
-  const today = new Date();
+function getDayWithweekdays(date) {
+  const today = new Date(date);
   const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
   const firstDayOfNextMonth = new Date(
     today.getFullYear(),

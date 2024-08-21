@@ -1,4 +1,5 @@
 function loadCalendar(now = new Date()) {
+  now = new Date(now);
   const calendarDiv = document.getElementById("calendar_div");
   const monthNames = [
     "January",

@@ -38,7 +38,7 @@ class Pokemon {
       }))
     );
 
-    const sprites = data.sprites.other.showdown["front_default"];
+    const sprites = data.sprites.other.showdown;
     const json = {
       id: data.id,
       abilities,

@@ -454,8 +454,8 @@ function getPokemonDiv(parsed) {
       const contents = m.querySelector(".pokemon_type_modal_contents");
       contents.innerText = ab.effect;
       m.style.display = "block";
-      m.style.left = event.clientX + "px";
-      m.style.top = event.clientY + "px";
+      m.style.left = event.pageX + "px";
+      m.style.top = event.pageY + "px";
     });
     ability.addEventListener("mouseout", (event) => {
       const m = document.getElementsByClassName("pokemon_type_modal")[0];

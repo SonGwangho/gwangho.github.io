@@ -38,11 +38,12 @@ class Pokemon {
       }))
     );
 
+    const sprites = data.sprites.other.showdown["front_default"];
     const json = {
       id: data.id,
       abilities,
       name,
-      sprites: data.sprites.other["official-artwork"],
+      sprites: sprites ? sprites : data.sprites.other["official-artwork"],
       stats,
       types,
     };

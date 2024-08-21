@@ -178,7 +178,22 @@ input[type=file]{
   height: 100%;
   margin: auto;
 }
+.pokemon_type_modal{
+  position: absolute;
+  
+  min-width: 200px;
+  background: rgb(186, 216, 243);
+  border-radius: 10px;
+  margin: auto;
+  padding: 12px;
 
+  text-align: center;
+  z-index: 1000;
+}
+.pokemon_type_modal_title{
+  margin: 0 0 5px 0;
+  font-weight: 700;
+}
 .pokemon_inner_div{
   width: fit-content;
   margin: 20px auto;

@@ -35,52 +35,62 @@
     <title>공부용, 취미용, 심심풀이용 사이트</title>
   </head>
   <body>
-    <div id="test">
-      <div style="height: 300px;"></div>
-      <!-- <button id="watch_dance" onclick="toggleWatchImg()">스누피 댄스!</button>
-      <div id = "watch_div"> -->
-        
-      <!-- </div> -->
-      <div id="timer_div" style="text-align: center;">
-        <div>DDAY - <span class="timer_dday">
-          <input class="timer_year"></input>년 
-          <input class="timer_month"></input>월 
-          <input class="timer_day"></input>일 
-          <input class="timer_hour"></input>시 
-          <input class="timer_minute"></input>분 
-          <input class="timer_second"></input>초 
-        </span><button style="margin: 0 0 0 30px;" onclick="changeDDAY()">적용!</button></div>
-        <div class="tick"
-          data-did-init="handleTickInit">
-          <div data-repeat="true"
-              data-layout="horizontal center fit"
-              data-transform="preset(d, h, m, s) -> delay">
-              <div class="tick-group" style="margin: 0 20px;">
-                <div data-key="value"
-                  data-repeat="true"
-                  data-transform="pad(00) -> split -> delay">
-                <span data-view="flip"></span>
-              </div>
-              <span data-key="label"
-                  data-view="text"
-                  class="tick-label" style="font-size: 30px;"></span>
-            </div>
-          </div>
+    <div class="modal">
+      <div class="modal_body">
+        <div class="modal_content">
+          모달컨텐츠
+        </div>
+        <div class="modal_close">
+          <button class="btn_close_modal" onclick="Modal.hideModal()">close</button>
         </div>
       </div>
+    </div>
 
+
+    <div id="pokemon">
+      <div class="pokemon_type_modal">
+        <div class="pokemon_type_modal_title"></div>
+    <div class="pokemon_type_modal_contents"></div>
+      </div>
+      <div class="search_section">
+        <div class="search_div">
+          <input class="search_input" type="text"><button class="search_button" onclick="search()">검색</button>
+        </div>
+        <div id="search_result_div"></div>
+      </div>
+      <div id="pokemon_search"></div>
+      <div id="poke_list"></div>
+    </div>
       
 </div>
     </div>
     <script>
       onload = () => {
-        // const dom = makeWatch()
-        // const watch_div = document.getElementById('watch_div');
-        // watch_div.appendChild(dom);
-        
-        
-        initDDAY()
-        loadFlipJs()
+        getPokemonJson();
+    document.getElementsByClassName('search_input')[0].addEventListener("input", onInput);;
+    document.getElementsByClassName('search_input')[0].addEventListener("keydown", (e) => {
+      
+      switch(e.keyCode){
+        case 13:
+          e.preventDefault();
+          search();
+          break;
+        case 9:
+          e.preventDefault();
+          itemClick(e);
+          break;
+        case 38:
+          e.preventDefault();
+          keyboardEvent("up");
+          break;
+        case 40:
+          e.preventDefault();
+          keyboardEvent("down");
+          break;
+      }
+    })
+    loadPokemons();
+    window.addEventListener('scroll', handleScroll)
       }
       
     </script>

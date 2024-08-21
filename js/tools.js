@@ -421,7 +421,7 @@ class MyFile {
 class PyScript {
   static async getDom(filename) {
     const py_script = document.createElement("py-script");
-    await fetch(`../python/${filename}.py`)
+    await fetch(`./python/${filename}.py`)
       .then((response) => response.text())
       .then((text) => {
         py_script.innerHTML = text;

@@ -427,8 +427,8 @@ function getPokemonDiv(parsed) {
   img.src = parsed.sprites.front_default;
   img.classList.add("pokemon_img");
   if (img.src.indexOf(".gif") > -1) {
-    img.style.maxWidth = 1000;
-    img.style.minHeight = 250;
+    img.style.maxWidth = "1000px";
+    img.style.minHeight = "250px";
   }
 
   infoDiv.classList.add("pokemon_info");

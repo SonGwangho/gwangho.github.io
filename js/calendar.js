@@ -138,16 +138,18 @@ function loadCalendar(now = new Date()) {
   calendarDiv.appendChild(table);
   calendarDiv.appendChild(document.createElement("br"));
 
-  calendarDiv.addEventListener("click", (e) => {
+  calendarDiv.addEventListener("click", function (e) {
     e.preventDefault();
     calendarDiv.innerHTML = "";
     loadCalendar(now.setMonth(now.getMonth() + 1));
+    calendarDiv.removeEventListener("click", this);
   });
 
-  calendarDiv.addEventListener("contextmenu", (e) => {
+  calendarDiv.addEventListener("contextmenu", function (e) {
     e.preventDefault();
     calendarDiv.innerHTML = "";
     loadCalendar(now.setMonth(now.getMonth() - 1));
+    calendarDiv.removeEventListener("click", this);
   });
 }
 

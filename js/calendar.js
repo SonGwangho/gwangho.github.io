@@ -98,7 +98,8 @@ function loadCalendar(now = new Date()) {
       td.style.color = "blue";
     }
 
-    td.addEventListener("click", (e) => {
+    const tdEventHandler = (e) => {
+      e.preventDefault();
       let day = e.target.innerText;
       let data = MyStorage.getLocalData("calendar");
       if (!data) {
@@ -123,7 +124,10 @@ function loadCalendar(now = new Date()) {
         "calendar",
         JSON.stringify(`{"${month}": ${JSON.stringify(json)}}`)
       );
-    });
+      td.removeEventListener("click", tdEventHandler);
+    };
+
+    td.addEventListener("click", tdEventHandler);
 
     tr.appendChild(td);
   }

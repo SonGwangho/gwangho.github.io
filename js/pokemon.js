@@ -63,11 +63,13 @@ class Pokemon {
   static async getTypeEffect(url) {
     const response = await fetch(url);
     const data = await response.json();
+    let text = "";
     for (let flavor_text of data.flavor_text_entries) {
       if (flavor_text.language.name == "ko") {
-        return flavor_text.flavor_text;
+        text = flavor_text.flavor_text;
       }
     }
+    return text;
   }
 
   static getTypes() {

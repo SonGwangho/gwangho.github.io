@@ -1,4 +1,4 @@
-function loadCalendar() {
+function loadCalendar(now = new Date()) {
   const calendarDiv = document.getElementById("calendar_div");
   const monthNames = [
     "January",
@@ -16,16 +16,16 @@ function loadCalendar() {
   ];
   let data = MyStorage.getLocalData("calendar");
   if (!data) {
-    data = `{"${monthNames[new Date().getMonth()]}": {"days":[]}}`;
+    data = `{"${monthNames[now.getMonth()]}": {"days":[]}}`;
   }
-  const clicked = JSON.parse(data)[monthNames[new Date().getMonth()]]
-    ? JSON.parse(data)[monthNames[new Date().getMonth()]]
+  const clicked = JSON.parse(data)[monthNames[now.getMonth()]]
+    ? JSON.parse(data)[monthNames[now.getMonth()]]
     : JSON.parse('{"days":[]}');
 
   const month = document.createElement("h1");
   month.style.textAlign = "center";
   month.style.color = "orange";
-  month.innerText = monthNames[new Date().getMonth()];
+  month.innerText = monthNames[now.getMonth()];
 
   const table = document.createElement("table");
   const caption = document.createElement("caption");
@@ -70,7 +70,7 @@ function loadCalendar() {
     if (clicked.days.includes(weekday.Day)) {
       td.classList.add("clicked_calendar");
     }
-    if (weekday.Day == new Date().getDate()) {
+    if (weekday.Day == now.getDate()) {
       const outer = document.createElement("div");
       outer.style.textAlign = "center";
       const inner = document.createElement("div");
@@ -101,11 +101,11 @@ function loadCalendar() {
       let day = e.target.innerText;
       let data = MyStorage.getLocalData("calendar");
       if (!data) {
-        data = `{"${monthNames[new Date().getMonth()]}": {"days":[]}}`;
+        data = `{"${monthNames[now.getMonth()]}": {"days":[]}}`;
       }
 
-      let json = JSON.parse(data)[monthNames[new Date().getMonth()]]
-        ? JSON.parse(data)[monthNames[new Date().getMonth()]]
+      let json = JSON.parse(data)[monthNames[now.getMonth()]]
+        ? JSON.parse(data)[monthNames[now.getMonth()]]
         : JSON.parse('{"days":[]}');
 
       if (json.days.includes(day)) {
@@ -115,7 +115,7 @@ function loadCalendar() {
         json.days.push(day);
         e.target.classList.add("clicked_calendar");
       }
-      const month = monthNames[new Date().getMonth()];
+      const month = monthNames[now.getMonth()];
       caption.innerText =
         getSum(JSON.stringify(`{"${month}": ${JSON.stringify(json)}}`)) + " 번";
       MyStorage.saveLocal(
@@ -136,6 +136,16 @@ function loadCalendar() {
   calendarDiv.appendChild(month);
   calendarDiv.appendChild(table);
   calendarDiv.appendChild(document.createElement("br"));
+
+  calendarDiv.addEventListener("click", (e) => {
+    calendarDiv.innerHTML = "";
+    loadCalendar(now.setMonth(now.getMonth() + 1));
+  });
+
+  calendarDiv.addEventListener("contextmenu", (e) => {
+    calendarDiv.innerHTML = "";
+    loadCalendar(now.setMonth(now.getMonth() - 1));
+  });
 }
 
 function getDayWithweekdays() {

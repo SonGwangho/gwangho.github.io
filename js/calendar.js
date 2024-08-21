@@ -142,18 +142,20 @@ function loadCalendar(now = new Date()) {
     e.preventDefault();
     calendarDiv.innerHTML = "";
     loadCalendar(now.setMonth(now.getMonth() + 1));
-    calendarDiv.removeEventListener("click", clickHandler);
+    month.removeEventListener("click", clickHandler);
+    month.removeEventListener("contextmenu", contextMenuHandler);
   };
 
   const contextMenuHandler = (e) => {
     e.preventDefault();
     calendarDiv.innerHTML = "";
     loadCalendar(now.setMonth(now.getMonth() - 1));
-    calendarDiv.removeEventListener("contextmenu", contextMenuHandler);
+    month.removeEventListener("click", clickHandler);
+    month.removeEventListener("contextmenu", contextMenuHandler);
   };
 
-  calendarDiv.addEventListener("click", clickHandler);
-  calendarDiv.addEventListener("contextmenu", contextMenuHandler);
+  month.addEventListener("click", clickHandler);
+  month.addEventListener("contextmenu", contextMenuHandler);
 }
 
 function getDayWithweekdays(date) {

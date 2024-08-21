@@ -138,19 +138,22 @@ function loadCalendar(now = new Date()) {
   calendarDiv.appendChild(table);
   calendarDiv.appendChild(document.createElement("br"));
 
-  calendarDiv.addEventListener("click", function (e) {
+  const clickHandler = (e) => {
     e.preventDefault();
     calendarDiv.innerHTML = "";
     loadCalendar(now.setMonth(now.getMonth() + 1));
-    calendarDiv.removeEventListener("click", this);
-  });
+    calendarDiv.removeEventListener("click", clickHandler);
+  };
 
-  calendarDiv.addEventListener("contextmenu", function (e) {
+  const contextMenuHandler = (e) => {
     e.preventDefault();
     calendarDiv.innerHTML = "";
     loadCalendar(now.setMonth(now.getMonth() - 1));
-    calendarDiv.removeEventListener("click", this);
-  });
+    calendarDiv.removeEventListener("contextmenu", contextMenuHandler);
+  };
+
+  calendarDiv.addEventListener("click", clickHandler);
+  calendarDiv.addEventListener("contextmenu", contextMenuHandler);
 }
 
 function getDayWithweekdays(date) {

@@ -69,6 +69,280 @@ class Pokemon {
       }
     }
   }
+
+  static getTypes() {
+    return (json = {
+      type_list: [
+        "노말",
+        "격투",
+        "비행",
+        "독",
+        "땅",
+        "바위",
+        "벌레",
+        "고스트",
+        "강철",
+        "불꽃",
+        "물",
+        "풀",
+        "전기",
+        "에스퍼",
+        "얼음",
+        "드래곤",
+        "악",
+        "페어리",
+      ],
+      type_color: {
+        노말: "#949495",
+        격투: "#E09C40",
+        비행: "#A2C3E7",
+        독: "#735198",
+        땅: "#9C7743",
+        바위: "#BFB889",
+        벌레: "#9FA244",
+        고스트: "#684870",
+        강철: "#69A9C7",
+        불꽃: "#E56C3E",
+        물: "#5185C5",
+        풀: "#66A945",
+        전기: "#FCD533",
+        에스퍼: "#DD6B7B",
+        얼음: "#6DC8EB",
+        드래곤: "#535CA8",
+        악: "#4C4948",
+        페어리: "#DAB4D4",
+      },
+      type_detail: {
+        노말: {
+          attack: {
+            good: [],
+            bad: ["바위", "강철"],
+            no_effect: ["고스트"],
+          },
+          defence: {
+            good: ["격투"],
+            bad: [],
+            no_effect: ["고스트"],
+          },
+        },
+        불꽃: {
+          attack: {
+            good: ["풀", "얼음", "벌레", "강철"],
+            bad: ["불꽃", "물", "바위", "드래곤"],
+            no_effect: [],
+          },
+          defence: {
+            good: ["물", "땅", "바위"],
+            bad: ["불꽃", "풀", "얼음", "벌레", "강철", "페어리"],
+            no_effect: [],
+          },
+        },
+        물: {
+          attack: {
+            good: ["불꽃", "땅", "바위"],
+            bad: ["물", "풀", "드래곤"],
+            no_effect: [],
+          },
+          defence: {
+            good: ["풀", "전기"],
+            bad: ["불꽃", "물", "얼음", "강철"],
+            no_effect: [],
+          },
+        },
+        풀: {
+          attack: {
+            good: ["물", "땅", "바위"],
+            bad: ["불꽃", "풀", "독", "비행", "벌레", "드래곤", "강철"],
+            no_effect: [],
+          },
+          defence: {
+            good: ["불꽃", "얼음", "독", "비행", "벌레"],
+            bad: ["물", "풀", "전기", "땅"],
+            no_effect: [],
+          },
+        },
+        전기: {
+          attack: {
+            good: ["물", "비행"],
+            bad: ["풀", "전기", "드래곤"],
+            no_effect: ["땅"],
+          },
+          defence: {
+            good: ["땅"],
+            bad: ["전기", "비행", "강철"],
+            no_effect: [],
+          },
+        },
+        얼음: {
+          attack: {
+            good: ["풀", "땅", "비행", "드래곤"],
+            bad: ["불꽃", "물", "얼음", "강철"],
+            no_effect: [],
+          },
+          defence: {
+            good: ["불꽃", "격투", "바위", "강철"],
+            bad: ["얼음"],
+            no_effect: [],
+          },
+        },
+        격투: {
+          attack: {
+            good: ["노말", "얼음", "바위", "악", "강철"],
+            bad: ["독", "비행", "에스퍼", "벌레", "페어리"],
+            no_effect: ["고스트"],
+          },
+          defence: {
+            good: ["비행", "에스퍼", "페어리"],
+            bad: ["벌레", "바위", "악"],
+            no_effect: [],
+          },
+        },
+        독: {
+          attack: {
+            good: ["풀", "페어리"],
+            bad: ["독", "땅", "바위", "고스트"],
+            no_effect: ["강철"],
+          },
+          defence: {
+            good: ["땅", "에스퍼"],
+            bad: ["풀", "격투", "독", "벌레", "페어리"],
+            no_effect: [],
+          },
+        },
+        땅: {
+          attack: {
+            good: ["불꽃", "전기", "독", "바위", "강철"],
+            bad: ["풀", "벌레"],
+            no_effect: ["비행"],
+          },
+          defence: {
+            good: ["물", "풀", "얼음"],
+            bad: ["독", "바위"],
+            no_effect: ["전기"],
+          },
+        },
+        비행: {
+          attack: {
+            good: ["풀", "격투", "벌레"],
+            bad: ["전기", "바위", "강철"],
+            no_effect: [],
+          },
+          defence: {
+            good: ["전기", "얼음", "바위"],
+            bad: ["풀", "격투", "벌레"],
+            no_effect: ["땅"],
+          },
+        },
+        에스퍼: {
+          attack: {
+            good: ["격투", "독"],
+            bad: ["에스퍼", "강철"],
+            no_effect: ["악"],
+          },
+          defence: {
+            good: ["벌레", "고스트", "악"],
+            bad: ["격투", "에스퍼"],
+            no_effect: [],
+          },
+        },
+        벌레: {
+          attack: {
+            good: ["풀", "에스퍼", "악"],
+            bad: ["불꽃", "격투", "독", "비행", "고스트", "강철", "페어리"],
+            no_effect: [],
+          },
+          defence: {
+            good: ["불꽃", "비행", "바위"],
+            bad: ["풀", "격투", "땅 "],
+            no_effect: [],
+          },
+        },
+        바위: {
+          attack: {
+            good: ["불꽃", "얼음", "비행", "벌레"],
+            bad: ["격투", "땅", "강철"],
+            no_effect: [],
+          },
+          defence: {
+            good: ["물", "풀", "격투", "땅", "강철"],
+            bad: ["노말", "불꽃", "독", "비행"],
+            no_effect: [],
+          },
+        },
+        고스트: {
+          attack: {
+            good: ["에스퍼", "고스트"],
+            bad: ["악"],
+            no_effect: ["노말"],
+          },
+          defence: {
+            good: ["고스트", "악"],
+            bad: ["독", "벌레"],
+            no_effect: ["노말", "격투"],
+          },
+        },
+        드래곤: {
+          attack: {
+            good: ["드래곤"],
+            bad: ["강철"],
+            no_effect: ["페어리"],
+          },
+          defence: {
+            good: ["얼음", "드래곤", "페어리"],
+            bad: ["불꽃", "물", "풀", "전기"],
+            no_effect: [],
+          },
+        },
+        악: {
+          attack: {
+            good: ["에스퍼", "고스트"],
+            bad: ["격투", "악", "페어리"],
+            no_effect: [],
+          },
+          defence: {
+            good: ["격투", "벌레", "페어리"],
+            bad: ["고스트", "악"],
+            no_effect: ["에스퍼"],
+          },
+        },
+        강철: {
+          attack: {
+            good: ["얼음", "바위", "페어리"],
+            bad: ["불꽃", "물", "전기", "강철"],
+            no_effect: [],
+          },
+          defence: {
+            good: ["불꽃", "격투", "땅"],
+            bad: [
+              "노말",
+              "풀",
+              "얼음",
+              "비행",
+              "에스퍼",
+              "벌레",
+              "바위",
+              "드래곤",
+              "강철",
+              "페어리",
+            ],
+            no_effect: ["독"],
+          },
+        },
+        페어리: {
+          attack: {
+            good: ["격투", "드래곤", "악"],
+            bad: ["불꽃", "독", "강철"],
+            no_effect: [],
+          },
+          defence: {
+            good: ["독", "강철"],
+            bad: ["격투", "벌레", "악"],
+            no_effect: ["드래곤"],
+          },
+        },
+      },
+    });
+  }
 }
 
 let loading = false;
@@ -133,7 +407,7 @@ function getPokemonDiv(parsed) {
   if (!parsed) {
     return;
   }
-  const typeColor = getTypes().type_color;
+  const typeColor = Pokemon.getTypes().type_color;
 
   const pokemonDiv = document.createElement("div");
 
@@ -429,301 +703,3 @@ function keyboardEvent(direction) {
   for (let item of items) item.classList.remove("search_item_actived");
   items[index].classList.add("search_item_actived");
 }
-
-function getTypes() {
-  return (json = {
-    type_list: [
-      "노말",
-      "격투",
-      "비행",
-      "독",
-      "땅",
-      "바위",
-      "벌레",
-      "고스트",
-      "강철",
-      "불꽃",
-      "물",
-      "풀",
-      "전기",
-      "에스퍼",
-      "얼음",
-      "드래곤",
-      "악",
-      "페어리",
-    ],
-    type_color: {
-      노말: "#949495",
-      격투: "#E09C40",
-      비행: "#A2C3E7",
-      독: "#735198",
-      땅: "#9C7743",
-      바위: "#BFB889",
-      벌레: "#9FA244",
-      고스트: "#684870",
-      강철: "#69A9C7",
-      불꽃: "#E56C3E",
-      물: "#5185C5",
-      풀: "#66A945",
-      전기: "#FCD533",
-      에스퍼: "#DD6B7B",
-      얼음: "#6DC8EB",
-      드래곤: "#535CA8",
-      악: "#4C4948",
-      페어리: "#DAB4D4",
-    },
-    type_detail: {
-      노말: {
-        attack: {
-          good: [],
-          bad: ["바위", "강철"],
-          no_effect: ["고스트"],
-        },
-        defence: {
-          good: ["격투"],
-          bad: [],
-          no_effect: ["고스트"],
-        },
-      },
-      불꽃: {
-        attack: {
-          good: ["풀", "얼음", "벌레", "강철"],
-          bad: ["불꽃", "물", "바위", "드래곤"],
-          no_effect: [],
-        },
-        defence: {
-          good: ["물", "땅", "바위"],
-          bad: ["불꽃", "풀", "얼음", "벌레", "강철", "페어리"],
-          no_effect: [],
-        },
-      },
-      물: {
-        attack: {
-          good: ["불꽃", "땅", "바위"],
-          bad: ["물", "풀", "드래곤"],
-          no_effect: [],
-        },
-        defence: {
-          good: ["풀", "전기"],
-          bad: ["불꽃", "물", "얼음", "강철"],
-          no_effect: [],
-        },
-      },
-      풀: {
-        attack: {
-          good: ["물", "땅", "바위"],
-          bad: ["불꽃", "풀", "독", "비행", "벌레", "드래곤", "강철"],
-          no_effect: [],
-        },
-        defence: {
-          good: ["불꽃", "얼음", "독", "비행", "벌레"],
-          bad: ["물", "풀", "전기", "땅"],
-          no_effect: [],
-        },
-      },
-      전기: {
-        attack: {
-          good: ["물", "비행"],
-          bad: ["풀", "전기", "드래곤"],
-          no_effect: ["땅"],
-        },
-        defence: {
-          good: ["땅"],
-          bad: ["전기", "비행", "강철"],
-          no_effect: [],
-        },
-      },
-      얼음: {
-        attack: {
-          good: ["풀", "땅", "비행", "드래곤"],
-          bad: ["불꽃", "물", "얼음", "강철"],
-          no_effect: [],
-        },
-        defence: {
-          good: ["불꽃", "격투", "바위", "강철"],
-          bad: ["얼음"],
-          no_effect: [],
-        },
-      },
-      격투: {
-        attack: {
-          good: ["노말", "얼음", "바위", "악", "강철"],
-          bad: ["독", "비행", "에스퍼", "벌레", "페어리"],
-          no_effect: ["고스트"],
-        },
-        defence: {
-          good: ["비행", "에스퍼", "페어리"],
-          bad: ["벌레", "바위", "악"],
-          no_effect: [],
-        },
-      },
-      독: {
-        attack: {
-          good: ["풀", "페어리"],
-          bad: ["독", "땅", "바위", "고스트"],
-          no_effect: ["강철"],
-        },
-        defence: {
-          good: ["땅", "에스퍼"],
-          bad: ["풀", "격투", "독", "벌레", "페어리"],
-          no_effect: [],
-        },
-      },
-      땅: {
-        attack: {
-          good: ["불꽃", "전기", "독", "바위", "강철"],
-          bad: ["풀", "벌레"],
-          no_effect: ["비행"],
-        },
-        defence: {
-          good: ["물", "풀", "얼음"],
-          bad: ["독", "바위"],
-          no_effect: ["전기"],
-        },
-      },
-      비행: {
-        attack: {
-          good: ["풀", "격투", "벌레"],
-          bad: ["전기", "바위", "강철"],
-          no_effect: [],
-        },
-        defence: {
-          good: ["전기", "얼음", "바위"],
-          bad: ["풀", "격투", "벌레"],
-          no_effect: ["땅"],
-        },
-      },
-      에스퍼: {
-        attack: {
-          good: ["격투", "독"],
-          bad: ["에스퍼", "강철"],
-          no_effect: ["악"],
-        },
-        defence: {
-          good: ["벌레", "고스트", "악"],
-          bad: ["격투", "에스퍼"],
-          no_effect: [],
-        },
-      },
-      벌레: {
-        attack: {
-          good: ["풀", "에스퍼", "악"],
-          bad: ["불꽃", "격투", "독", "비행", "고스트", "강철", "페어리"],
-          no_effect: [],
-        },
-        defence: {
-          good: ["불꽃", "비행", "바위"],
-          bad: ["풀", "격투", "땅 "],
-          no_effect: [],
-        },
-      },
-      바위: {
-        attack: {
-          good: ["불꽃", "얼음", "비행", "벌레"],
-          bad: ["격투", "땅", "강철"],
-          no_effect: [],
-        },
-        defence: {
-          good: ["물", "풀", "격투", "땅", "강철"],
-          bad: ["노말", "불꽃", "독", "비행"],
-          no_effect: [],
-        },
-      },
-      고스트: {
-        attack: {
-          good: ["에스퍼", "고스트"],
-          bad: ["악"],
-          no_effect: ["노말"],
-        },
-        defence: {
-          good: ["고스트", "악"],
-          bad: ["독", "벌레"],
-          no_effect: ["노말", "격투"],
-        },
-      },
-      드래곤: {
-        attack: {
-          good: ["드래곤"],
-          bad: ["강철"],
-          no_effect: ["페어리"],
-        },
-        defence: {
-          good: ["얼음", "드래곤", "페어리"],
-          bad: ["불꽃", "물", "풀", "전기"],
-          no_effect: [],
-        },
-      },
-      악: {
-        attack: {
-          good: ["에스퍼", "고스트"],
-          bad: ["격투", "악", "페어리"],
-          no_effect: [],
-        },
-        defence: {
-          good: ["격투", "벌레", "페어리"],
-          bad: ["고스트", "악"],
-          no_effect: ["에스퍼"],
-        },
-      },
-      강철: {
-        attack: {
-          good: ["얼음", "바위", "페어리"],
-          bad: ["불꽃", "물", "전기", "강철"],
-          no_effect: [],
-        },
-        defence: {
-          good: ["불꽃", "격투", "땅"],
-          bad: [
-            "노말",
-            "풀",
-            "얼음",
-            "비행",
-            "에스퍼",
-            "벌레",
-            "바위",
-            "드래곤",
-            "강철",
-            "페어리",
-          ],
-          no_effect: ["독"],
-        },
-      },
-      페어리: {
-        attack: {
-          good: ["격투", "드래곤", "악"],
-          bad: ["불꽃", "독", "강철"],
-          no_effect: [],
-        },
-        defence: {
-          good: ["독", "강철"],
-          bad: ["격투", "벌레", "악"],
-          no_effect: ["드래곤"],
-        },
-      },
-    },
-  });
-}
-
-// /**
-//  *
-//  * @param {string} type
-//  */
-// function getMultiplier(type) {
-//   const json = {
-//     very_good: [],
-//     good: [],
-//     bad: [],
-//     very_bad: [],
-//   };
-
-//   let types = [type];
-//   if (type.indexOf("/")) types = type.split("/");
-
-//   const details = [];
-//   for (let t of types) {
-//     details.push(getTypes().type_detail[t]);
-//   }
-
-//   //타입에 공격할때 뭐가 좋을까?
-
-// }

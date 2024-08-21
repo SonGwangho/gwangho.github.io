@@ -43,7 +43,7 @@ class Pokemon {
       abilities,
       name,
       sprites: isMove
-        ? data.sprites.other.showdown
+        ? data.sprites.other.showdown.front_default
           ? data.sprites.other.showdown
           : data.sprites.other["official-artwork"]
         : data.sprites.other["official-artwork"],

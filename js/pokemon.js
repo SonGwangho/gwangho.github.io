@@ -44,6 +44,8 @@ class Pokemon {
       name,
       sprites: isMove
         ? data.sprites.other.showdown
+          ? data.sprites.other.showdown
+          : data.sprites.other["official-artwork"]
         : data.sprites.other["official-artwork"],
       stats,
       types,

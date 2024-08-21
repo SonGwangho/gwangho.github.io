@@ -124,9 +124,9 @@ function loadCalendar(now = new Date()) {
         "calendar",
         JSON.stringify(`{"${month}": ${JSON.stringify(json)}}`)
       );
-      td.removeEventListener("click", tdEventHandler);
     };
 
+    td.removeEventListener("click", tdEventHandler);
     td.addEventListener("click", tdEventHandler);
 
     tr.appendChild(td);
@@ -146,17 +146,16 @@ function loadCalendar(now = new Date()) {
     e.preventDefault();
     calendarDiv.innerHTML = "";
     loadCalendar(now.setMonth(now.getMonth() + 1));
-    month.removeEventListener("click", clickHandler);
-    month.removeEventListener("contextmenu", contextMenuHandler);
   };
 
   const contextMenuHandler = (e) => {
     e.preventDefault();
     calendarDiv.innerHTML = "";
     loadCalendar(now.setMonth(now.getMonth() - 1));
-    month.removeEventListener("click", clickHandler);
-    month.removeEventListener("contextmenu", contextMenuHandler);
   };
+
+  month.removeEventListener("click", clickHandler);
+  month.removeEventListener("contextmenu", contextMenuHandler);
 
   month.addEventListener("click", clickHandler);
   month.addEventListener("contextmenu", contextMenuHandler);

@@ -71,7 +71,7 @@ class Pokemon {
   }
 
   static getTypes() {
-    return (json = {
+    return {
       type_list: [
         "노말",
         "격투",
@@ -341,7 +341,7 @@ class Pokemon {
           },
         },
       },
-    });
+    };
   }
 }
 

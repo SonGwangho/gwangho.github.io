@@ -180,6 +180,7 @@ input[type=file]{
 }
 .pokemon_type_modal{
   position: absolute;
+  display: none;
   
   min-width: 200px;
   background: rgb(186, 216, 243);

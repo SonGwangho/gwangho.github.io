@@ -183,7 +183,7 @@ input[type=file]{
   display: none;
   
   min-width: 200px;
-  background: rgb(186, 216, 243);
+  background: rgb(169, 123, 170);
   border-radius: 10px;
   margin: auto;
   padding: 12px;
@@ -192,6 +192,49 @@ input[type=file]{
   z-index: 1000;
 }
 .pokemon_type_modal_title{
+  font-size: 1.5em;
+}
+.pokemon_damage{
+  margin: 5px;
+}
+.pokemon_damage_good{
+  /* background-color: rgb(118, 243, 118); */
+}
+.pokemon_damage_bad{
+  /* background-color: rgb(240, 97, 97) */
+}
+.pokemon_quadruple{
+  color: green;
+}
+.pokemon_double{
+  color: greenyellow;
+}
+.pokemon_half{
+  color: orange;
+}
+.pokemon_quater{
+  color: red;
+}
+.pokemon_noEffect{
+  color: #aaaaaa;
+}
+.pokemon_damage span{
+  margin: 10px;
+}
+.pokemon_ability_modal{
+  position: absolute;
+  display: none;
+  
+  min-width: 200px;
+  background: rgb(186, 216, 243);
+  border-radius: 10px;
+  margin: auto;
+  padding: 12px;
+
+  text-align: center;
+  z-index: 1000;
+}
+.pokemon_ability_modal_title{
   margin: 0 0 5px 0;
   font-weight: 700;
 }

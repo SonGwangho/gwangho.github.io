@@ -436,6 +436,115 @@ function getPokemonDiv(parsed) {
     img.style.minHeight = "250px";
   }
 
+  img.addEventListener("mouseover", (event) => {
+    const typeList = Pokemon.getTypes().type_list;
+    const effectResult = pokemonDefenceEffect(
+      Array.from(parsed.types, (t) => t.name).join("/")
+    );
+
+    const m = document.getElementsByClassName("pokemon_type_modal")[0];
+    const title = m.querySelector(".pokemon_type_modal_title");
+    title.innerText = Array.from(parsed.types, (t) => t.name).join("\t\t\t");
+
+    const contents = m.querySelector(".pokemon_type_modal_contents");
+    contents.innerHTML = "";
+
+    const good = document.createElement("div");
+    good.classList.add("pokemon_damage");
+    good.classList.add("pokemon_damage_good");
+
+    const quadruple = document.createElement("div");
+    quadruple.classList.add("pokemon_quadruple");
+    const quadrupleSpan = document.createElement("span");
+    quadrupleSpan.innerText = "4배 - ";
+    quadruple.appendChild(quadrupleSpan);
+
+    const double = document.createElement("div");
+    double.classList.add("pokemon_double");
+    const doubleSpan = document.createElement("span");
+    doubleSpan.innerText = "2배 - ";
+    double.appendChild(doubleSpan);
+
+    const soso = document.createElement("div");
+    soso.classList.add("pokemon_damage");
+    const sosoSpan = document.createElement("span");
+    sosoSpan.innerText = "1배 - ";
+    soso.appendChild(sosoSpan);
+
+    const bad = document.createElement("div");
+    bad.classList.add("pokemon_damage");
+    bad.classList.add("pokemon_damage_bad");
+
+    const half = document.createElement("div");
+    half.classList.add("pokemon_half");
+    const halfSpan = document.createElement("span");
+    halfSpan.innerText = "0.5배 - ";
+    half.appendChild(halfSpan);
+
+    const quater = document.createElement("div");
+    quater.classList.add("pokemon_quater");
+    const quaterSpan = document.createElement("span");
+    quaterSpan.innerText = "0.25배 - ";
+    quater.appendChild(quaterSpan);
+
+    const noEffect = document.createElement("div");
+    noEffect.classList.add("pokemon_noEffect");
+    const noEffectSpan = document.createElement("span");
+    noEffectSpan.innerText = "0배 - ";
+    noEffect.appendChild(noEffectSpan);
+
+    for (let t of typeList) {
+      switch (effectResult[t]) {
+        case 4:
+          const quadrupleType = document.createElement("span");
+          quadrupleType.innerText = t;
+          quadruple.appendChild(quadrupleType);
+          break;
+        case 2:
+          const doubleType = document.createElement("span");
+          doubleType.innerText = t;
+          double.appendChild(doubleType);
+          break;
+        case 0.5:
+          const halfType = document.createElement("span");
+          halfType.innerText = t;
+          half.appendChild(halfType);
+          break;
+        case 0.25:
+          const quaterType = document.createElement("span");
+          quaterType.innerText = t;
+          quater.appendChild(quaterType);
+          break;
+        case 0:
+          const noEffectType = document.createElement("span");
+          noEffectType.innerText = t;
+          noEffect.appendChild(noEffectType);
+        default:
+          const sosoType = document.createElement("span");
+          sosoType.innerText = t;
+          soso.appendChild(sosoType);
+          break;
+      }
+    }
+
+    if (quadruple.childElementCount > 1) good.appendChild(quadruple);
+    if (double.childElementCount > 1) good.appendChild(double);
+    if (half.childElementCount > 1) bad.appendChild(half);
+    if (quater.childElementCount > 1) bad.appendChild(quater);
+    if (noEffect.childElementCount > 1) bad.appendChild(noEffect);
+
+    contents.appendChild(good);
+    contents.appendChild(soso);
+    contents.appendChild(bad);
+    m.style.display = "block";
+    m.style.left = event.pageX + "px";
+    m.style.top = event.pageY + "px";
+  });
+  img.addEventListener("mouseout", (event) => {
+    const m = document.getElementsByClassName("pokemon_type_modal")[0];
+    m.style.display = "none";
+  });
+
   infoDiv.classList.add("pokemon_info");
 
   name.innerText = `${parsed.name} No.${parsed.id.toString()}`;
@@ -449,6 +558,112 @@ function getPokemonDiv(parsed) {
     type.innerText = t.name;
     type.style.color = typeColor[t.name];
     type.classList.add("pokemon_item");
+    type.addEventListener("mouseover", (event) => {
+      const typeList = Pokemon.getTypes().type_list;
+      const effectResult = pokemonDefenceEffect(t.name);
+
+      const m = document.getElementsByClassName("pokemon_type_modal")[0];
+      const title = m.querySelector(".pokemon_type_modal_title");
+      title.innerText = t.name;
+
+      const contents = m.querySelector(".pokemon_type_modal_contents");
+      contents.innerHTML = "";
+
+      const good = document.createElement("div");
+      good.classList.add("pokemon_damage");
+      good.classList.add("pokemon_damage_good");
+
+      const quadruple = document.createElement("div");
+      quadruple.classList.add("pokemon_quadruple");
+      const quadrupleSpan = document.createElement("span");
+      quadrupleSpan.innerText = "4배 - ";
+      quadruple.appendChild(quadrupleSpan);
+
+      const double = document.createElement("div");
+      double.classList.add("pokemon_double");
+      const doubleSpan = document.createElement("span");
+      doubleSpan.innerText = "2배 - ";
+      double.appendChild(doubleSpan);
+
+      const soso = document.createElement("div");
+      soso.classList.add("pokemon_damage");
+      const sosoSpan = document.createElement("span");
+      sosoSpan.innerText = "1배 - ";
+      soso.appendChild(sosoSpan);
+
+      const bad = document.createElement("div");
+      bad.classList.add("pokemon_damage");
+      bad.classList.add("pokemon_damage_bad");
+
+      const half = document.createElement("div");
+      half.classList.add("pokemon_half");
+      const halfSpan = document.createElement("span");
+      halfSpan.innerText = "0.5배 - ";
+      half.appendChild(halfSpan);
+
+      const quater = document.createElement("div");
+      quater.classList.add("pokemon_quater");
+      const quaterSpan = document.createElement("span");
+      quaterSpan.innerText = "0.25배 - ";
+      quater.appendChild(quaterSpan);
+
+      const noEffect = document.createElement("div");
+      noEffect.classList.add("pokemon_noEffect");
+      const noEffectSpan = document.createElement("span");
+      noEffectSpan.innerText = "0배 - ";
+      noEffect.appendChild(noEffectSpan);
+
+      for (let t of typeList) {
+        switch (effectResult[t]) {
+          case 4:
+            const quadrupleType = document.createElement("span");
+            quadrupleType.innerText = t;
+            quadruple.appendChild(quadrupleType);
+            break;
+          case 2:
+            const doubleType = document.createElement("span");
+            doubleType.innerText = t;
+            double.appendChild(doubleType);
+            break;
+          case 0.5:
+            const halfType = document.createElement("span");
+            halfType.innerText = t;
+            half.appendChild(halfType);
+            break;
+          case 0.25:
+            const quaterType = document.createElement("span");
+            quaterType.innerText = t;
+            quater.appendChild(quaterType);
+            break;
+          case 0:
+            const noEffectType = document.createElement("span");
+            noEffectType.innerText = t;
+            noEffect.appendChild(noEffectType);
+          default:
+            const sosoType = document.createElement("span");
+            sosoType.innerText = t;
+            soso.appendChild(sosoType);
+            break;
+        }
+      }
+
+      if (quadruple.childElementCount > 1) good.appendChild(quadruple);
+      if (double.childElementCount > 1) good.appendChild(double);
+      if (half.childElementCount > 1) bad.appendChild(half);
+      if (quater.childElementCount > 1) bad.appendChild(quater);
+      if (noEffect.childElementCount > 1) bad.appendChild(noEffect);
+
+      contents.appendChild(good);
+      contents.appendChild(soso);
+      contents.appendChild(bad);
+      m.style.display = "block";
+      m.style.left = event.pageX + "px";
+      m.style.top = event.pageY + "px";
+    });
+    type.addEventListener("mouseout", (event) => {
+      const m = document.getElementsByClassName("pokemon_type_modal")[0];
+      m.style.display = "none";
+    });
     types.appendChild(type);
   });
 
@@ -461,17 +676,17 @@ function getPokemonDiv(parsed) {
       ability.classList.add("pokemon_hidden_ability");
     }
     ability.addEventListener("mouseover", (event) => {
-      const m = document.getElementsByClassName("pokemon_type_modal")[0];
-      const title = m.querySelector(".pokemon_type_modal_title");
+      const m = document.getElementsByClassName("pokemon_ability_modal")[0];
+      const title = m.querySelector(".pokemon_ability_modal_title");
       title.innerText = ab.name;
-      const contents = m.querySelector(".pokemon_type_modal_contents");
+      const contents = m.querySelector(".pokemon_ability_modal_contents");
       contents.innerText = ab.effect;
       m.style.display = "block";
       m.style.left = event.pageX + "px";
       m.style.top = event.pageY + "px";
     });
     ability.addEventListener("mouseout", (event) => {
-      const m = document.getElementsByClassName("pokemon_type_modal")[0];
+      const m = document.getElementsByClassName("pokemon_ability_modal")[0];
       m.style.display = "none";
     });
     abilities.appendChild(ability);
@@ -715,4 +930,32 @@ function keyboardEvent(direction) {
   items = resultDiv.querySelectorAll(".search_item");
   for (let item of items) item.classList.remove("search_item_actived");
   items[index].classList.add("search_item_actived");
+}
+
+function pokemonDefenceEffect(type) {
+  let types = [type];
+  if (type.indexOf("/")) {
+    types = type.split("/");
+  }
+
+  const typeResult = {};
+  Pokemon.getTypes().type_list.forEach((t) => (typeResult[t] = 1));
+
+  const details = Pokemon.getTypes().type_detail;
+  for (let t of types) {
+    const typeDetail = details[t];
+    const defence = typeDetail.defence;
+
+    for (let g of defence.good) {
+      typeResult[g] *= 2;
+    }
+    for (let b of defence.bad) {
+      typeResult[b] /= 2;
+    }
+    for (let n of defence.no_effect) {
+      typeResult[n] = 0;
+    }
+  }
+
+  return typeResult;
 }

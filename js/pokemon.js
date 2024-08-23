@@ -72,11 +72,13 @@ class Pokemon {
   static async getDesc(url) {
     const response = await fetch(url);
     const data = await response.json();
+    const descList = [];
     for (let flavor_text of data.flavor_text_entries) {
       if (flavor_text.language.name == "ko") {
-        return flavor_text.flavor_text;
+        descList.push(flavor_text.flavor_text);
       }
     }
+    return descList;
   }
 
   static async getTypeEffect(url) {
@@ -849,7 +851,7 @@ async function search() {
 
     const div = document.createElement("div");
     const descDiv = document.createElement("div");
-    descDiv.innerText = parsed.desc;
+    descDiv.innerText = parsed.desc.join("\n\n");
     descDiv.classList.add("pokemon_desc");
     const chainDiv = document.createElement("div");
     chainDiv.classList.add("chain_div");

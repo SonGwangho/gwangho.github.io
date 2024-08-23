@@ -442,6 +442,7 @@ function getPokemonDiv(parsed) {
 
     const m = document.getElementsByClassName("pokemon_type_modal")[0];
     const title = m.querySelector(".pokemon_type_modal_title");
+    title.innerHTML = "";
     for (let tp of Array.from(parsed.types, (t) => t.name)) {
       const titleSpan = document.createElement("span");
       titleSpan.innerText = tp;

@@ -78,7 +78,7 @@ class Pokemon {
         let text = flavor_text.flavor_text.replaceAll(".\n", "\t");
         text = flavor_text.flavor_text.replaceAll("\n", " ");
         text = flavor_text.flavor_text.replaceAll("\t", ".\n");
-        descList.push();
+        descList.push(text);
       }
     }
     return descList;

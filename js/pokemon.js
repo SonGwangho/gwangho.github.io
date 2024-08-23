@@ -24,6 +24,7 @@ class Pokemon {
     );
 
     const name = await this.changeLanguage(data.species.url);
+    const desc = await this.getdesc(data.species.url);
 
     const stats = await Promise.all(
       data.stats.map(async ({ stat: { url }, base_stat }) => ({
@@ -47,6 +48,7 @@ class Pokemon {
       id: data.id,
       abilities,
       name,
+      desc,
       sprites: imgSrc.front_default
         ? imgSrc
         : data.sprites.other["official-artwork"],
@@ -63,6 +65,16 @@ class Pokemon {
     for (let name of data.names) {
       if (name.language.name == "ko") {
         return name.name;
+      }
+    }
+  }
+
+  static async getDesc(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    for (let flavor_text of data.flavor_text_entries) {
+      if (flavor_text.language.name == "ko") {
+        return flavor_text.flavor_text;
       }
     }
   }
@@ -836,6 +848,9 @@ async function search() {
     const pokeDiv = getPokemonDiv(parsed);
 
     const div = document.createElement("div");
+    const descDiv = document.createElement("div");
+    descDiv.innerText = persed.desc;
+
     const chainDiv = document.createElement("div");
     chainDiv.classList.add("chain_div");
 
@@ -866,6 +881,7 @@ async function search() {
     div.appendChild(capture);
 
     div.appendChild(pokeDiv);
+    div.appendChild(descDiv);
     div.appendChild(chainDiv);
 
     const chain = MyStorage.getSessionData("pokemon_chain");

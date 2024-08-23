@@ -75,7 +75,10 @@ class Pokemon {
     const descList = [];
     for (let flavor_text of data.flavor_text_entries) {
       if (flavor_text.language.name == "ko") {
-        descList.push(flavor_text.flavor_text.replaceAll("\n", " "));
+        let text = flavor_text.flavor_text.replaceAll(".\n", "\t");
+        text = flavor_text.flavor_text.replaceAll("\n", " ");
+        text = flavor_text.flavor_text.replaceAll("\t", ".\n");
+        descList.push();
       }
     }
     return descList;

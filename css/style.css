@@ -68,6 +68,7 @@ input[type=file]{
   height: max-content;
   min-width: 400px;
   min-height: 200px;
+  max-height: 800px;
 
   padding: 40px;
   

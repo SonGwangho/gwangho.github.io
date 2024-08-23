@@ -347,6 +347,8 @@ input[type=file]{
 }
 .pokemon_desc{
   text-align: left;
+  height: 200px;
+  overflow: auto;
 }
 /* .chain_div{
 

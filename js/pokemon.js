@@ -849,7 +849,7 @@ async function search() {
 
     const div = document.createElement("div");
     const descDiv = document.createElement("div");
-    descDiv.innerText = persed.desc;
+    descDiv.innerText = parsed.desc;
     descDiv.classList.add("pokemon_desc");
     const chainDiv = document.createElement("div");
     chainDiv.classList.add("chain_div");

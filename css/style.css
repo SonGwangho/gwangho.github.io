@@ -343,9 +343,12 @@ input[type=file]{
   font-size: 24px;
   font-weight: 600;
 }
+.pokemon_desc_title{
+  display: block;
+}
 .pokemon_desc{
   text-align: left;
-  height: 200px;
+  height: 130px;
   overflow: auto;
 }
 /* .chain_div{

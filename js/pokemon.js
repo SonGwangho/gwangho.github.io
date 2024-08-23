@@ -853,6 +853,9 @@ async function search() {
     const pokeDiv = getPokemonDiv(parsed);
 
     const div = document.createElement("div");
+    const descTitle = document.createElement("span");
+    descTitle.classList.add("pokemon_desc_title");
+    descTitle.innerText = "도감 설명";
     const descDiv = document.createElement("div");
     descDiv.innerText = parsed.desc.join("\n\n");
     descDiv.classList.add("pokemon_desc");
@@ -887,6 +890,7 @@ async function search() {
 
     div.appendChild(pokeDiv);
     div.appendChild(chainDiv);
+    div.appendChild(descTitle);
     div.appendChild(descDiv);
 
     const chain = MyStorage.getSessionData("pokemon_chain");

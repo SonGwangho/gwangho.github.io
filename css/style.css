@@ -183,7 +183,7 @@ input[type=file]{
   display: none;
   
   min-width: 200px;
-  background: rgb(248, 222, 222);
+  background: rgb(239 204 204);
   border-radius: 10px;
   margin: auto;
   padding: 12px;
@@ -204,13 +204,13 @@ input[type=file]{
   /* background-color: rgb(240, 97, 97) */
 }
 .pokemon_quadruple{
-  color: green;
+  color: rgb(0, 88, 0);
 }
 .pokemon_double{
-  color: greenyellow;
+  color: rgb(117, 194, 1);
 }
 .pokemon_half{
-  color: orange;
+  color: rgb(216, 81, 3);
 }
 .pokemon_quater{
   color: red;

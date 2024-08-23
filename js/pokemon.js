@@ -24,7 +24,7 @@ class Pokemon {
     );
 
     const name = await this.changeLanguage(data.species.url);
-    const desc = await this.getdesc(data.species.url);
+    const desc = await this.getDesc(data.species.url);
 
     const stats = await Promise.all(
       data.stats.map(async ({ stat: { url }, base_stat }) => ({
@@ -850,7 +850,7 @@ async function search() {
     const div = document.createElement("div");
     const descDiv = document.createElement("div");
     descDiv.innerText = persed.desc;
-
+    descDiv.classList.add("pokemon_desc");
     const chainDiv = document.createElement("div");
     chainDiv.classList.add("chain_div");
 

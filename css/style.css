@@ -345,6 +345,7 @@ input[type=file]{
 }
 .pokemon_desc_title{
   display: block;
+  font-size: 1.2em;
 }
 .pokemon_desc{
   text-align: left;

@@ -755,6 +755,10 @@ async function getPokemonJson() {
     let response_ko = await fetch("./assets/pokemon_ko.json");
     let kson = await response_ko.json();
     MyStorage.saveSession("pokemon_ko", JSON.stringify(kson));
+  } else if (MyStorage.getSessionData("pokemon_ko")["복숭악동"]) {
+    let response_ko = await fetch("./assets/pokemon_ko.json");
+    let kson = await response_ko.json();
+    MyStorage.saveSession("pokemon_ko", JSON.stringify(kson));
   }
 
   if (!MyStorage.getSessionData("pokemon_convert")) {

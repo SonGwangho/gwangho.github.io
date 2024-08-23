@@ -70,8 +70,6 @@ input[type=file]{
   min-height: 200px;
   max-height: 800px;
 
-  overflow: auto;
-
   padding: 40px;
   
   text-align: center;

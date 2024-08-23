@@ -13,5 +13,6 @@ for key in json_object:
       print(v)
       newJson[v] = [v]
 
+sorted(json_object)
 with open('assets\pokemon_ko_v2.json', 'w', encoding='utf8') as f:
     json.dump(newJson, f, ensure_ascii=False)

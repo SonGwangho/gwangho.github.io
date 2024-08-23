@@ -415,7 +415,9 @@ input[type=file]{
   font-size: 16px;
   padding: 5px 12px;
 }
-
+.translateX-50{
+  transform: translateX(-50px);
+}
 .code_main_div{
   text-align: center;
   margin: auto;

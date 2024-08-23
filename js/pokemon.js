@@ -862,6 +862,36 @@ async function search() {
     const chainDiv = document.createElement("div");
     chainDiv.classList.add("chain_div");
 
+    const clipboard = document.createElement("button");
+    clipboard.classList.add("pokemon_capture");
+    clipboard.classList.add("translateX-50");
+    clipboard.innerText = "복사";
+    clipboard.addEventListener("click", () => {
+      html2canvas(pokeDiv, {
+        allowTaint: true,
+        useCORS: true,
+        width: pokeDiv.offsetWidth,
+        height: pokeDiv.offsetHeight,
+        scale: 1,
+      })
+        .then(function (canvas) {
+          canvas.toBlob(function (blob) {
+            const item = new ClipboardItem({ "image/png": blob });
+            navigator.clipboard.write([item]).then(
+              function () {
+                MyToast.showToast("복사되었습니다.");
+              },
+              function (error) {
+                MyToast.showToast("복사에 실패했습니다.");
+              }
+            );
+          });
+        })
+        .catch(function (err) {
+          console.warn(err);
+        });
+    });
+
     const capture = document.createElement("button");
     capture.classList.add("pokemon_capture");
     capture.innerText = "캡처";
@@ -886,6 +916,7 @@ async function search() {
           console.warn(err);
         });
     });
+    div.appendChild(clipboard);
     div.appendChild(capture);
 
     div.appendChild(pokeDiv);

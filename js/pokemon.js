@@ -460,19 +460,19 @@ function getPokemonDiv(parsed) {
     const quadruple = document.createElement("div");
     quadruple.classList.add("pokemon_quadruple");
     const quadrupleSpan = document.createElement("span");
-    quadrupleSpan.innerText = "4배 - ";
+    quadrupleSpan.innerText = "4배 -";
     quadruple.appendChild(quadrupleSpan);
 
     const double = document.createElement("div");
     double.classList.add("pokemon_double");
     const doubleSpan = document.createElement("span");
-    doubleSpan.innerText = "2배 - ";
+    doubleSpan.innerText = "2배 -";
     double.appendChild(doubleSpan);
 
     const soso = document.createElement("div");
     soso.classList.add("pokemon_damage");
     const sosoSpan = document.createElement("span");
-    sosoSpan.innerText = "1배 - ";
+    sosoSpan.innerText = "1배 -";
     soso.appendChild(sosoSpan);
 
     const bad = document.createElement("div");
@@ -482,19 +482,19 @@ function getPokemonDiv(parsed) {
     const half = document.createElement("div");
     half.classList.add("pokemon_half");
     const halfSpan = document.createElement("span");
-    halfSpan.innerText = "0.5배 - ";
+    halfSpan.innerText = "0.5배 -";
     half.appendChild(halfSpan);
 
     const quater = document.createElement("div");
     quater.classList.add("pokemon_quater");
     const quaterSpan = document.createElement("span");
-    quaterSpan.innerText = "0.25배 - ";
+    quaterSpan.innerText = "0.25배 -";
     quater.appendChild(quaterSpan);
 
     const noEffect = document.createElement("div");
     noEffect.classList.add("pokemon_noEffect");
     const noEffectSpan = document.createElement("span");
-    noEffectSpan.innerText = "0배 - ";
+    noEffectSpan.innerText = "0배 -";
     noEffect.appendChild(noEffectSpan);
 
     for (let t of typeList) {

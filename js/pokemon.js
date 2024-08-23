@@ -883,8 +883,8 @@ async function search() {
     div.appendChild(capture);
 
     div.appendChild(pokeDiv);
-    div.appendChild(descDiv);
     div.appendChild(chainDiv);
+    div.appendChild(descDiv);
 
     const chain = MyStorage.getSessionData("pokemon_chain");
     const tree = chain[converter[text]];

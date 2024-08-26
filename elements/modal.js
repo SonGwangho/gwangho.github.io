@@ -17,8 +17,11 @@ class Modal {
 
   static hideModal() {
     let modal = document.getElementsByClassName("modal")[0];
-    modal.style.display = "none";
-    modal.classList.remove("overflowHidden");
+    const body = modal.querySelector(".modal_body");
+    if (body.className != "modal_loading") {
+      modal.style.display = "none";
+      modal.classList.remove("overflowHidden");
+    }
   }
 
   static startLoading() {

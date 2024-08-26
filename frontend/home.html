@@ -6,6 +6,8 @@
 <script>
   loadPage = () =>  {
     const items = document.getElementsByClassName("navbar_item");
-    Random.getItem(Array.from(document.getElementsByClassName("navbar_item"))).querySelector('a').click()
+    console.log(items)
+    console.log(Random.getItem(Array.from(items)).querySelector('a'))
+    Random.getItem(Array.from(items)).querySelector('a').click()
   }
 </script>

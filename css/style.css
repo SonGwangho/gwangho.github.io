@@ -17,13 +17,13 @@ html, body{
   font-family: 'Ownglyph_noocar-Rg', sans-serif;
 }
 
-body {
-  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAgAB/wIJr7QAAAAASUVORK5CYII='), auto;
-  transition: cursor 0.5s ease-in-out;
+.cursor_none {
+  cursor: none; /* 기본적으로 커서를 숨깁니다 */
 }
 
-body.active {
-  cursor: default; /* 마우스 움직임이 있을 때 기본 커서를 보이게 합니다 */
+.cursor_default {
+  cursor: default; /* 움직임이 감지되면 커서를 다시 보이게 합니다 */
+  transition: cursor 0.5s ease-in-out;
 }
 
 h1, h2, h3{

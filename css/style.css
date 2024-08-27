@@ -17,11 +17,11 @@ html, body{
   font-family: 'Ownglyph_noocar-Rg', sans-serif;
 }
 
-.cursor_none {
+body {
   cursor: none; /* 기본적으로 커서를 숨깁니다 */
 }
 
-.cursor_default {
+body.active {
   cursor: default; /* 움직임이 감지되면 커서를 다시 보이게 합니다 */
   transition: cursor 0.5s ease-in-out;
 }

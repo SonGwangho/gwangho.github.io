@@ -10,15 +10,11 @@
     let timeout;
 
     function hideCursor() {
-      const home = document.getElementById('home_div');
-      home.classList.add("cursor_none");
-      home.classList.remove('cursor_default'); // 커서 숨김
+      document.body.classList.remove('active'); // 커서 숨김
     }
 
     function showCursor() {
-      const home = document.getElementById('home_div');
-      home.classList.add("cursor_default");
-      home.classList.remove('cursor_none'); // 커서 숨김
+      document.body.classList.add('active'); // 커서 표시
       clearTimeout(timeout);
       timeout = setTimeout(hideCursor, 2000); // 2초 후 커서 숨김
     }

@@ -16,6 +16,7 @@
     }
 
     function showCursor() {
+      const home = document.getElementById('home_div');
       home.classList.add("cursor_default");
       home.classList.remove('cursor_none'); // 커서 숨김
       clearTimeout(timeout);

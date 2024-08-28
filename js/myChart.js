@@ -69,6 +69,17 @@ function makeChart() {
       data: avg,
     },
   ];
+  const plugin = {
+    id: "customCanvasBackgroundColor",
+    beforeDraw: (chart, args, options) => {
+      const { ctx } = chart;
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = options.color || "transparent";
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  };
 
   const options = {
     responsive: true,
@@ -78,7 +89,7 @@ function makeChart() {
         text: title,
       },
       customCanvasBackgroundColor: {
-        color: "white",
+        color: "lightGreen",
       },
     },
     scales: {
@@ -107,6 +118,7 @@ function makeChart() {
       datasets: datasets,
     },
     options: options,
+    plugins: [plugin],
   });
 }
 

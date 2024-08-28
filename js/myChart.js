@@ -89,7 +89,7 @@ function makeChart() {
         text: title,
       },
       customCanvasBackgroundColor: {
-        color: "lightGreen",
+        color: "white",
       },
     },
     scales: {

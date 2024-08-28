@@ -45,6 +45,13 @@ input[type=file]{
   margin: 0 15px;
 }
 
+.background_white{
+  background-color: white;
+}
+.color_black{
+  color: black;
+}
+
 .modal{
   position: absolute;
   display: none;

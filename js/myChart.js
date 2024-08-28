@@ -27,9 +27,6 @@ function makeChart() {
   const kind = MyStorage.getLocalData("weight_kind");
 
   const canvas = document.getElementsByClassName("chart")[0];
-  var ctx = canvas.getContext("2d");
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   const weight = MyStorage.getLocalData("weight");
   let datas = [];
@@ -79,6 +76,9 @@ function makeChart() {
       title: {
         display: true,
         text: title,
+      },
+      customCanvasBackgroundColor: {
+        color: "white",
       },
     },
     scales: {

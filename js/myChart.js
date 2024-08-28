@@ -184,20 +184,19 @@ async function uploadWeight() {
 
 function captureChart() {
   const canvas = document.querySelector(".chart_weight");
-  canvas.classList.add("background_white");
-  canvas.classList.add("color_black");
+
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
   canvas.toBlob(function (blob) {
     const item = new ClipboardItem({ "image/png": blob });
     navigator.clipboard.write([item]).then(
       function () {
         MyToast.showToast("복사되었습니다.");
-        canvas.classList.remove("background_white");
-        canvas.classList.remove("color_black");
       },
       function (error) {
         MyToast.showToast("복사에 실패했습니다.");
-        canvas.classList.remove("background_white");
-        canvas.classList.remove("color_black");
       }
     );
   });

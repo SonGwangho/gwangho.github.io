@@ -181,3 +181,18 @@ async function uploadWeight() {
     console.warn(e);
   }
 }
+
+function captureChart() {
+  const canvas = document.querySelector(".chart_weight");
+  canvas.toBlob(function (blob) {
+    const item = new ClipboardItem({ "image/png": blob });
+    navigator.clipboard.write([item]).then(
+      function () {
+        MyToast.showToast("복사되었습니다.");
+      },
+      function (error) {
+        MyToast.showToast("복사에 실패했습니다.");
+      }
+    );
+  });
+}

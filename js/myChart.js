@@ -27,6 +27,10 @@ function makeChart() {
   const kind = MyStorage.getLocalData("weight_kind");
 
   const canvas = document.getElementsByClassName("chart")[0];
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
   const weight = MyStorage.getLocalData("weight");
   let datas = [];
   let labels = [];
@@ -184,10 +188,6 @@ async function uploadWeight() {
 
 function captureChart() {
   const canvas = document.querySelector(".chart_weight");
-
-  var ctx = canvas.getContext("2d");
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   canvas.toBlob(function (blob) {
     const item = new ClipboardItem({ "image/png": blob });

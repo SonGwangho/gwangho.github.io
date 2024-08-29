@@ -413,7 +413,6 @@ input[type=file]{
 }
 .pokemon_capture{
   position: fixed;
-  right: 5%;
   border: none;
   color: white;
   border-radius: 20px;

@@ -864,7 +864,7 @@ async function search() {
 
     const clipboard = document.createElement("button");
     clipboard.classList.add("pokemon_capture");
-    clipboard.classList.add("translateX-50");
+    clipboard.style.transform = "translate3d(150px, -20px, 0px)";
     clipboard.innerText = "복사";
     clipboard.addEventListener("click", () => {
       html2canvas(pokeDiv, {
@@ -894,7 +894,8 @@ async function search() {
 
     const capture = document.createElement("button");
     capture.classList.add("pokemon_capture");
-    capture.innerText = "캡처";
+    capture.style.transform = "translate3d(200px, -20px, 0px)";
+    capture.innerText = "다운";
     capture.addEventListener("click", () => {
       html2canvas(pokeDiv, {
         allowTaint: true,

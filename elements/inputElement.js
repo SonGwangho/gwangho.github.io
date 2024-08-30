@@ -58,3 +58,9 @@ class InputFile extends HTMLElement {
   }
 }
 customElements.define("input-file", InputFile);
+
+class InputDate extends HTMLElement {
+  constructor() {
+    super();
+  }
+}

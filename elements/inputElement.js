@@ -60,9 +60,6 @@ class InputFile extends HTMLElement {
 customElements.define("input-file", InputFile);
 
 /**
- * 아래처럼 사용
- * element.changeEventCallback = (date) => {}
- *
  * element.selectedDate 여기에 날짜 들어있음
  */
 class InputDate extends HTMLElement {
@@ -181,10 +178,6 @@ class InputDate extends HTMLElement {
 
   get selectedDate() {
     return this._selectedDate;
-  }
-
-  set changeEventCallback(callback) {
-    callback(this._selectedDate);
   }
 
   static get observedAttributes() {

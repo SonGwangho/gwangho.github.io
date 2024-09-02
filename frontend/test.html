@@ -60,10 +60,9 @@
     <script>
       onload = async () => {
         const a = document.getElementById("inputDate");
-        a.changeEventCallback = (date) => {
-          console.log(date)
-        }
-        console.log(a.getMonth())
+        a.addEventListener("click", (event) => {
+          console.log(a.selectedDate)
+        })
       }
       
     </script>

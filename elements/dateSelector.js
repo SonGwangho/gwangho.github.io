@@ -196,9 +196,9 @@ class dateCalendar extends HTMLElement {
       td.addEventListener("click", (event) => {
         const clickedDay = event.target.innerText;
         this.setToday(new Date(now).setDate(clickedDay));
-        this.dispatchEvent(
-          new Event("click", { bubbles: true, composed: true })
-        );
+        // this.dispatchEvent(
+        //   new Event("click", { bubbles: true, composed: true })
+        // );
         this.renderCalendar();
       });
 

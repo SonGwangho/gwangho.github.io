@@ -21,6 +21,8 @@
 
     <!-- 이벤트 등록부분 -->
     <script type="text/javascript" src="../elements/modal.js"></script>
+    <script type="text/javascript" src="../elements/dateSelector.js"></script>
+    <script type="text/javascript" src="../elements/inputElement.js"></script>
 
     <!-- 함수들 -->
     <script defer type="text/javascript" src="../js/calendar.js"></script>
@@ -45,69 +47,23 @@
       </div>
     </div>
     <div id="app_body" style="margin: auto; text-align: center;">
+      <input-date id="inputDate"></input-date>
+      <div style="background-color: antiquewhite; height: 500px;">
+
+      </div>
+      <!-- <date-calendar></date-calendar> -->
     </div>
 
-    <!-- <div id="pokemon">
-      <div class="pokemon_type_modal">
-        <div class="pokemon_type_modal_title"></div>
-    <div class="pokemon_type_modal_contents"></div>
-      </div>
-      <div class="search_section">
-        <div class="search_div">
-          <input class="search_input" type="text"><button class="search_button" onclick="search()">검색</button>
-        </div>
-        <div id="search_result_div"></div>
-      </div>
-      <div id="pokemon_search"></div>
-      <div id="poke_list"></div>
-    </div> -->
-    <div class="pokemon_type_modal">
-      <div class="pokemon_type_modal_title"></div>
-      <div class="pokemon_type_modal_contents"></div>
-    </div>
-    <div id="pokemon">
-      <div class="pokemon_ability_modal">
-        <div class="pokemon_ability_modal_title"></div>
-        <div class="pokemon_ability_modal_contents"></div>
-      </div>
-      <div class="search_section">
-        <div class="search_div">
-          <input class="search_input" type="text"><button class="search_button" onclick="search()">검색</button>
-        </div>
-        <div id="search_result_div"></div>
-      </div>
-      <div id="pokemon_search"></div>
-      <div id="poke_list"></div>
-    </div>
+
 </div>
     </div>
     <script>
       onload = async () => {
-        getPokemonJson();
-    document.getElementsByClassName('search_input')[0].addEventListener("input", onInput);;
-    document.getElementsByClassName('search_input')[0].addEventListener("keydown", (e) => {
-      
-      switch(e.keyCode){
-        case 13:
-          e.preventDefault();
-          search();
-          break;
-        case 9:
-          e.preventDefault();
-          itemClick(e);
-          break;
-        case 38:
-          e.preventDefault();
-          keyboardEvent("up");
-          break;
-        case 40:
-          e.preventDefault();
-          keyboardEvent("down");
-          break;
-      }
-    })
-    loadPokemons();
-    window.addEventListener('scroll', handleScroll)
+        const a = document.getElementById("inputDate");
+        a.changeEventCallback = (date) => {
+          console.log(date)
+        }
+        console.log(a.getMonth())
       }
       
     </script>

@@ -10,15 +10,9 @@
   loadPage = () =>  {
     // const items = document.getElementsByClassName("navbar_item");
     // Random.getItem(Array.from(items)).querySelector('a').click()
-    let timeout;
-
-    function answerFunc(){
-      document.getElementById("answer").innerText = Random.getItem(["그래", "아니"])
-    }
-
-    document.addEventListener('mousemove', showCursor);
-    document.addEventListener('keydown', showCursor);
-
-    showCursor(); 
+    
+  }
+  function answerFunc(){
+    document.getElementById("answer").innerText = Random.getItem(["그래", "아니"])
   }
 </script>

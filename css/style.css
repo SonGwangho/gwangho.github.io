@@ -207,12 +207,12 @@ input[type=file]{
 .pokemon_damage{
   margin: 5px;
 }
-.pokemon_damage_good{
+/* .pokemon_damage_good{ */
   /* background-color: rgb(118, 243, 118); */
-}
-.pokemon_damage_bad{
+/* } */
+/* .pokemon_damage_bad{ */
   /* background-color: rgb(240, 97, 97) */
-}
+/* } */
 .pokemon_quadruple{
   color: rgb(0, 88, 0);
 }

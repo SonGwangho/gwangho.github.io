@@ -1,6 +1,7 @@
 class DiceElement extends HTMLElement {
   constructor() {
     super();
+    this._isRoll = false;
     this._value = 1;
     this.attachShadow({ mode: "open" });
 
@@ -80,6 +81,7 @@ class DiceElement extends HTMLElement {
   }
 
   rollDice(callback = undefined) {
+    this._isRoll = true;
     const dice = this.shadowRoot.querySelector(".dice");
     let rotations = 0;
     const maxRotations = 10;
@@ -140,10 +142,15 @@ class DiceElement extends HTMLElement {
     dice.style.transition = `transform 1s ease-out`;
     dice.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
     if (callback) callback(this._value);
+    this._isRoll = false;
   }
 
   get value() {
     return this._value;
+  }
+
+  get isRoll() {
+    return this._isRoll;
   }
 }
 customElements.define("dice-element", DiceElement);

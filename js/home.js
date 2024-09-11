@@ -1,10 +1,9 @@
-function roll() {
+function roll(cnt = 3) {
   const totalmoney = document
     .getElementById("dice_money")
     .querySelector("span");
   const betMoney = document.getElementById("bet_money").querySelector("input");
 
-  let cnt = 3;
   const values = [0, 0, 0];
   let idx = 0;
   Array.from(document.getElementsByClassName("dice")).map((dice) =>
@@ -52,7 +51,7 @@ function roll() {
               if (parseInt(eye) == 3) {
                 cnt--;
                 MyToast.showToast("비겼음 다시굴립니다.");
-                if (cnt > 0) setTimeout(() => roll(), 3000);
+                if (cnt > 0) setTimeout(() => roll(cnt), 3000);
                 else {
                   MyToast.showToast("당신의 패배...");
                   cnt = 3;
@@ -72,7 +71,7 @@ function roll() {
               // 눈 없음 다시 돌리기
               MyToast.showToast("눈 없음 다시굴립니다.");
               cnt--;
-              if (cnt > 0) setTimeout(() => roll(), 3000);
+              if (cnt > 0) setTimeout(() => roll(cnt), 3000);
               else {
                 MyToast.showToast("당신의 패배...");
                 cnt = 3;

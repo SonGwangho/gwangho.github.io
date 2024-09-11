@@ -18,11 +18,13 @@ function roll() {
         switch (values) {
           case [1, 2, 3]:
             // 히후미 2배 뺏김
+            MyToast.showToast("히후미... 두배 뺏겨요.");
             totalmoney.innerText =
               parseInt(totalmoney.innerText) - parseInt(betMoney.value) * 2;
             break;
           case [1, 1, 1]:
             // 핀조로 5배
+            MyToast.showToast("핀조로! 5배!!!!!");
             totalmoney.innerText =
               parseInt(totalmoney.innerText) + parseInt(betMoney.value) * 5;
             break;
@@ -32,11 +34,13 @@ function roll() {
           case [5, 5, 5]:
           case [6, 6, 6]:
             // 아라시 3배
+            MyToast.showToast("아라시! 3배!!!");
             totalmoney.innerText =
               parseInt(totalmoney.innerText) + parseInt(betMoney.value) * 3;
             break;
           case [4, 5, 6]:
             // 시고로 2배
+            MyToast.showToast("시고로! 2배!!");
             totalmoney.innerText =
               parseInt(totalmoney.innerText) + parseInt(betMoney.value) * 2;
             break;

@@ -72,6 +72,7 @@ class customGrid extends HTMLElement {
     }
     style.textContent = `
       .custom_grid{
+        width: inherit;
         border: 2px solid;
         display: grid;
         grid-template-columns: ${template_columns};
@@ -93,15 +94,12 @@ class customGrid extends HTMLElement {
     this.shadow.appendChild(grid);
     grid.classList.add("custom_grid");
 
-    const children = Array.from(this.shadowRoot.children);
-
     for (let i = 0; i < this.col; i++) {
       for (let j = 0; j < this.row; j++) {
         const cell = document.createElement("slot");
         cell.classList.add("custom_grid_cell");
         cell.setAttribute("row", j);
         cell.setAttribute("col", i);
-        cell.appendChild(children[j * this.col + i]);
 
         grid.appendChild(cell);
       }

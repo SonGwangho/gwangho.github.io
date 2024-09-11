@@ -1,4 +1,5 @@
 var cardCount = 0;
+var isCardChecked = true;
 
 function initCards() {
   const cards = document.getElementsByClassName("card_back");
@@ -39,7 +40,7 @@ function checkCard() {
   const cards = document.getElementsByClassName("selected");
   cardCount++;
   if (cards.length < 2) return;
-
+  isCardChecked = false;
   const card1 = cards[0];
   const card2 = cards[1];
 
@@ -55,17 +56,20 @@ function checkCard() {
     }
   } else {
     setTimeout(() => {
+      isCardChecked = true;
       card1.classList.add("card_back");
       card1.classList.remove("card_front", "selected");
       card2.classList.add("card_back");
       card2.classList.remove("card_front", "selected");
-    }, 300);
+    }, 500);
   }
 }
 
 function clickEvent(e) {
-  toggleCard(e.target);
-  checkCard();
+  if (isCardChecked) {
+    toggleCard(e.target);
+    checkCard();
+  }
 }
 
 function isDone() {

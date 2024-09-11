@@ -6,11 +6,14 @@
     <dice-element id = "dice" style="margin: 20px;"></dice-element>
     <button onclick="document.getElementById('dice').rollDice()">굴려</button>
   </div>
+  <div id="gist"></div>
 </div>  
 <script>
   function diceCallback(value){
     MyToast.showToast(value.toString() + "이 나왔다.")
   }
   loadPage = () =>  {
+    const dom = Gist.getGistDom("4dfb24deb5f079a12831f4222bda4329");
+    document.getElementById('gist').appendChild(dom);
   }
 </script>

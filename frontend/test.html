@@ -64,7 +64,7 @@
 
       <div>
         <dice-element id = "dice" style="margin: 20px auto;"></dice-element>
-        <button onclick="document.getElementById('dice').rollDice()">굴려</button>
+        <button onclick="document.getElementById('dice').rollDice(callback)">굴려</button>
       </div>
 
       <div id="value">010-0000-0000</div>
@@ -76,8 +76,8 @@
 </div>
     </div>
     <script>
-      function roll(){
-        document.getElementById('dice').rollDice();
+      function callback(value){
+        console.warn(value)
       }
       onload = () => {
         document.getElementsByTagName('input')[0].addEventListener('input', (e) => {

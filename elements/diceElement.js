@@ -1,6 +1,7 @@
 class DiceElement extends HTMLElement {
   constructor() {
     super();
+    this._value = 1;
     this.attachShadow({ mode: "open" });
 
     const scene = document.createElement("div");
@@ -78,10 +79,10 @@ class DiceElement extends HTMLElement {
     }
   }
 
-  rollDice() {
+  rollDice(callback = undefined) {
     const dice = this.shadowRoot.querySelector(".dice");
     let rotations = 0;
-    const maxRotations = 7;
+    const maxRotations = 10;
     let currentDelay = 500;
 
     const interval = setInterval(() => {
@@ -92,18 +93,19 @@ class DiceElement extends HTMLElement {
       dice.style.transition = `transform ${currentDelay / 1000}s ease-out`;
       dice.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
 
-      currentDelay += 50;
+      // currentDelay += 50;
 
       if (rotations >= maxRotations) {
         clearInterval(interval);
-        setTimeout(() => this.finalRoll(dice), currentDelay);
+        setTimeout(() => this.finalRoll(dice, callback), currentDelay);
       }
     }, currentDelay);
   }
 
-  finalRoll(dice) {
+  finalRoll(dice, callback) {
     const result = Math.floor(Math.random() * 6) + 1;
-    this.value = result;
+    this._value = result;
+    // console.log(result);
 
     let xRotation = 0;
     let yRotation = 0;
@@ -115,7 +117,7 @@ class DiceElement extends HTMLElement {
         break;
       case 2:
         xRotation = 0;
-        yRotation = 90;
+        yRotation = -90;
         break;
       case 3:
         xRotation = 0;
@@ -123,24 +125,25 @@ class DiceElement extends HTMLElement {
         break;
       case 4:
         xRotation = 0;
-        yRotation = -90;
+        yRotation = 90;
         break;
       case 5:
-        xRotation = 90;
+        xRotation = -90;
         yRotation = 0;
         break;
       case 6:
-        xRotation = -90;
+        xRotation = 90;
         yRotation = 0;
         break;
     }
 
     dice.style.transition = `transform 1s ease-out`;
     dice.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+    if (callback) callback(this._value);
   }
 
   get value() {
-    return this.value;
+    return this._value;
   }
 }
 customElements.define("dice-element", DiceElement);

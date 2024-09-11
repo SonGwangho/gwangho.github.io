@@ -40,7 +40,7 @@ function checkCard() {
   const cards = document.getElementsByClassName("selected");
   cardCount++;
   if (cards.length < 2) return;
-  isCardChecked = false;
+
   const card1 = cards[0];
   const card2 = cards[1];
 
@@ -55,6 +55,7 @@ function checkCard() {
       MyToast.showToast("성공!!");
     }
   } else {
+    isCardChecked = false;
     setTimeout(() => {
       isCardChecked = true;
       card1.classList.add("card_back");

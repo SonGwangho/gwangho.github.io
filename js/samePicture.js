@@ -59,7 +59,7 @@ function checkCard() {
       card1.classList.remove("card_front", "selected");
       card2.classList.add("card_back");
       card2.classList.remove("card_front", "selected");
-    }, 500);
+    }, 300);
   }
 }
 

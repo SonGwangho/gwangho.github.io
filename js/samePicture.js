@@ -13,7 +13,7 @@ function initCards() {
 
   Array.from(cards).map((card) => {
     card.setAttribute("card-src", images[index]);
-    card.style.backgroundImage = `url(../assets/img/card/${
+    card.style.backgroundImage = `url(./assets/img/card/${
       images[index++]
     }.png)`;
 

@@ -103,6 +103,7 @@ class DiceElement extends HTMLElement {
 
   finalRoll(dice) {
     const result = Math.floor(Math.random() * 6) + 1;
+    this.value = result;
 
     let xRotation = 0;
     let yRotation = 0;
@@ -136,6 +137,10 @@ class DiceElement extends HTMLElement {
 
     dice.style.transition = `transform 1s ease-out`;
     dice.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+  }
+
+  get value() {
+    return this.value;
   }
 }
 customElements.define("dice-element", DiceElement);

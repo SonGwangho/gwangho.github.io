@@ -23,6 +23,7 @@ function roll(cnt = 3) {
 
             if (parseInt(totalmoney.innerText) < 0) {
               MyToast.showToast("당신은 오링났습니다............");
+              betMoney.value = 0;
             }
             break;
           case [1, 1, 1]:
@@ -64,6 +65,7 @@ function roll(cnt = 3) {
 
                   if (totalmoney.innerText == "0") {
                     MyToast.showToast("당신은 오링났습니다............");
+                    betMoney.value = 0;
                   }
                 }
               } else if (parseInt(eye) > 3) {
@@ -77,6 +79,7 @@ function roll(cnt = 3) {
 
                 if (totalmoney.innerText == "0") {
                   MyToast.showToast("당신은 오링났습니다............");
+                  betMoney.value = 0;
                 }
               }
             } else {
@@ -92,6 +95,7 @@ function roll(cnt = 3) {
 
                 if (totalmoney.innerText == "0") {
                   MyToast.showToast("당신은 오링났습니다............");
+                  betMoney.value = 0;
                 }
               }
             }

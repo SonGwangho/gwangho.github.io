@@ -20,6 +20,10 @@ function roll(cnt = 3) {
             MyToast.showToast("히후미... 두배 뺏겨요.");
             totalmoney.innerText =
               parseInt(totalmoney.innerText) - parseInt(betMoney.value) * 2;
+
+            if (parseInt(totalmoney.innerText) < 0) {
+              MyToast.showToast("당신은 오링났습니다............");
+            }
             break;
           case [1, 1, 1]:
             // 핀조로 5배
@@ -57,6 +61,10 @@ function roll(cnt = 3) {
                   cnt = 3;
                   totalmoney.innerText =
                     parseInt(totalmoney.innerText) - parseInt(betMoney.value);
+
+                  if (totalmoney.innerText == "0") {
+                    MyToast.showToast("당신은 오링났습니다............");
+                  }
                 }
               } else if (parseInt(eye) > 3) {
                 MyToast.showToast("당신의 승리!");
@@ -66,6 +74,10 @@ function roll(cnt = 3) {
                 MyToast.showToast("당신의 패배...");
                 totalmoney.innerText =
                   parseInt(totalmoney.innerText) - parseInt(betMoney.value);
+
+                if (totalmoney.innerText == "0") {
+                  MyToast.showToast("당신은 오링났습니다............");
+                }
               }
             } else {
               // 눈 없음 다시 돌리기
@@ -77,6 +89,10 @@ function roll(cnt = 3) {
                 cnt = 3;
                 totalmoney.innerText =
                   parseInt(totalmoney.innerText) - parseInt(betMoney.value);
+
+                if (totalmoney.innerText == "0") {
+                  MyToast.showToast("당신은 오링났습니다............");
+                }
               }
             }
         }
@@ -96,4 +112,19 @@ function getEye(arr) {
     return arr[0];
   }
   return arr[1];
+}
+
+function inputMax() {
+  const totalmoney = parseInt(
+    document.getElementById("dice_money").querySelector("span").innerText
+  );
+  const betMoney = parseInt(
+    document.getElementById("bet_money").querySelector("input").value
+  );
+
+  if (totalmoney < betMoney)
+    document.getElementById("bet_money").querySelector("input").value =
+      totalmoney;
+  if (betMoney < 0)
+    document.getElementById("bet_money").querySelector("input").value = 0;
 }

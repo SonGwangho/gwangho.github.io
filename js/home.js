@@ -51,7 +51,17 @@ function roll() {
                 else {
                   MyToast.showToast("당신의 패배...");
                   cnt = 3;
+                  totalmoney.innerText =
+                    parseInt(totalmoney.innerText) - parseInt(betMoney.value);
                 }
+              } else if (parseInt(eye) > 3) {
+                MyToast.showToast("당신의 승리!");
+                totalmoney.innerText =
+                  parseInt(totalmoney.innerText) + parseInt(betMoney.value);
+              } else {
+                MyToast.showToast("당신의 패배...");
+                totalmoney.innerText =
+                  parseInt(totalmoney.innerText) - parseInt(betMoney.value);
               }
             } else {
               // 눈 없음 다시 돌리기
@@ -61,6 +71,8 @@ function roll() {
               else {
                 MyToast.showToast("당신의 패배...");
                 cnt = 3;
+                totalmoney.innerText =
+                  parseInt(totalmoney.innerText) - parseInt(betMoney.value);
               }
             }
         }

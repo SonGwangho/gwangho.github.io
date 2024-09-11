@@ -25,6 +25,7 @@
     <script type="text/javascript" src="../elements/modal.js"></script>
     <script type="text/javascript" src="../elements/dateSelector.js"></script>
     <script type="text/javascript" src="../elements/inputElement.js"></script>
+    <script type="text/javascript" src="../elements/diceElement.js"></script>
 
     <!-- 함수들 -->
     <script defer type="text/javascript" src="../js/calendar.js"></script>
@@ -49,7 +50,7 @@
       </div>
     </div>
     <div id="app_body" style="margin: auto; text-align: center;">
-      <custom-grid row="2" col="3">
+      <!-- <custom-grid row="2" col="3">
         <div>1</div>
         <div>2</div>
         <div>3</div>
@@ -59,7 +60,15 @@
       </custom-grid>
       <div style="background-color: antiquewhite; height: 500px;">
 
+      </div> -->
+
+      <div>
+        <dice-element id = "dice" style="margin: 20px auto;"></dice-element>
+        <button onclick="document.getElementById('dice').rollDice()">굴려</button>
       </div>
+
+      <div id="value">010-0000-0000</div>
+      <input type="range" min="1000000000" max="1099999999" step="1" value="1000000000">
       <!-- <date-calendar></date-calendar> -->
     </div>
 
@@ -67,7 +76,14 @@
 </div>
     </div>
     <script>
-      onload = async () => {
+      function roll(){
+        document.getElementById('dice').rollDice();
+      }
+      onload = () => {
+        document.getElementsByTagName('input')[0].addEventListener('input', (e) => {
+          const value = (e.target.value).toString();
+          document.getElementById("value").innerText = "0" + value.slice(0, 2) + '-' + value.slice(2, 6) + '-' + value.slice(6);
+        })
       }
       
     </script>

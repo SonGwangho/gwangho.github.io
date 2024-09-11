@@ -51,8 +51,8 @@ function roll() {
               MyToast.showToast("당신의 눈: " + eye.toString());
               if (parseInt(eye) == 3) {
                 cnt--;
-                MyToast.showToast("비겼음 다시!");
-                if (cnt > 0) setTimeout(() => roll(), 1000);
+                MyToast.showToast("비겼음 다시굴립니다.");
+                if (cnt > 0) setTimeout(() => roll(), 3000);
                 else {
                   MyToast.showToast("당신의 패배...");
                   cnt = 3;
@@ -70,9 +70,9 @@ function roll() {
               }
             } else {
               // 눈 없음 다시 돌리기
-              MyToast.showToast("눈 없음 다시!");
+              MyToast.showToast("눈 없음 다시굴립니다.");
               cnt--;
-              if (cnt > 0) setTimeout(() => roll(), 1000);
+              if (cnt > 0) setTimeout(() => roll(), 3000);
               else {
                 MyToast.showToast("당신의 패배...");
                 cnt = 3;

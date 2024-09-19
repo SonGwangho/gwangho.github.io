@@ -605,5 +605,5 @@ input[type=file]{
   linear-gradient(-45deg, white 25%, transparent 25%),
   linear-gradient(45deg, transparent 75%, white 75%),
   linear-gradient(-45deg, transparent 75%, white 75%) !important;
-  background-size: 30px 26px;
+  background-size: 28px 29px;
 }

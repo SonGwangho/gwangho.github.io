@@ -63,6 +63,24 @@ function mineClick(e) {
 function cellClick(e) {
   const target = e.target;
   target.classList.add("active");
+
+  const map = document.querySelector(".mine_map");
+
+  const up = getCell(map, target.getAttribute("index"), Arrow.Up);
+  const down = getCell(map, target.getAttribute("index"), Arrow.Down);
+  const left = getCell(map, target.getAttribute("index"), Arrow.Left);
+  const right = getCell(map, target.getAttribute("index"), Arrow.Right);
+
+  const cells = [up, down, left, right];
+  for (let cell of cells) {
+    if (
+      !cell?.classList.contains("active") &&
+      !isMine(cell) &&
+      cell?.innerText == 0
+    ) {
+      cell.click();
+    }
+  }
 }
 
 function setCell(map) {

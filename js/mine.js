@@ -30,6 +30,13 @@ function craeteMap(row, col, cnt = undefined) {
       const mine = document.createElement("div");
       mine.classList.add("mine_cell");
       mine.addEventListener("click", cellClick);
+      mine.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        if (e.target.classList.contains("active")) return;
+        if (e.target.classList.contains("flag"))
+          e.target.classList.remove("flag");
+        else e.target.classList.add("flag");
+      });
       mine.setAttribute("index", index++);
       map.appendChild(mine);
     }
@@ -56,14 +63,16 @@ function isMine(cell) {
 
 function mineClick(e) {
   const target = e.target;
+  if (target.classList.contains("flag")) return;
   target.classList.add("active");
   MyToast.showToast("아악! 졌다!");
 }
 
 function cellClick(e) {
   const target = e.target;
+  if (target.classList.contains("flag")) return;
   target.classList.add("active");
-  if (target.innerText == 0 && !isMine(cell)) {
+  if (target.innerText == 0 && !isMine(target)) {
     const map = document.querySelector(".mine_map");
 
     const up = getCell(map, target.getAttribute("index"), Arrow.Up);
@@ -73,7 +82,7 @@ function cellClick(e) {
 
     const cells = [up, down, left, right];
     for (let cell of cells) {
-      if (!cell?.classList.contains("active") && !isMine(cell)) {
+      if (cell && !cell?.classList.contains("active") && !isMine(cell)) {
         cell.click();
       }
     }

@@ -623,11 +623,20 @@ input[type=file]{
 
 .mine.active{
   background-image:url("../assets/img/boom.png");
-  background-repeat: round;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: red;
   color: red;
 }
 .mine_cell.active{
   background-color: white;
   color: black;
+}
+.mine_cell.flag{
+  background-image:url("../assets/img/flag.png") !important;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
 }

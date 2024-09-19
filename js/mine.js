@@ -8,7 +8,9 @@ function clickCraeteMap() {
   col = !col.value ? col.placeholder : col.value;
   cnt = !cnt.value ? cnt.placeholder : cnt.value;
 
-  craeteMap(row, col, cnt);
+  const area = document.getElementById("mine_game_area");
+  area.innerHTML = "";
+  area.appendChild(craeteMap(row, col, cnt));
 }
 
 function craeteMap(row, col, cnt = undefined) {

@@ -607,3 +607,27 @@ input[type=file]{
   linear-gradient(-45deg, transparent 75%, white 75%) !important;
   background-size: 28px 29px;
 }
+.mine_map{
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  padding: 20px;
+}
+
+.mine_cell{
+  width: 20px;
+  height: 20px;
+  background-color: #cacaca;
+  /* color: #cacaca; */
+}
+
+.mine.active{
+  background-image:url("../assets/img/boom.png");
+  background-repeat: round;
+  background-color: red;
+  color: red;
+}
+.mine_cell.active{
+  background-color: white;
+  color: black;
+}

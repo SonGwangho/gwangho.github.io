@@ -37,6 +37,7 @@
     <script defer type="text/javascript" src="../js/coding.js"></script>
     <script defer type="text/javascript" src="../js/runner.js"></script>
     <script defer type="text/javascript" src="../js/samePicture.js"></script>
+    <script defer type="text/javascript" src="../js/mine.js"></script>
     <title>공부용, 취미용, 심심풀이용 사이트</title>
   </head>
   <body>
@@ -51,44 +52,25 @@
       </div>
     </div>
 
-    <div>
-      <custom-grid row="5" col="6" style="width: 800px;">
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-        <div class="card card_back"></div>
-      </custom-grid>
+    <div id="mine_main">
+      <div style="width:100%; margin: auto;">
+        가로: <input type="number" style="margin: auto;" placeholder="10" max="50">
+        세로: <input type="number" style="margin: auto;" placeholder="10" max="50">
+        지뢰: <input type="number" style="margin: auto;" placeholder="20">
+        <button onclick="clickCraeteMap()">적용</button>
+      </div>
+      <div id="mine_game_area" style="margin-top: 30px;">
+
+      </div>
+      
     </div>
 
     <script>
       onload = () => {
-        initCards();
+        const area = document.getElementById('mine_game_area');
+        area.innerHTML = "";
+        area.appendChild(craeteMap(10, 10))
+        
       }
     </script>
   </body>

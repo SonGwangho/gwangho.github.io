@@ -54,6 +54,16 @@ class customGrid extends HTMLElement {
     cell.appendChild(dom);
   }
 
+  getIndex(cell) {
+    const grid = this.shadow.querySelector("custom_grid");
+    if (!grid) return null;
+    let index = 0;
+    for (let c of grid.children) {
+      if (c == cell) return index;
+      index++;
+    }
+  }
+
   init() {
     while (this.shadow?.firstChild) {
       this.shadow.removeChild(this.shadow.firstChild);

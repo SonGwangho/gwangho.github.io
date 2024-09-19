@@ -82,6 +82,12 @@ const routes = [
       return getView("/samePicture.html");
     },
   },
+  {
+    path: "/mine",
+    view: () => {
+      return getView("/mine.html");
+    },
+  },
 ];
 
 const getView = async (url) => {

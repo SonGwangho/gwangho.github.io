@@ -334,8 +334,20 @@ class Task {
 }
 
 class Random {
-  static getNumber(min = 0, max = 100) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  static getNumber(min = 0, max = 100, cnt = 1) {
+    if (cnt == 1) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    } else {
+      const numbers = Array.from({ length: max - min + 1 }, (_, i) => i + min);
+      const result = [];
+
+      for (let i = 0; i < cnt; i++) {
+        const randomIndex = Math.floor(Math.random() * numbers.length);
+        result.push(numbers[randomIndex]);
+        numbers.splice(randomIndex, 1);
+      }
+      return result;
+    }
   }
 
   static getItem(array = undefined) {
@@ -429,3 +441,9 @@ class PyScript {
     return py_script;
   }
 }
+const Arrow = {
+  Up: "up",
+  Down: "down",
+  Left: "left",
+  Right: "right",
+};

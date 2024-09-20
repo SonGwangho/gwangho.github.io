@@ -10,7 +10,7 @@ function clickCraeteMap() {
 
   const area = document.getElementById("mine_game_area");
   area.innerHTML = "";
-  area.appendChild(craeteMap(row, col, cnt));
+  area.appendChild(craeteMap(col, row, cnt));
 }
 
 function craeteMap(row, col, cnt = undefined) {

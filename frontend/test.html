@@ -52,25 +52,30 @@
       </div>
     </div>
 
-    <div id="mine_main">
-      <div style="width:100%; margin: auto;">
-        가로: <input type="number" style="margin: auto;" placeholder="10" max="50">
-        세로: <input type="number" style="margin: auto;" placeholder="10" max="50">
-        지뢰: <input type="number" style="margin: auto;" placeholder="20">
-        <button onclick="clickCraeteMap()">적용</button>
-      </div>
-      <div id="mine_game_area" style="margin-top: 30px;">
-
+    <div>
+      <h1>심리테스트</h1>
+      <div class="seletors" style="display: flex; width: 850px; margin: auto;">
+        <div class="left" style="background-color: rebeccapurple; width: 45%;height: 600px;"></div>
+        <div class="right" style="background-color: blue;width: 45%; height: 600px; margin-left: auto;"></div>
       </div>
       
     </div>
 
     <script>
       onload = () => {
-        const area = document.getElementById('mine_game_area');
-        area.innerHTML = "";
-        area.appendChild(craeteMap(10, 10))
+        const left = document.querySelector('.left');
+        const right = document.querySelector('.right');
         
+
+        left.addEventListener('click', () => {
+          left.style.width = '100%'
+          right.style.display = 'none';
+        })
+
+        right.addEventListener('click', () => {
+          right.style.width = '100%'
+          left.style.display = 'none';
+        })
       }
     </script>
   </body>

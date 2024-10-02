@@ -1,0 +1,34 @@
+<div id="testShare_div">
+  <h1>심리테스트</h1>
+  <div class="seletors" style="display: flex; width: 850px; margin: auto;">
+    <div class="left" style="background-color: rebeccapurple; width: 45%;height: 600px; background-image: url(../assets/img/share/1.jpg);"></div>
+    <div class="right" style="background-color: blue;width: 45%; height: 600px; margin-left: auto; background-image: url(../assets/img/share/1.jpg);"></div>
+  </div>
+</div>
+
+<script>
+  loadPage = () => {
+    const choiced = MyURL.getParam('choice');
+    const left = document.querySelector('.left');
+    const right = document.querySelector('.right');
+    if (choiced === 'left'){
+      left.style.width = '100%'
+      right.style.display = 'none';
+    }
+    else if (choiced === 'right'){
+      right.style.width = '100%'
+      left.style.display = 'none';
+    }
+    else {
+      left.addEventListener('click', () => {
+        left.style.width = '100%'
+        right.style.display = 'none';
+      })
+
+      right.addEventListener('click', () => {
+        right.style.width = '100%'
+        left.style.display = 'none';
+      })
+    }
+  }
+</script>

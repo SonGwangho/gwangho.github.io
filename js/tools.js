@@ -372,6 +372,10 @@ class Random {
       return null;
     }
   }
+
+  static getId() {
+    return Math.random().toString().substring(2);
+  }
 }
 
 class MyURL {

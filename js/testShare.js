@@ -6,8 +6,8 @@ function clicked(cls) {
       ? "당신은 짜장면을 좋아하는 타입"
       : "당신은 짬뽕을 좋아하는 타입";
 
-  let imgUrl = URL("url(./assets/img/share/1.jpg)");
-  if (cls === "right") imgUrl = URL("url(./assets/img/share/2.jpg)");
+  let imgUrl = "url(./assets/img/share/1.jpg)";
+  if (cls === "right") imgUrl = "url(./assets/img/share/2.jpg)";
   const kakaoApi = new KakaoAPI();
   const dom = kakaoApi.getShareFeedButton(
     "심리테스트",

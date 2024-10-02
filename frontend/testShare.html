@@ -23,11 +23,13 @@
       left.addEventListener('click', () => {
         left.style.width = '100%'
         right.style.display = 'none';
+        clicked("left");
       })
 
       right.addEventListener('click', () => {
         right.style.width = '100%'
         left.style.display = 'none';
+        clicked("right");
       })
     }
   }

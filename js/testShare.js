@@ -1,4 +1,11 @@
 function clicked(cls) {
+  const body = document.querySelector("#testShare_div");
+  const h2 = document.createElement("h2");
+  h2.innerText =
+    cls === "left"
+      ? "당신은 짜장면을 좋아하는 타입"
+      : "당신은 짬뽕을 좋아하는 타입";
+
   let imgUrl = URL("url(./assets/img/share/1.jpg)");
   if (cls === "right") imgUrl = URL("url(./assets/img/share/2.jpg)");
   const kakaoApi = new KakaoAPI();
@@ -10,6 +17,6 @@ function clicked(cls) {
   );
   const h3 = document.createElement("h3");
   h3.innerText = "카카오톡으로 내용 공유하기";
-  document.querySelector("#testShare_div").appendChild(h3);
-  document.querySelector("#testShare_div").appendChild(dom);
+  body.appendChild(h3);
+  body.appendChild(dom);
 }

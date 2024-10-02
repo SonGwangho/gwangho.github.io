@@ -10,7 +10,7 @@ function clicked(cls) {
   if (cls === "right") imgUrl = "url(./assets/img/share/2.jpg)";
   const kakaoApi = new KakaoAPI();
   const dom = document.createElement("div");
-  dom.id = `kakao_share__${Random.getId()}`;
+  dom.id = `kakao_share_${Random.getId()}`;
   const h3 = document.createElement("h3");
   h3.innerText = "카카오톡으로 내용 공유하기";
   body.appendChild(h3);

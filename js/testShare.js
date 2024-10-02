@@ -16,13 +16,11 @@ function clicked(cls) {
   body.appendChild(h3);
   body.appendChild(dom);
 
-  setTimeout(() => {
-    kakaoApi.getShareFeedButton(
-      dom.id,
-      "심리테스트",
-      ["짜장면", "짬뽕"],
-      imgUrl,
-      `https://songwangho.github.io/gwangho.github.io/testShare?kakao_api_key=b39aea3597014313f631b83f061c6a95&choice=${cls}`
-    );
-  }, 300);
+  kakaoApi.getShareFeedButton(
+    `#${dom.id}`,
+    "심리테스트",
+    ["짜장면", "짬뽕"],
+    imgUrl,
+    `https://songwangho.github.io/gwangho.github.io/testShare?kakao_api_key=b39aea3597014313f631b83f061c6a95&choice=${cls}`
+  );
 }

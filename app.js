@@ -88,6 +88,12 @@ const routes = [
       return getView("/mine.html");
     },
   },
+  {
+    path: "/testShare",
+    view: () => {
+      return getView("/testShare.html");
+    },
+  },
 ];
 
 const getView = async (url) => {

@@ -1,0 +1,40 @@
+<style>
+</style>
+<div id="dice_div" style="max-width: 1200px; margin: 0 auto;">
+  <h1>친치로(딜러 눈은 3으로 가정)</h1>
+  <div>
+    <div id="dice_money">총 금액 : <span>10000</span>원</div>
+    <div id="bet_money" oninput="inputMax()">베팅 금액 : <input type="number" value="1000"></input>원</div>
+    <dice-element class = "dice" style="margin: 20px; display: inline-block;"></dice-element>
+    <dice-element class = "dice" style="margin: 20px; display: inline-block;"></dice-element>
+    <dice-element class = "dice" style="margin: 20px; display: inline-block;"></dice-element>
+    <button style="display: block; margin: 30px; font-size: 40px;" onclick="roll()">굴려</button>
+  </div>
+  
+  <details>
+    <summary>친치로 설명 열기</summary>
+      <pre>
+        친치로란?
+        주사위를 굴려서 특정 패턴을 맞추는 게임.
+    
+        족보
+        1. [1,1,1] - 5배로 받는다
+        2. [2,2,2] ~ [6,6,6] - 3배로 받는다
+        3. [4,5,6] - 2배로 받는다
+        4. [1,2,3] - 2배로 잃는다
+        5. [?,?,1] ~ [?,?,6] - 같은 숫자 두개와 나머지 한개의 경우 나머지 한개 값을 눈이라고 한다 ex) [1,1,5] - 5의 눈
+           3의 눈보다 크면 1배로 받는다
+           3의 눈보다 작으면 1배로 잃는다
+           3의 눈이면 3번까지 다시 던진다 (그래도 눙이 없거나 무승부면 1배로 잃는다)
+        6. 그 외 - 주사위를 3번까지 다시 던진다 (그래도 눈이 없거나 무승부면 1배로 잃는다)
+      </pre>
+  </details>
+  <div id="gist" style="margin-top: 50px;"></div>
+  
+</div>  
+<script>
+  loadPage = () =>  {
+    const dom = Gist.getGistDom("4dfb24deb5f079a12831f4222bda4329");
+    document.getElementById('gist').appendChild(dom);
+  }
+</script>

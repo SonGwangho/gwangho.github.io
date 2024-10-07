@@ -94,6 +94,18 @@ const routes = [
       return getView("/testShare.html");
     },
   },
+  {
+    path: "/dice",
+    view: () => {
+      return getView("/dice.html");
+    },
+  },
+  {
+    path: "/games",
+    view: () => {
+      return getView("/games.html");
+    },
+  },
 ];
 
 const getView = async (url) => {
